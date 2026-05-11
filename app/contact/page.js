@@ -50,7 +50,7 @@ const contactTranslations = {
       description: 'Whether you need a quote, have questions about our services, or want to discuss a custom cleaning solution—we\'re here to help.',
       location: 'Serving all of Copenhagen',
       locationSub: 'Nordhavn, Østerbro, Frederiksberg & more',
-      email: 'hello@6star.dk',
+      email: 'hello@hexaren.dk',
       phone: '+45 31 86 20 94',
       hours: 'Mon-Fri: 8:00 - 18:00',
       response: 'We respond within 2 hours'
@@ -111,7 +111,7 @@ const contactTranslations = {
           answer: 'Not at all. Many of our clients provide us with a key or access code. We\'re fully insured and all our team members are thoroughly vetted. You can trust us to take care of your space while you\'re away.'
         },
         {
-          question: 'What makes 6star different from other cleaning services?',
+          question: 'What makes Hexaren different from other cleaning services?',
           answer: 'We\'re a collective of 6 dedicated owners who personally invest in every job. This means no middlemen, no excuses—just premium quality and genuine accountability. We never miss a shift, and we treat every space like it\'s our own.'
         },
         {
@@ -122,11 +122,11 @@ const contactTranslations = {
     },
     cta: {
       title: 'Ready to experience premium cleaning?',
-      subtitle: 'Join businesses and homes across Copenhagen that trust 6star.',
+      subtitle: 'Join businesses and homes across Copenhagen that trust Hexaren.',
       button: 'Get Your Free Quote'
     },
     footer: {
-      tagline: '6star Rengøring og Services ApS - Premium cleaning in Copenhagen',
+      tagline: 'Hexaren ApS - Premium cleaning in Copenhagen',
       services: 'Services',
       company: 'Company',
       contact: 'Contact',
@@ -152,7 +152,7 @@ const contactTranslations = {
       description: 'Uanset om du har brug for et tilbud, har spørgsmål om vores services, eller ønsker at diskutere en tilpasset rengøringsløsning—vi er her for at hjælpe.',
       location: 'Dækker hele København',
       locationSub: 'Nordhavn, Østerbro, Frederiksberg & mere',
-      email: 'hello@6star.dk',
+      email: 'hello@hexaren.dk',
       phone: '+45 31 86 20 94',
       hours: 'Man-Fre: 8:00 - 18:00',
       response: 'Vi svarer inden for 2 timer'
@@ -213,7 +213,7 @@ const contactTranslations = {
           answer: 'Slet ikke. Mange af vores kunder giver os en nøgle eller adgangskode. Vi er fuldt forsikrede og alle vores teammedlemmer er grundigt godkendte. Du kan stole på os til at passe på dit rum mens du er væk.'
         },
         {
-          question: 'Hvad gør 6star anderledes fra andre rengøringsservices?',
+          question: 'Hvad gør Hexaren anderledes fra andre rengøringsservices?',
           answer: 'Vi er et kollektiv af 6 dedikerede ejere der personligt investerer i hvert job. Det betyder ingen mellemled, ingen undskyldninger—bare premium kvalitet og ægte ansvarlighed. Vi misser aldrig en vagt, og vi behandler hvert rum som om det var vores eget.'
         },
         {
@@ -224,11 +224,11 @@ const contactTranslations = {
     },
     cta: {
       title: 'Klar til at opleve premium rengøring?',
-      subtitle: 'Slut dig til virksomheder og hjem i hele København der stoler på 6star.',
+      subtitle: 'Slut dig til virksomheder og hjem i hele København der stoler på Hexaren.',
       button: 'Få Dit Gratis Tilbud'
     },
     footer: {
-      tagline: '6star Rengøring og Services ApS - Premium rengøring i København',
+      tagline: 'Hexaren ApS - Premium rengøring i København',
       services: 'Ydelser',
       company: 'Firma',
       contact: 'Kontakt',
@@ -258,12 +258,14 @@ export default function ContactPage() {
 
   const t = contactTranslations[lang];
 
-  // Scroll animation observer
+  // Scroll animation observer - smooth animations
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (prefersReducedMotion) {
-      document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('animate-in'));
+      document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children').forEach(el => {
+        el.classList.add('animate-in');
+      });
       return;
     }
 
@@ -274,21 +276,23 @@ export default function ContactPage() {
             const element = entry.target;
             const delay = parseInt(element.getAttribute('data-delay') || '0');
             
-            setTimeout(() => {
-              element.classList.add('animate-in');
-            }, delay);
+            requestAnimationFrame(() => {
+              setTimeout(() => {
+                element.classList.add('animate-in');
+              }, delay);
+            });
             
             observer.unobserve(element);
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -100px 0px'
       }
     );
 
-    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children');
     revealElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
@@ -390,8 +394,8 @@ export default function ContactPage() {
               <Star className="w-5 h-5 text-white fill-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-[#0F172A]">6star</span>
-              <span className="text-[10px] text-gray-500 -mt-1">Rengøring</span>
+              <span className="text-xl font-bold text-[#0F172A]">Hexaren</span>
+              <span className="text-[10px] text-gray-500 -mt-1">ApS</span>
             </div>
           </Link>
           
@@ -713,7 +717,7 @@ export default function ContactPage() {
                   <Star className="w-5 h-5 text-white fill-white" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-white">6star</span>
+                  <span className="text-xl font-bold text-white">Hexaren</span>
                   <span className="text-[10px] text-gray-400 -mt-1">Rengøring og Services ApS</span>
                 </div>
               </Link>
@@ -749,7 +753,7 @@ export default function ContactPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
-                  hello@6star.dk
+                  hello@hexaren.dk
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#10B981]" />
@@ -760,7 +764,7 @@ export default function ContactPage() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© {new Date().getFullYear()} 6star Rengøring og Services ApS. {t.footer.rights}.</p>
+            <p>© {new Date().getFullYear()} Hexaren ApS. {t.footer.rights}.</p>
           </div>
         </div>
       </footer>

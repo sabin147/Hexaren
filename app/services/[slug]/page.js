@@ -191,8 +191,8 @@ export default function ServiceDetailPage() {
               <Star className="w-5 h-5 text-white fill-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-[#0F172A]">6star</span>
-              <span className="text-[10px] text-gray-500 -mt-1">Rengøring</span>
+              <span className="text-xl font-bold text-[#0F172A]">Hexaren</span>
+              <span className="text-[10px] text-gray-500 -mt-1">ApS</span>
             </div>
           </Link>
           
@@ -400,7 +400,7 @@ export default function ServiceDetailPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4 scroll-reveal" data-delay="0">
-              {lang === 'da' ? 'Hvorfor Vælge 6star' : 'Why Choose 6star'}
+              {lang === 'da' ? 'Hvorfor Vælge Hexaren' : 'Why Choose Hexaren'}
             </h2>
           </div>
           
@@ -611,7 +611,7 @@ export default function ServiceDetailPage() {
                   <Star className="w-5 h-5 text-white fill-white" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-white">6star</span>
+                  <span className="text-xl font-bold text-white">Hexaren</span>
                   <span className="text-[10px] text-gray-400 -mt-1">Rengøring og Services ApS</span>
                 </div>
               </Link>
@@ -648,7 +648,7 @@ export default function ServiceDetailPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
-                  hello@6star.dk
+                  hello@hexaren.dk
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#10B981]" />
@@ -659,7 +659,7 @@ export default function ServiceDetailPage() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© {new Date().getFullYear()} 6star Rengøring og Services ApS. {lang === 'da' ? 'Alle rettigheder forbeholdes' : 'All rights reserved'}.</p>
+            <p>© {new Date().getFullYear()} Hexaren ApS. {lang === 'da' ? 'Alle rettigheder forbeholdes' : 'All rights reserved'}.</p>
           </div>
         </div>
       </footer>

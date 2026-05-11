@@ -114,6 +114,17 @@ export default function SixStarPage() {
 
   // Global Intersection Observer for smooth scroll animations
   useEffect(() => {
+    // Check for reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+      // Show all elements immediately for users who prefer reduced motion
+      document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children').forEach(el => {
+        el.classList.add('animate-in');
+      });
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -121,24 +132,26 @@ export default function SixStarPage() {
             const element = entry.target;
             const delay = parseInt(element.getAttribute('data-delay') || '0');
             
-            // Apply animation after delay
-            setTimeout(() => {
-              element.classList.add('animate-in');
-            }, delay);
+            // Apply animation after delay with requestAnimationFrame for smoother rendering
+            requestAnimationFrame(() => {
+              setTimeout(() => {
+                element.classList.add('animate-in');
+              }, delay);
+            });
             
-            // Unobserve after animation
+            // Unobserve after triggering animation
             observer.unobserve(element);
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -80px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -100px 0px'
       }
     );
 
-    // Observe all elements with scroll-reveal class
-    const revealElements = document.querySelectorAll('.scroll-reveal');
+    // Observe all elements with scroll-reveal classes
+    const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children');
     revealElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
@@ -201,8 +214,8 @@ export default function SixStarPage() {
               <Star className="w-5 h-5 text-white fill-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-[#0F172A]">6star</span>
-              <span className="text-[10px] text-gray-500 -mt-1">Rengøring</span>
+              <span className="text-xl font-bold text-[#0F172A]">Hexaren</span>
+              <span className="text-[10px] text-gray-500 -mt-1">ApS</span>
             </div>
           </div>
           
@@ -453,7 +466,7 @@ export default function SixStarPage() {
         </div>
       </section>
 
-      {/* Values Section - The 6star Promise */}
+      {/* Values Section - The Hexaren Promise */}
       <section id="about" className="py-20 px-4 bg-[#0F172A]">
         <div className="container mx-auto">
           <div className="text-center mb-16 scroll-reveal" data-delay="0">
@@ -694,8 +707,8 @@ export default function SixStarPage() {
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             {lang === 'en' 
-              ? 'Book your cleaning today and experience the 6star difference. 6 owners personally invested in every job.' 
-              : 'Book din rengøring i dag og oplev 6star-forskellen. 6 ejere personligt investeret i hvert job.'}
+              ? 'Book your cleaning today and experience the Hexaren difference. 6 owners personally invested in every job.' 
+              : 'Book din rengøring i dag og oplev Hexaren-forskellen. 6 ejere personligt investeret i hvert job.'}
           </p>
           <Button 
             size="lg" 
@@ -717,7 +730,7 @@ export default function SixStarPage() {
                   <Star className="w-5 h-5 text-white fill-white" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-white">6star</span>
+                  <span className="text-xl font-bold text-white">Hexaren</span>
                   <span className="text-[10px] text-gray-400 -mt-1">Rengøring og Services ApS</span>
                 </div>
               </div>
@@ -753,7 +766,7 @@ export default function SixStarPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
-                  hello@6star.dk
+                  hello@hexaren.dk
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#10B981]" />
@@ -764,7 +777,7 @@ export default function SixStarPage() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© {new Date().getFullYear()} 6star Rengøring og Services ApS. {t.footer.rights}.</p>
+            <p>© {new Date().getFullYear()} Hexaren ApS. {t.footer.rights}.</p>
           </div>
         </div>
       </footer>

@@ -41,14 +41,14 @@ const aboutTranslations = {
       badge: 'Our Story',
       title: 'Building Trust,',
       titleAccent: 'One Clean at a Time',
-      description: 'We started 6star with a simple belief: every space deserves premium care, and every client deserves complete reliability. Meet the team making it happen.',
+      description: 'We started Hexaren with a simple belief: every space deserves premium care, and every client deserves complete reliability. Meet the team making it happen.',
       cta: 'Work With Us',
       secondaryCta: 'Meet the Team'
     },
     intro: {
       label: 'Who We Are',
       title: 'A Small Team with Big Standards',
-      paragraph1: 'Founded in Copenhagen, 6star Rengøring og Services ApS was born from a shared frustration with unreliable cleaning services. We knew there had to be a better way—one built on accountability, transparency, and genuine care for the spaces we maintain.',
+      paragraph1: 'Founded in Copenhagen, Hexaren ApS was born from a shared frustration with unreliable cleaning services. We knew there had to be a better way—one built on accountability, transparency, and genuine care for the spaces we maintain.',
       paragraph2: 'Today, we are a collective of 6 dedicated owners who personally invest in every job we take on. No middlemen, no excuses. Just premium cleaning delivered with the attention it deserves.',
       paragraph3: 'We serve offices, apartments, Airbnb properties, and residential buildings across Copenhagen. Our approach is simple: show up, deliver excellence, and build lasting relationships with clients who value quality over shortcuts.'
     },
@@ -74,16 +74,16 @@ const aboutTranslations = {
       ]
     },
     team: {
-      label: 'The People Behind 6star',
+      label: 'The People Behind Hexaren',
       title: 'Meet Our Team',
       subtitle: '6 owners, each personally invested in delivering excellence',
       members: [
-        { name: 'Sabin Sharma', role: 'Co-Founder & Operations', email: 'sabin@6star.dk' },
-        { name: 'Mikkel Jensen', role: 'Co-Founder & Sales', email: 'mikkel@6star.dk' },
-        { name: 'Priya Patel', role: 'Co-Founder & Client Relations', email: 'priya@6star.dk' },
-        { name: 'Anders Nielsen', role: 'Co-Founder & Quality Assurance', email: 'anders@6star.dk' },
-        { name: 'Sofia Andersen', role: 'Co-Founder & Scheduling', email: 'sofia@6star.dk' },
-        { name: 'Raj Kumar', role: 'Co-Founder & Finance', email: 'raj@6star.dk' }
+        { name: 'Sabin Sharma', role: 'Co-Founder & Operations', email: 'sabin@hexaren.dk' },
+        { name: 'Mikkel Jensen', role: 'Co-Founder & Sales', email: 'mikkel@hexaren.dk' },
+        { name: 'Priya Patel', role: 'Co-Founder & Client Relations', email: 'priya@hexaren.dk' },
+        { name: 'Anders Nielsen', role: 'Co-Founder & Quality Assurance', email: 'anders@hexaren.dk' },
+        { name: 'Sofia Andersen', role: 'Co-Founder & Scheduling', email: 'sofia@hexaren.dk' },
+        { name: 'Raj Kumar', role: 'Co-Founder & Finance', email: 'raj@hexaren.dk' }
       ]
     },
     stats: {
@@ -96,19 +96,19 @@ const aboutTranslations = {
       ]
     },
     founder: {
-      quote: '"We didn\'t start 6star to build a cleaning company. We started it to prove that reliability and premium quality can coexist—that a small team with the right values can outperform anyone. Every time we show up, we\'re not just cleaning a space. We\'re keeping a promise."',
+      quote: '"We didn\'t start Hexaren to build a cleaning company. We started it to prove that reliability and premium quality can coexist—that a small team with the right values can outperform anyone. Every time we show up, we\'re not just cleaning a space. We\'re keeping a promise."',
       name: 'Sabin Sharma',
-      title: 'Co-Founder, 6star Rengøring',
-      story: 'After years of experiencing inconsistent service from larger cleaning companies, our founding team came together with a radical idea: what if every person who cleaned had ownership stake in the outcome? That question became 6star.'
+      title: 'Co-Founder, Hexaren Rengøring',
+      story: 'After years of experiencing inconsistent service from larger cleaning companies, our founding team came together with a radical idea: what if every person who cleaned had ownership stake in the outcome? That question became Hexaren.'
     },
     cta: {
       title: 'Ready to Experience the Difference?',
-      subtitle: 'Join the businesses and homes across Copenhagen that trust 6star for their cleaning needs.',
+      subtitle: 'Join the businesses and homes across Copenhagen that trust Hexaren for their cleaning needs.',
       button: 'Get Your Free Quote',
       secondaryButton: 'Contact Us'
     },
     footer: {
-      tagline: '6star Rengøring og Services ApS - Premium cleaning in Copenhagen',
+      tagline: 'Hexaren ApS - Premium cleaning in Copenhagen',
       services: 'Services',
       company: 'Company',
       contact: 'Contact',
@@ -132,14 +132,14 @@ const aboutTranslations = {
       badge: 'Vores Historie',
       title: 'Opbygger Tillid,',
       titleAccent: 'Én Rengøring ad Gangen',
-      description: 'Vi startede 6star med en simpel overbevisning: hvert rum fortjener premium pleje, og hver kunde fortjener komplet pålidelighed. Mød teamet der gør det muligt.',
+      description: 'Vi startede Hexaren med en simpel overbevisning: hvert rum fortjener premium pleje, og hver kunde fortjener komplet pålidelighed. Mød teamet der gør det muligt.',
       cta: 'Arbejd Med Os',
       secondaryCta: 'Mød Teamet'
     },
     intro: {
       label: 'Hvem Vi Er',
       title: 'Et Lille Team med Store Standarder',
-      paragraph1: 'Grundlagt i København, 6star Rengøring og Services ApS blev født fra en fælles frustration over upålidelige rengøringsservices. Vi vidste, at der måtte være en bedre måde—en bygget på ansvarlighed, gennemsigtighed og ægte omsorg for de rum vi vedligeholder.',
+      paragraph1: 'Grundlagt i København, Hexaren ApS blev født fra en fælles frustration over upålidelige rengøringsservices. Vi vidste, at der måtte være en bedre måde—en bygget på ansvarlighed, gennemsigtighed og ægte omsorg for de rum vi vedligeholder.',
       paragraph2: 'I dag er vi et kollektiv af 6 dedikerede ejere, der personligt investerer i hvert job vi påtager os. Ingen mellemled, ingen undskyldninger. Bare premium rengøring leveret med den opmærksomhed den fortjener.',
       paragraph3: 'Vi servicerer kontorer, lejligheder, Airbnb-ejendomme og boligejendomme i hele København. Vores tilgang er simpel: mød op, lever excellence, og byg varige relationer med kunder der værdsætter kvalitet over genveje.'
     },
@@ -165,16 +165,16 @@ const aboutTranslations = {
       ]
     },
     team: {
-      label: 'Folkene Bag 6star',
+      label: 'Folkene Bag Hexaren',
       title: 'Mød Vores Team',
       subtitle: '6 ejere, hver personligt investeret i at levere excellence',
       members: [
-        { name: 'Sabin Sharma', role: 'Medstifter & Drift', email: 'sabin@6star.dk' },
-        { name: 'Mikkel Jensen', role: 'Medstifter & Salg', email: 'mikkel@6star.dk' },
-        { name: 'Priya Patel', role: 'Medstifter & Kunderelationer', email: 'priya@6star.dk' },
-        { name: 'Anders Nielsen', role: 'Medstifter & Kvalitetssikring', email: 'anders@6star.dk' },
-        { name: 'Sofia Andersen', role: 'Medstifter & Planlægning', email: 'sofia@6star.dk' },
-        { name: 'Raj Kumar', role: 'Medstifter & Økonomi', email: 'raj@6star.dk' }
+        { name: 'Sabin Sharma', role: 'Medstifter & Drift', email: 'sabin@hexaren.dk' },
+        { name: 'Mikkel Jensen', role: 'Medstifter & Salg', email: 'mikkel@hexaren.dk' },
+        { name: 'Priya Patel', role: 'Medstifter & Kunderelationer', email: 'priya@hexaren.dk' },
+        { name: 'Anders Nielsen', role: 'Medstifter & Kvalitetssikring', email: 'anders@hexaren.dk' },
+        { name: 'Sofia Andersen', role: 'Medstifter & Planlægning', email: 'sofia@hexaren.dk' },
+        { name: 'Raj Kumar', role: 'Medstifter & Økonomi', email: 'raj@hexaren.dk' }
       ]
     },
     stats: {
@@ -187,19 +187,19 @@ const aboutTranslations = {
       ]
     },
     founder: {
-      quote: '"Vi startede ikke 6star for at bygge et rengøringsfirma. Vi startede det for at bevise, at pålidelighed og premium kvalitet kan sameksistere—at et lille team med de rigtige værdier kan overgå alle. Hver gang vi møder op, rengør vi ikke bare et rum. Vi holder et løfte."',
+      quote: '"Vi startede ikke Hexaren for at bygge et rengøringsfirma. Vi startede det for at bevise, at pålidelighed og premium kvalitet kan sameksistere—at et lille team med de rigtige værdier kan overgå alle. Hver gang vi møder op, rengør vi ikke bare et rum. Vi holder et løfte."',
       name: 'Sabin Sharma',
-      title: 'Medstifter, 6star Rengøring',
-      story: 'Efter år med inkonsistent service fra større rengøringsfirmaer, kom vores stifterteam sammen med en radikal idé: hvad nu hvis hver person der gjorde rent havde ejerandel i resultatet? Det spørgsmål blev til 6star.'
+      title: 'Medstifter, Hexaren Rengøring',
+      story: 'Efter år med inkonsistent service fra større rengøringsfirmaer, kom vores stifterteam sammen med en radikal idé: hvad nu hvis hver person der gjorde rent havde ejerandel i resultatet? Det spørgsmål blev til Hexaren.'
     },
     cta: {
       title: 'Klar til at Opleve Forskellen?',
-      subtitle: 'Slut dig til virksomhederne og hjemmene i hele København, der stoler på 6star til deres rengøringsbehov.',
+      subtitle: 'Slut dig til virksomhederne og hjemmene i hele København, der stoler på Hexaren til deres rengøringsbehov.',
       button: 'Få Dit Gratis Tilbud',
       secondaryButton: 'Kontakt Os'
     },
     footer: {
-      tagline: '6star Rengøring og Services ApS - Premium rengøring i København',
+      tagline: 'Hexaren ApS - Premium rengøring i København',
       services: 'Ydelser',
       company: 'Firma',
       contact: 'Kontakt',
@@ -227,13 +227,14 @@ export default function AboutPage() {
   const [lang, setLang] = useState('en');
   const t = aboutTranslations[lang];
 
-  // Scroll animation observer
+  // Scroll animation observer - smooth animations
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (prefersReducedMotion) {
-      // If user prefers reduced motion, just show all elements
-      document.querySelectorAll('.scroll-reveal').forEach(el => el.classList.add('animate-in'));
+      document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children').forEach(el => {
+        el.classList.add('animate-in');
+      });
       return;
     }
 
@@ -244,21 +245,23 @@ export default function AboutPage() {
             const element = entry.target;
             const delay = parseInt(element.getAttribute('data-delay') || '0');
             
-            setTimeout(() => {
-              element.classList.add('animate-in');
-            }, delay);
+            requestAnimationFrame(() => {
+              setTimeout(() => {
+                element.classList.add('animate-in');
+              }, delay);
+            });
             
             observer.unobserve(element);
           }
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.12,
+        rootMargin: '0px 0px -100px 0px'
       }
     );
 
-    const revealElements = document.querySelectorAll('.scroll-reveal');
+    const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children');
     revealElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
@@ -266,46 +269,6 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
-      {/* Custom styles for animations */}
-      <style jsx global>{`
-        .scroll-reveal {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .scroll-reveal.animate-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        .image-zoom {
-          transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .image-zoom:hover {
-          transform: scale(1.05);
-        }
-        .card-lift {
-          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                      box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .card-lift:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .scroll-reveal {
-            opacity: 1;
-            transform: none;
-            transition: none;
-          }
-          .image-zoom, .card-lift {
-            transition: none;
-          }
-          .image-zoom:hover, .card-lift:hover {
-            transform: none;
-          }
-        }
-      `}</style>
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
@@ -315,8 +278,8 @@ export default function AboutPage() {
               <Star className="w-5 h-5 text-white fill-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-[#0F172A]">6star</span>
-              <span className="text-[10px] text-gray-500 -mt-1">Rengøring</span>
+              <span className="text-xl font-bold text-[#0F172A]">Hexaren</span>
+              <span className="text-[10px] text-gray-500 -mt-1">ApS</span>
             </div>
           </Link>
           
@@ -640,7 +603,7 @@ export default function AboutPage() {
                   <Star className="w-5 h-5 text-white fill-white" />
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-xl font-bold text-white">6star</span>
+                  <span className="text-xl font-bold text-white">Hexaren</span>
                   <span className="text-[10px] text-gray-400 -mt-1">Rengøring og Services ApS</span>
                 </div>
               </Link>
@@ -676,7 +639,7 @@ export default function AboutPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
-                  hello@6star.dk
+                  hello@hexaren.dk
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#10B981]" />
@@ -687,7 +650,7 @@ export default function AboutPage() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© {new Date().getFullYear()} 6star Rengøring og Services ApS. {t.footer.rights}.</p>
+            <p>© {new Date().getFullYear()} Hexaren ApS. {t.footer.rights}.</p>
           </div>
         </div>
       </footer>

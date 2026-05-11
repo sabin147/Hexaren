@@ -2,93 +2,359 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom Animations */
+/* ========================================
+   PREMIUM SMOOTH ANIMATIONS - Inspired by duuo.dk
+   ======================================== */
+
+/* Custom easing function - smooth and elegant */
+:root {
+  --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out-smooth: cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+/* Base fade-in animation */
 @keyframes fade-in {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .animate-fade-in {
-    animation: fade-in 1s ease-out;
+  animation: fade-in 1.2s var(--ease-smooth) forwards;
 }
 
-/* Global Scroll Reveal Animation */
+/* ========================================
+   SCROLL REVEAL ANIMATIONS
+   ======================================== */
+
+/* Main scroll reveal - smooth and elegant */
 .scroll-reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 
+    opacity 1.2s var(--ease-smooth),
+    transform 1.2s var(--ease-smooth);
+  will-change: opacity, transform;
 }
 
 .scroll-reveal.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade only variant */
+.scroll-reveal-fade {
+  opacity: 0;
+  transition: opacity 1.4s var(--ease-smooth);
+  will-change: opacity;
+}
+
+.scroll-reveal-fade.animate-in {
+  opacity: 1;
+}
+
+/* Scale up variant */
+.scroll-reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: 
+    opacity 1.2s var(--ease-smooth),
+    transform 1.2s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-scale.animate-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Slide from left */
+.scroll-reveal-left {
+  opacity: 0;
+  transform: translateX(-80px);
+  transition: 
+    opacity 1.2s var(--ease-smooth),
+    transform 1.2s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-left.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Slide from right */
+.scroll-reveal-right {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: 
+    opacity 1.2s var(--ease-smooth),
+    transform 1.2s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-right.animate-in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Parallax-like slow reveal */
+.parallax-reveal {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: 
+    opacity 1.6s var(--ease-smooth),
+    transform 1.6s var(--ease-smooth);
+  will-change: opacity, transform;
+}
+
+.parallax-reveal.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   HOVER EFFECTS - Smooth and Premium
+   ======================================== */
+
+/* Image zoom on hover */
+.image-zoom {
+  transition: transform 1s var(--ease-smooth);
+  will-change: transform;
+}
+
+.image-zoom:hover {
+  transform: scale(1.06);
+}
+
+/* Card lift on hover */
+.card-lift {
+  transition: 
+    transform 0.7s var(--ease-smooth),
+    box-shadow 0.7s var(--ease-smooth);
+  will-change: transform, box-shadow;
+}
+
+.card-lift:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.15);
+}
+
+/* Button smooth hover */
+.btn-smooth {
+  transition: all 0.5s var(--ease-smooth);
+  will-change: transform, box-shadow;
+}
+
+.btn-smooth:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.4);
+}
+
+/* ========================================
+   STAGGER ANIMATIONS
+   ======================================== */
+
+/* Staggered children animation */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 
+    opacity 0.9s var(--ease-smooth),
+    transform 0.9s var(--ease-smooth);
+}
+
+.stagger-children.animate-in > *:nth-child(1) { transition-delay: 0ms; }
+.stagger-children.animate-in > *:nth-child(2) { transition-delay: 120ms; }
+.stagger-children.animate-in > *:nth-child(3) { transition-delay: 240ms; }
+.stagger-children.animate-in > *:nth-child(4) { transition-delay: 360ms; }
+.stagger-children.animate-in > *:nth-child(5) { transition-delay: 480ms; }
+.stagger-children.animate-in > *:nth-child(6) { transition-delay: 600ms; }
+.stagger-children.animate-in > *:nth-child(7) { transition-delay: 720ms; }
+.stagger-children.animate-in > *:nth-child(8) { transition-delay: 840ms; }
+
+.stagger-children.animate-in > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   HERO ANIMATIONS
+   ======================================== */
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  to {
     opacity: 1;
     transform: translateY(0);
+  }
 }
 
-/* Smooth scaling for images and icons */
-.scroll-reveal img,
-.scroll-reveal .image-wrapper {
-    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+.hero-animate {
+  animation: heroFadeUp 1.4s var(--ease-smooth) forwards;
 }
+
+.hero-animate-delay-1 {
+  animation: heroFadeUp 1.4s var(--ease-smooth) 0.15s forwards;
+  opacity: 0;
+}
+
+.hero-animate-delay-2 {
+  animation: heroFadeUp 1.4s var(--ease-smooth) 0.3s forwards;
+  opacity: 0;
+}
+
+.hero-animate-delay-3 {
+  animation: heroFadeUp 1.4s var(--ease-smooth) 0.45s forwards;
+  opacity: 0;
+}
+
+.hero-animate-delay-4 {
+  animation: heroFadeUp 1.4s var(--ease-smooth) 0.6s forwards;
+  opacity: 0;
+}
+
+.hero-animate-delay-5 {
+  animation: heroFadeUp 1.4s var(--ease-smooth) 0.75s forwards;
+  opacity: 0;
+}
+
+/* ========================================
+   LINK UNDERLINE ANIMATION
+   ======================================== */
+
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.6s var(--ease-smooth);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* ========================================
+   ACCORDION SMOOTH ANIMATION
+   ======================================== */
+
+[data-state="open"] .accordion-content {
+  animation: accordionSlideDown 0.5s var(--ease-smooth);
+}
+
+@keyframes accordionSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   REDUCED MOTION - Accessibility
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .scroll-reveal,
+  .scroll-reveal-fade,
+  .scroll-reveal-scale,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .parallax-reveal,
+  .stagger-children > * {
+    opacity: 1;
+    transform: none;
+  }
+  
+  .image-zoom:hover,
+  .card-lift:hover,
+  .btn-smooth:hover {
+    transform: none;
+  }
+  
+  .hero-animate,
+  .hero-animate-delay-1,
+  .hero-animate-delay-2,
+  .hero-animate-delay-3,
+  .hero-animate-delay-4,
+  .hero-animate-delay-5 {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
 
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-        "Helvetica Neue", sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    scroll-behavior: smooth;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-        monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 
-.App {
-    text-align: center;
-}
-
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
 }
 
 
