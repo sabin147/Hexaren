@@ -128,6 +128,8 @@ export async function POST(request, { params }) {
         name: body.name,
         email: body.email,
         phone: body.phone,
+        company: body.company || '',
+        services: body.services || [],
         message: body.message,
         status: 'new',
         created_at: new Date().toISOString()
@@ -141,6 +143,10 @@ export async function POST(request, { params }) {
       
       // Send email notification via Resend
       try {
+        const servicesText = contact.services.length > 0 
+          ? contact.services.join(', ') 
+          : 'Not specified';
+        
         await resend.emails.send({
           from: 'Hexaren Contact Form <onboarding@resend.dev>',
           to: 'sabinghimire071@gmail.com',
@@ -150,6 +156,8 @@ export async function POST(request, { params }) {
             <p><strong>Name:</strong> ${body.name}</p>
             <p><strong>Email:</strong> ${body.email}</p>
             <p><strong>Phone:</strong> ${body.phone}</p>
+            ${body.company ? `<p><strong>Company:</strong> ${body.company}</p>` : ''}
+            <p><strong>Services Interested In:</strong> ${servicesText}</p>
             <p><strong>Message:</strong></p>
             <p>${body.message}</p>
             <hr />
