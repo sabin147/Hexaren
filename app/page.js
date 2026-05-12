@@ -219,17 +219,19 @@ export default function HomePage() {
           : 'bg-gradient-to-b from-black/30 to-transparent'
       }`}>
         <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
-          {/* Logo - Always visible with background for contrast */}
+          {/* Logo - Elegant frosted glass treatment */}
           <a href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105 relative z-50">
-            <img 
-              src="/hexaren-logo.png" 
-              alt="Hexaren" 
-              className={`h-10 md:h-12 lg:h-14 w-auto object-contain transition-all duration-500 ${
-                scrolled 
-                  ? '' 
-                  : 'drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]'
-              }`}
-            />
+            <div className={`transition-all duration-500 rounded-xl ${
+              scrolled 
+                ? 'p-0' 
+                : 'bg-white/10 backdrop-blur-xl border border-white/20 p-3 shadow-2xl hover:bg-white/15'
+            }`}>
+              <img 
+                src="/hexaren-logo.png" 
+                alt="Hexaren" 
+                className="h-10 md:h-12 lg:h-14 w-auto object-contain"
+              />
+            </div>
           </a>
           
           {/* Desktop Navigation */}
