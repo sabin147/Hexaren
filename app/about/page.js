@@ -273,14 +273,12 @@ export default function AboutPage() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
-              <Star className="w-5 h-5 text-white fill-white" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-[#0F172A]">Hexaren</span>
-              <span className="text-[10px] text-gray-500 -mt-1">ApS</span>
-            </div>
+          <Link href="/" className="flex items-center gap-3">
+            <img 
+              src="/hexaren-logo.png" 
+              alt="Hexaren" 
+              className="h-12 w-auto object-contain"
+            />
           </Link>
           
           <div className="hidden md:flex items-center gap-8">
@@ -598,14 +596,12 @@ export default function AboutPage() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-12">
             <div>
-              <Link href="/" className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
-                  <Star className="w-5 h-5 text-white fill-white" />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold text-white">Hexaren</span>
-                  <span className="text-[10px] text-gray-400 -mt-1">Rengøring og Services ApS</span>
-                </div>
+              <Link href="/" className="flex items-center gap-3 mb-4">
+                <img 
+                  src="/hexaren-logo.png" 
+                  alt="Hexaren" 
+                  className="h-12 w-auto object-contain brightness-0 invert"
+                />
               </Link>
               <p className="text-gray-400">{t.footer.tagline}</p>
               <p className="text-gray-500 text-sm mt-2">{t.footer.cvr}</p>

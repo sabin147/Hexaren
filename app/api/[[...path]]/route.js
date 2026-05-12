@@ -1,11 +1,15 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { v4 as uuidv4 } from 'uuid';
+import { Resend } from 'resend';
 
 // Initialize Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // CORS headers
 const corsHeaders = {
@@ -124,8 +128,6 @@ export async function POST(request, { params }) {
         name: body.name,
         email: body.email,
         phone: body.phone,
-        company: body.company || '',
-        services: body.services || [],
         message: body.message,
         status: 'new',
         created_at: new Date().toISOString()
@@ -136,6 +138,28 @@ export async function POST(request, { params }) {
         .from('contacts')
         .insert([contact])
         .select();
+      
+      // Send email notification via Resend
+      try {
+        await resend.emails.send({
+          from: 'Hexaren Contact Form <onboarding@resend.dev>',
+          to: 'sabinghimire071@gmail.com',
+          subject: `New Contact Form Submission from ${body.name}`,
+          html: `
+            <h2>New Contact Form Submission</h2>
+            <p><strong>Name:</strong> ${body.name}</p>
+            <p><strong>Email:</strong> ${body.email}</p>
+            <p><strong>Phone:</strong> ${body.phone}</p>
+            <p><strong>Message:</strong></p>
+            <p>${body.message}</p>
+            <hr />
+            <p><small>Submitted at: ${new Date().toLocaleString()}</small></p>
+          `
+        });
+      } catch (emailError) {
+        console.error('Email notification error:', emailError);
+        // Don't fail the request if email fails
+      }
       
       if (error) {
         console.error('Supabase error:', error);
