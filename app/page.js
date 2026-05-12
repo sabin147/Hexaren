@@ -47,6 +47,7 @@ export default function HomePage() {
   });
   const [weekend, setWeekend] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const t = translations[lang];
 
@@ -211,71 +212,136 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* Navigation - Transparent Overlay with proper logo handling */}
+      {/* Navigation - Fully Responsive with Mobile Menu */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled 
           ? 'bg-white shadow-lg' 
           : 'bg-gradient-to-b from-black/30 to-transparent'
       }`}>
-        <div className="container mx-auto px-4 py-4 md:py-5 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105 relative">
-            {/* Colored logo for scrolled/solid navbar */}
-            <img 
-              src="/hexaren-logo.png" 
-              alt="Hexaren" 
-              className={`h-12 md:h-14 lg:h-16 w-auto object-contain transition-all duration-500 ${
-                scrolled ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-            {/* White logo for transparent navbar - positioned absolutely */}
-            <div className={`absolute inset-0 transition-all duration-500 ${
-              scrolled ? 'opacity-0' : 'opacity-100'
+        <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
+          {/* Logo - Always visible with background for contrast */}
+          <a href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105 relative z-50">
+            <div className={`rounded-lg p-2 transition-all duration-500 ${
+              scrolled ? 'bg-transparent' : 'bg-white/95 shadow-lg'
             }`}>
-              <div className="h-12 md:h-14 lg:h-16 flex items-center">
-                <svg className="h-full w-auto" viewBox="0 0 200 80" fill="white">
-                  <text x="10" y="50" fontFamily="Arial, sans-serif" fontSize="32" fontWeight="bold" fill="white">
-                    HEXAREN
-                  </text>
-                </svg>
-              </div>
+              <img 
+                src="/hexaren-logo.png" 
+                alt="Hexaren" 
+                className="h-10 md:h-12 lg:h-14 w-auto object-contain"
+              />
             </div>
           </a>
           
-          <div className="hidden md:flex items-center gap-6 lg:gap-10">
-            <a href="/" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8">
+            <a href="/" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
             }`}>Home</a>
-            <a href="#services" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
+            <a href="#services" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
             }`}>{t.nav.services}</a>
-            <a href="#pricing" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
+            <a href="#pricing" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
             }`}>{t.nav.pricing}</a>
-            <a href="/about" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
+            <a href="/about" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
             }`}>{t.nav.about}</a>
-            <a href="/contact" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
+            <a href="/contact" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]'
             }`}>{t.nav.contact}</a>
           </div>
 
-          <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
+          {/* Right Side - Language + CTA + Mobile Menu Button */}
+          <div className="flex items-center gap-3">
+            {/* Language Toggle */}
             <button
               onClick={() => setLang(lang === 'en' ? 'da' : 'en')}
-              className={`flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 rounded-full transition-all duration-300 text-xs md:text-sm font-semibold ${
+              className={`hidden sm:flex items-center gap-2 px-3 md:px-4 py-2 rounded-full transition-all duration-300 text-sm font-semibold ${
                 scrolled 
                   ? 'bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200' 
-                  : 'bg-white/20 hover:bg-white/30 text-white border border-white/40 backdrop-blur-md shadow-lg'
+                  : 'bg-white/90 hover:bg-white text-gray-700 border border-white shadow-lg'
               }`}
             >
-              <Globe className="w-3 md:w-4 h-3 md:h-4" />
-              <span className="hidden sm:inline">{lang === 'en' ? 'DA' : 'EN'}</span>
+              <Globe className="w-4 h-4" />
+              {lang === 'en' ? 'DA' : 'EN'}
             </button>
             
-            <Link href="/contact">
-              <Button className="bg-gradient-to-r from-[#10B981] to-[#059669] hover:from-[#059669] hover:to-[#047857] text-white px-3 md:px-6 py-2 md:py-3 text-xs md:text-sm rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                <span className="hidden sm:inline">{lang === 'en' ? 'Get a Quote' : 'Få et Tilbud'}</span>
-                <span className="sm:hidden text-xs">Quote</span>
+            {/* CTA Button */}
+            <Link href="/contact" className="hidden sm:block">
+              <Button className="bg-gradient-to-r from-[#10B981] to-[#059669] hover:from-[#059669] hover:to-[#047857] text-white px-4 md:px-6 py-2 md:py-3 text-sm rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                {lang === 'en' ? 'Get a Quote' : 'Få et Tilbud'}
+              </Button>
+            </Link>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className={`lg:hidden flex flex-col gap-1.5 p-2 rounded-lg transition-all duration-300 ${
+                scrolled ? 'bg-gray-100' : 'bg-white/90 shadow-lg'
+              }`}
+              aria-label="Toggle menu"
+            >
+              <span className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+              <span className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+              <span className={`w-6 h-0.5 bg-gray-700 transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
+          mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        } ${scrolled ? 'bg-white' : 'bg-gray-900/95 backdrop-blur-lg'}`}>
+          <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+            <a 
+              href="/" 
+              onClick={() => setMobileMenuOpen(false)}
+              className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
+            >
+              Home
+            </a>
+            <a 
+              href="#services" 
+              onClick={() => setMobileMenuOpen(false)}
+              className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
+            >
+              {t.nav.services}
+            </a>
+            <a 
+              href="#pricing" 
+              onClick={() => setMobileMenuOpen(false)}
+              className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
+            >
+              {t.nav.pricing}
+            </a>
+            <a 
+              href="/about" 
+              onClick={() => setMobileMenuOpen(false)}
+              className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
+            >
+              {t.nav.about}
+            </a>
+            <a 
+              href="/contact" 
+              onClick={() => setMobileMenuOpen(false)}
+              className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
+            >
+              {t.nav.contact}
+            </a>
+            
+            {/* Mobile Language Toggle */}
+            <button
+              onClick={() => setLang(lang === 'en' ? 'da' : 'en')}
+              className="flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-gray-100 text-gray-700 font-semibold mt-2"
+            >
+              <Globe className="w-4 h-4" />
+              {lang === 'en' ? 'Switch to Danish' : 'Switch to English'}
+            </button>
+
+            {/* Mobile CTA */}
+            <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
+              <Button className="w-full bg-gradient-to-r from-[#10B981] to-[#059669] text-white py-4 text-base rounded-full font-semibold shadow-lg">
+                {lang === 'en' ? 'Get a Quote' : 'Få et Tilbud'}
               </Button>
             </Link>
           </div>
@@ -301,9 +367,9 @@ export default function HomePage() {
         
         <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/50" />
         
-        {/* Vertical Service Navigation - Right Side */}
-        <div className="hidden lg:block fixed right-8 top-1/2 -translate-y-1/2 z-40">
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 shadow-2xl">
+        {/* Vertical Service Navigation - Right Side (Hidden on mobile/tablet) */}
+        <div className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-40">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 shadow-2xl max-w-xs">
             <div className="flex flex-col gap-3">
               {services.map((service, index) => (
                 <a
