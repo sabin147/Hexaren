@@ -46,8 +46,19 @@ export default function HomePage() {
     carpet: false
   });
   const [weekend, setWeekend] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const t = translations[lang];
+
+  // Handle navbar scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Pricing calculation
   const BASE_PRICE = 500;
@@ -200,29 +211,49 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* Navigation - Enhanced */}
-      <nav className="fixed top-0 w-full bg-gradient-to-b from-white via-white/98 to-white/95 backdrop-blur-md z-50 border-b border-gray-100 shadow-sm">
+      {/* Navigation - Transparent Overlay */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled 
+          ? 'bg-white shadow-lg' 
+          : 'bg-transparent'
+      }`}>
         <div className="container mx-auto px-4 py-5 flex items-center justify-between">
           <a href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105">
             <img 
               src="/hexaren-logo.png" 
               alt="Hexaren" 
-              className="h-16 w-auto object-contain"
+              className={`h-16 w-auto object-contain transition-all duration-500 ${
+                scrolled ? '' : 'brightness-0 invert'
+              }`}
             />
           </a>
           
           <div className="hidden md:flex items-center gap-10">
-            <a href="/" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">Home</a>
-            <a href="#services" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">{t.nav.services}</a>
-            <a href="#pricing" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">{t.nav.pricing}</a>
-            <a href="/about" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">{t.nav.about}</a>
-            <a href="/contact" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">{t.nav.contact}</a>
+            <a href="/" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+            }`}>Home</a>
+            <a href="#services" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+            }`}>{t.nav.services}</a>
+            <a href="#pricing" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+            }`}>{t.nav.pricing}</a>
+            <a href="/about" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+            }`}>{t.nav.about}</a>
+            <a href="/contact" className={`transition-all duration-300 font-medium ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+            }`}>{t.nav.contact}</a>
           </div>
 
           <div className="flex items-center gap-4">
             <button
               onClick={() => setLang(lang === 'en' ? 'da' : 'en')}
-              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-all duration-200 text-sm font-semibold text-gray-700 border border-gray-200"
+              className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 text-sm font-semibold ${
+                scrolled 
+                  ? 'bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200' 
+                  : 'bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md'
+              }`}
             >
               <Globe className="w-4 h-4" />
               {lang === 'en' ? 'DA' : 'EN'}
@@ -237,7 +268,7 @@ export default function HomePage() {
         </div>
       </nav>
 
-      {/* Hero Section - Fullscreen Video */}
+      {/* Hero Section - Fullscreen Video with Navbar Overlay */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <video
           autoPlay
@@ -254,7 +285,7 @@ export default function HomePage() {
           />
         </video>
         
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/50" />
         
         {/* Vertical Service Navigation - Right Side */}
         <div className="hidden lg:block fixed right-8 top-1/2 -translate-y-1/2 z-40">
