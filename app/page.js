@@ -219,19 +219,13 @@ export default function HomePage() {
           : 'bg-gradient-to-b from-black/30 to-transparent'
       }`}>
         <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
-          {/* Logo - Elegant frosted glass treatment */}
+          {/* Logo - Completely transparent, no background */}
           <a href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105 relative z-50">
-            <div className={`transition-all duration-500 rounded-xl ${
-              scrolled 
-                ? 'p-0' 
-                : 'bg-white/10 backdrop-blur-xl border border-white/20 p-3 shadow-2xl hover:bg-white/15'
-            }`}>
-              <img 
-                src="/hexaren-logo.png" 
-                alt="Hexaren" 
-                className="h-10 md:h-12 lg:h-14 w-auto object-contain"
-              />
-            </div>
+            <img 
+              src="/hexaren-logo.png" 
+              alt="Hexaren" 
+              className="h-10 md:h-12 lg:h-14 w-auto object-contain"
+            />
           </a>
           
           {/* Desktop Navigation */}
@@ -425,15 +419,14 @@ export default function HomePage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Link href="/contact">
-                <Button 
-                  size="lg" 
-                  className="bg-white text-[#0F172A] hover:bg-white/90 px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl"
-                >
-                  {t.hero.cta}
-                  <ChevronRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105"
+                onClick={() => window.location.href = '/contact'}
+              >
+                {t.hero.cta}
+              </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
@@ -456,16 +449,6 @@ export default function HomePage() {
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
                 <Clock className="w-5 h-5 text-[#10B981]" />
                 <span className="text-sm text-white">Same-Day</span>
-              </div>
-            </div>
-            
-            <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-sm rounded-full px-6 py-3 shadow-2xl mt-8">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
-                <Star className="w-5 h-5 text-white fill-white" />
-              </div>
-              <div className="text-left">
-                <p className="font-semibold text-[#0F172A] text-sm">6 Owners</p>
-                <p className="text-xs text-gray-600">Personally Invested</p>
               </div>
             </div>
           </div>
