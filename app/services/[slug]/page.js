@@ -183,36 +183,36 @@ export default function ServiceDetailPage() {
         }
       `}</style>
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3">
+      {/* Navigation - Enhanced */}
+      <nav className="fixed top-0 w-full bg-gradient-to-b from-white via-white/98 to-white/95 backdrop-blur-md z-50 border-b border-gray-100 shadow-sm">
+        <div className="container mx-auto px-4 py-5 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105">
             <img 
               src="/hexaren-logo.png" 
               alt="Hexaren" 
-              className="h-12 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
           </Link>
           
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-gray-600 hover:text-[#0F172A] transition">Home</Link>
-            <Link href="/#services" className="text-gray-600 hover:text-[#0F172A] transition">{lang === 'da' ? 'Ydelser' : 'Services'}</Link>
-            <Link href="/#pricing" className="text-gray-600 hover:text-[#0F172A] transition">{lang === 'da' ? 'Priser' : 'Pricing'}</Link>
-            <Link href="/about" className="text-gray-600 hover:text-[#0F172A] transition">{lang === 'da' ? 'Om os' : 'About'}</Link>
-            <Link href="/contact" className="text-gray-600 hover:text-[#0F172A] transition">{lang === 'da' ? 'Kontakt' : 'Contact'}</Link>
+          <div className="hidden md:flex items-center gap-10">
+            <Link href="/" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">Home</Link>
+            <Link href="/#services" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">{lang === 'da' ? 'Ydelser' : 'Services'}</Link>
+            <Link href="/#pricing" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">{lang === 'da' ? 'Priser' : 'Pricing'}</Link>
+            <Link href="/about" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">{lang === 'da' ? 'Om os' : 'About'}</Link>
+            <Link href="/contact" className="text-gray-700 hover:text-[#10B981] transition-colors duration-200 font-medium">{lang === 'da' ? 'Kontakt' : 'Contact'}</Link>
           </div>
 
           <div className="flex items-center gap-4">
             <button
               onClick={() => setLang(lang === 'en' ? 'da' : 'en')}
-              className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-gray-200 transition text-sm font-medium"
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 hover:bg-gray-100 transition-all duration-200 text-sm font-semibold text-gray-700 border border-gray-200"
             >
               <Globe className="w-4 h-4" />
               {lang === 'en' ? 'DA' : 'EN'}
             </button>
             
             <Link href="/contact">
-              <Button className="bg-[#10B981] hover:bg-[#059669] text-white">
+              <Button className="bg-gradient-to-r from-[#10B981] to-[#059669] hover:from-[#059669] hover:to-[#047857] text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                 {lang === 'da' ? 'Få et Tilbud' : 'Get a Quote'}
               </Button>
             </Link>
@@ -485,7 +485,7 @@ export default function ServiceDetailPage() {
           </div>
           
           <div className="scroll-reveal" data-delay="150">
-            <Link href="/#pricing">
+            <Link href="/contact">
               <Button 
                 size="lg"
                 className="bg-[#10B981] hover:bg-[#059669] text-white px-10 py-6 text-lg rounded-full"
