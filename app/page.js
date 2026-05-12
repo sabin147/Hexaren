@@ -221,15 +221,15 @@ export default function HomePage() {
         <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
           {/* Logo - Always visible with background for contrast */}
           <a href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105 relative z-50">
-            <div className={`rounded-lg p-2 transition-all duration-500 ${
-              scrolled ? 'bg-transparent' : 'bg-white/95 shadow-lg'
-            }`}>
-              <img 
-                src="/hexaren-logo.png" 
-                alt="Hexaren" 
-                className="h-10 md:h-12 lg:h-14 w-auto object-contain"
-              />
-            </div>
+            <img 
+              src="/hexaren-logo.png" 
+              alt="Hexaren" 
+              className={`h-10 md:h-12 lg:h-14 w-auto object-contain transition-all duration-500 ${
+                scrolled 
+                  ? '' 
+                  : 'drop-shadow-[0_0_8px_rgba(255,255,255,0.9)] drop-shadow-[0_0_12px_rgba(255,255,255,0.6)]'
+              }`}
+            />
           </a>
           
           {/* Desktop Navigation */}
@@ -329,10 +329,32 @@ export default function HomePage() {
               {t.nav.contact}
             </a>
             
+            {/* Service Pages in Mobile Menu */}
+            <div className={`mt-4 pt-4 border-t ${scrolled ? 'border-gray-200' : 'border-white/20'}`}>
+              <p className={`text-sm font-semibold mb-3 ${scrolled ? 'text-gray-500' : 'text-white/60'}`}>
+                Our Services
+              </p>
+              {services.map((service) => (
+                <a
+                  key={service.id}
+                  href={`/services/${service.slug}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center gap-3 py-2.5 transition-colors ${
+                    scrolled ? 'text-gray-600 hover:text-[#10B981]' : 'text-white/90 hover:text-[#10B981]'
+                  }`}
+                >
+                  <service.icon className="w-4 h-4 text-[#10B981] flex-shrink-0" />
+                  <span className="text-base">{service.title}</span>
+                </a>
+              ))}
+            </div>
+            
             {/* Mobile Language Toggle */}
             <button
               onClick={() => setLang(lang === 'en' ? 'da' : 'en')}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-gray-100 text-gray-700 font-semibold mt-2"
+              className={`flex items-center justify-center gap-2 px-4 py-3 rounded-full font-semibold mt-2 ${
+                scrolled ? 'bg-gray-100 text-gray-700' : 'bg-white/20 text-white'
+              }`}
             >
               <Globe className="w-4 h-4" />
               {lang === 'en' ? 'Switch to Danish' : 'Switch to English'}
@@ -367,21 +389,21 @@ export default function HomePage() {
         
         <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/50" />
         
-        {/* Vertical Service Navigation - Right Side (Hidden on mobile/tablet) */}
-        <div className="hidden xl:block fixed right-8 top-1/2 -translate-y-1/2 z-40">
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 shadow-2xl max-w-xs">
-            <div className="flex flex-col gap-3">
+        {/* Vertical Service Navigation - Right Side (Hidden only on mobile) */}
+        <div className="hidden lg:block fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-3 lg:p-4 shadow-2xl max-w-xs">
+            <div className="flex flex-col gap-2 lg:gap-3">
               {services.map((service, index) => (
                 <a
                   key={service.id}
                   href={`/services/${service.slug}`}
-                  className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/20 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105"
+                  className="group flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl bg-white/5 hover:bg-white/20 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105"
                   title={service.title}
                 >
-                  <div className="w-8 h-8 rounded-lg bg-[#10B981]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#10B981] transition-all">
-                    <service.icon className="w-4 h-4 text-white" />
+                  <div className="w-6 lg:w-8 h-6 lg:h-8 rounded-lg bg-[#10B981]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#10B981] transition-all">
+                    <service.icon className="w-3 lg:w-4 h-3 lg:h-4 text-white" />
                   </div>
-                  <span className="text-white text-sm font-medium whitespace-nowrap">{service.title}</span>
+                  <span className="text-white text-xs lg:text-sm font-medium whitespace-nowrap">{service.title}</span>
                 </a>
               ))}
             </div>
@@ -390,12 +412,7 @@ export default function HomePage() {
         
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="space-y-8 max-w-4xl mx-auto animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium border border-white/20 transition-all duration-500 hover:bg-white/20">
-              <Leaf className="w-4 h-4" />
-              {t.hero.trustBadge}
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight pt-16">
               {t.hero.title} <span className="text-[#10B981]">{t.hero.titleAccent}</span>
               <br />
               <span className="text-3xl md:text-5xl lg:text-6xl">{t.hero.subtitle}</span>
