@@ -282,6 +282,7 @@ export default function AboutPage() {
           </Link>
           
           <div className="hidden md:flex items-center gap-8">
+            <Link href="/" className="text-gray-600 hover:text-[#0F172A] transition">Home</Link>
             <Link href="/#services" className="text-gray-600 hover:text-[#0F172A] transition">{t.nav.services}</Link>
             <Link href="/#pricing" className="text-gray-600 hover:text-[#0F172A] transition">{t.nav.pricing}</Link>
             <Link href="/about" className="text-[#10B981] font-medium">{t.nav.about}</Link>

@@ -420,6 +420,7 @@ export default function ContactPage() {
           </Link>
           
           <div className="hidden md:flex items-center gap-8">
+            <Link href="/" className="text-gray-600 hover:text-[#0F172A] transition">Home</Link>
             <Link href="/#services" className="text-gray-600 hover:text-[#0F172A] transition">{t.nav.services}</Link>
             <Link href="/#pricing" className="text-gray-600 hover:text-[#0F172A] transition">{t.nav.pricing}</Link>
             <Link href="/about" className="text-gray-600 hover:text-[#0F172A] transition">{t.nav.about}</Link>
@@ -435,9 +436,9 @@ export default function ContactPage() {
               {lang === 'en' ? 'DA' : 'EN'}
             </button>
             
-            <Link href="/">
+            <Link href="/contact">
               <Button className="bg-[#10B981] hover:bg-[#059669] text-white">
-                {t.nav.bookOnline}
+                {lang === 'en' ? 'Get a Quote' : 'Få et Tilbud'}
               </Button>
             </Link>
           </div>

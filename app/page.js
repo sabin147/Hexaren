@@ -138,6 +138,19 @@ export default function HomePage() {
       icon: LayoutGrid,
       ...t.services.staircase,
       image: 'https://images.pexels.com/photos/6195951/pexels-photo-6195951.jpeg'
+    },
+    {
+      id: 'temporary',
+      slug: 'temporary-staff',
+      icon: Users,
+      title: lang === 'en' ? 'Temporary Cleaning Staff' : 'Midlertidig Rengøringspersonale',
+      description: lang === 'en' ? 'Professional temporary cleaning workers to support your business during busy periods, staff shortages, or special events.' : 'Professionelle midlertidige rengøringsarbejdere til at støtte din virksomhed i travle perioder, personalemangel eller særlige begivenheder.',
+      features: [
+        lang === 'en' ? 'Vetted professionals' : 'Godkendte fagfolk',
+        lang === 'en' ? 'Fast placement' : 'Hurtig placering',
+        lang === 'en' ? 'Flexible duration' : 'Fleksibel varighed'
+      ],
+      image: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg'
     }
   ];
 
@@ -199,6 +212,7 @@ export default function HomePage() {
           </a>
           
           <div className="hidden md:flex items-center gap-8">
+            <a href="/" className="text-gray-600 hover:text-[#0F172A] transition">Home</a>
             <a href="#services" className="text-gray-600 hover:text-[#0F172A] transition">{t.nav.services}</a>
             <a href="#pricing" className="text-gray-600 hover:text-[#0F172A] transition">{t.nav.pricing}</a>
             <a href="/about" className="text-gray-600 hover:text-[#0F172A] transition">{t.nav.about}</a>
@@ -241,6 +255,27 @@ export default function HomePage() {
         </video>
         
         <div className="absolute inset-0 bg-black/40" />
+        
+        {/* Vertical Service Navigation - Right Side */}
+        <div className="hidden lg:block fixed right-8 top-1/2 -translate-y-1/2 z-40">
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 shadow-2xl">
+            <div className="flex flex-col gap-3">
+              {services.map((service, index) => (
+                <a
+                  key={service.id}
+                  href={`/services/${service.slug}`}
+                  className="group flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/20 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105"
+                  title={service.title}
+                >
+                  <div className="w-8 h-8 rounded-lg bg-[#10B981]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#10B981] transition-all">
+                    <service.icon className="w-4 h-4 text-white" />
+                  </div>
+                  <span className="text-white text-sm font-medium whitespace-nowrap">{service.title}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
         
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="space-y-8 max-w-4xl mx-auto animate-fade-in">
@@ -365,7 +400,7 @@ export default function HomePage() {
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t.services.subtitle}</p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {services.map((service, index) => (
               <div
                 key={service.id}
@@ -592,16 +627,16 @@ export default function HomePage() {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
-            <a href={`tel:+4531862094`}>
+            <Link href="/contact">
               <Button 
                 size="lg"
                 variant="outline"
                 className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-12 py-7 text-lg font-bold rounded-full transition-all duration-500"
               >
-                {lang === 'en' ? 'Call Us Now' : 'Ring Til Os Nu'}
+                {lang === 'en' ? 'Contact Us' : 'Kontakt Os'}
                 <Phone className="w-5 h-5 ml-2" />
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </section>

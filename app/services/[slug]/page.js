@@ -195,6 +195,7 @@ export default function ServiceDetailPage() {
           </Link>
           
           <div className="hidden md:flex items-center gap-8">
+            <Link href="/" className="text-gray-600 hover:text-[#0F172A] transition">Home</Link>
             <Link href="/#services" className="text-gray-600 hover:text-[#0F172A] transition">{lang === 'da' ? 'Ydelser' : 'Services'}</Link>
             <Link href="/#pricing" className="text-gray-600 hover:text-[#0F172A] transition">{lang === 'da' ? 'Priser' : 'Pricing'}</Link>
             <Link href="/about" className="text-gray-600 hover:text-[#0F172A] transition">{lang === 'da' ? 'Om os' : 'About'}</Link>
