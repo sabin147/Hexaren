@@ -2,14 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Textarea } from '@/components/ui/textarea';
 import { translations } from '@/lib/translations';
 import { 
   Building2, 
@@ -28,18 +25,18 @@ import {
   Clock,
   Globe,
   Users,
-  Smartphone,
-  FileCheck,
-  LayoutGrid,
   Award,
   Target,
   Heart,
-  Zap
+  Zap,
+  ArrowRight,
+  LayoutGrid
 } from 'lucide-react';
+import Link from 'next/link';
 
 const WHATSAPP_NUMBER = '+4531862094';
 
-export default function SixStarPage() {
+export default function HomePage() {
   const [lang, setLang] = useState('en');
   const [sqm, setSqm] = useState(50);
   const [addons, setAddons] = useState({
@@ -49,19 +46,6 @@ export default function SixStarPage() {
     carpet: false
   });
   const [weekend, setWeekend] = useState(false);
-  const [bookingOpen, setBookingOpen] = useState(false);
-  const [bookingForm, setBookingForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: 'office',
-    sqm: 50,
-    address: '',
-    date: '',
-    notes: ''
-  });
-  const [bookingStatus, setBookingStatus] = useState({ type: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const t = translations[lang];
 
@@ -79,46 +63,11 @@ export default function SixStarPage() {
     return Math.round(price);
   };
 
-  const handleBookingSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setBookingStatus({ type: '', message: '' });
-
-    try {
-      const response = await fetch('/api/bookings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...bookingForm,
-          addons: Object.keys(addons).filter(k => addons[k]),
-          weekend,
-          totalPrice: calculatePrice()
-        })
-      });
-
-      const data = await response.json();
-      
-      if (data.success) {
-        setBookingStatus({ type: 'success', message: t.booking.success });
-        setBookingForm({ name: '', email: '', phone: '', service: 'office', sqm: 50, address: '', date: '', notes: '' });
-        setTimeout(() => setBookingOpen(false), 2000);
-      } else {
-        setBookingStatus({ type: 'error', message: data.error || t.booking.error });
-      }
-    } catch (error) {
-      setBookingStatus({ type: 'error', message: t.booking.error });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
   // Global Intersection Observer for smooth scroll animations
   useEffect(() => {
-    // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (prefersReducedMotion) {
-      // Show all elements immediately for users who prefer reduced motion
       document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children').forEach(el => {
         el.classList.add('animate-in');
       });
@@ -132,14 +81,12 @@ export default function SixStarPage() {
             const element = entry.target;
             const delay = parseInt(element.getAttribute('data-delay') || '0');
             
-            // Apply animation after delay with requestAnimationFrame for smoother rendering
             requestAnimationFrame(() => {
               setTimeout(() => {
                 element.classList.add('animate-in');
               }, delay);
             });
             
-            // Unobserve after triggering animation
             observer.unobserve(element);
           }
         });
@@ -150,7 +97,6 @@ export default function SixStarPage() {
       }
     );
 
-    // Observe all elements with scroll-reveal classes
     const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children');
     revealElements.forEach((element) => observer.observe(element));
 
@@ -206,6 +152,41 @@ export default function SixStarPage() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
+      {/* Animation Styles */}
+      <style jsx global>{`
+        .scroll-reveal {
+          opacity: 0;
+          transform: translateY(25px);
+          transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
+                      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .scroll-reveal.animate-in {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .image-zoom {
+          transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .image-zoom:hover {
+          transform: scale(1.05);
+        }
+        .card-lift {
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card-lift:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .scroll-reveal, .image-zoom, .card-lift {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
+        }
+      `}</style>
+
       {/* Navigation */}
       <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -225,7 +206,6 @@ export default function SixStarPage() {
           </div>
 
           <div className="flex items-center gap-4">
-            {/* Language Toggle */}
             <button
               onClick={() => setLang(lang === 'en' ? 'da' : 'en')}
               className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-gray-100 hover:bg-gray-200 transition text-sm font-medium"
@@ -234,130 +214,17 @@ export default function SixStarPage() {
               {lang === 'en' ? 'DA' : 'EN'}
             </button>
             
-            <Dialog open={bookingOpen} onOpenChange={setBookingOpen}>
-              <DialogTrigger asChild>
-                <Button className="bg-[#10B981] hover:bg-[#059669] text-white">
-                  {t.nav.bookOnline}
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle className="text-2xl font-bold text-[#0F172A]">{t.booking.title}</DialogTitle>
-                </DialogHeader>
-                <form onSubmit={handleBookingSubmit} className="space-y-4 mt-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">{t.booking.name}</Label>
-                      <Input 
-                        id="name" 
-                        value={bookingForm.name}
-                        onChange={(e) => setBookingForm({...bookingForm, name: e.target.value})}
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">{t.booking.phone}</Label>
-                      <Input 
-                        id="phone" 
-                        type="tel"
-                        value={bookingForm.phone}
-                        onChange={(e) => setBookingForm({...bookingForm, phone: e.target.value})}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">{t.booking.email}</Label>
-                    <Input 
-                      id="email" 
-                      type="email"
-                      value={bookingForm.email}
-                      onChange={(e) => setBookingForm({...bookingForm, email: e.target.value})}
-                      required
-                    />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label>{t.booking.service}</Label>
-                      <Select 
-                        value={bookingForm.service}
-                        onValueChange={(value) => setBookingForm({...bookingForm, service: value})}
-                      >
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="office">{lang === 'en' ? 'Office Cleaning' : 'Kontorrengøring'}</SelectItem>
-                          <SelectItem value="airbnb">{lang === 'en' ? 'Airbnb & Turnover' : 'Airbnb & Skifterengøring'}</SelectItem>
-                          <SelectItem value="moveout">{lang === 'en' ? 'Move-out Cleaning' : 'Flytterengøring'}</SelectItem>
-                          <SelectItem value="staircase">{lang === 'en' ? 'Staircase Cleaning' : 'Trapperengøring'}</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="sqm">{t.booking.sqm}</Label>
-                      <Input 
-                        id="sqm" 
-                        type="number"
-                        min="10"
-                        value={bookingForm.sqm}
-                        onChange={(e) => setBookingForm({...bookingForm, sqm: parseInt(e.target.value) || 50})}
-                        required
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="address">{t.booking.address}</Label>
-                    <Input 
-                      id="address" 
-                      value={bookingForm.address}
-                      onChange={(e) => setBookingForm({...bookingForm, address: e.target.value})}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="date">{t.booking.date}</Label>
-                    <Input 
-                      id="date" 
-                      type="date"
-                      value={bookingForm.date}
-                      onChange={(e) => setBookingForm({...bookingForm, date: e.target.value})}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="notes">{t.booking.notes}</Label>
-                    <Textarea 
-                      id="notes" 
-                      value={bookingForm.notes}
-                      onChange={(e) => setBookingForm({...bookingForm, notes: e.target.value})}
-                      rows={3}
-                    />
-                  </div>
-                  
-                  {bookingStatus.message && (
-                    <div className={`p-3 rounded-lg ${bookingStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
-                      {bookingStatus.message}
-                    </div>
-                  )}
-                  
-                  <Button 
-                    type="submit" 
-                    className="w-full bg-[#10B981] hover:bg-[#059669] text-white"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? '...' : t.booking.submit}
-                  </Button>
-                </form>
-              </DialogContent>
-            </Dialog>
+            <Link href="/contact">
+              <Button className="bg-[#10B981] hover:bg-[#059669] text-white">
+                {lang === 'en' ? 'Get a Quote' : 'Få et Tilbud'}
+              </Button>
+            </Link>
           </div>
         </div>
       </nav>
 
       {/* Hero Section - Fullscreen Video */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
         <video
           autoPlay
           muted
@@ -366,7 +233,6 @@ export default function SixStarPage() {
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
-          {/* Fallback image if video doesn't load */}
           <img 
             src="https://images.pexels.com/photos/6195951/pexels-photo-6195951.jpeg" 
             alt="Professional cleaning service"
@@ -374,41 +240,35 @@ export default function SixStarPage() {
           />
         </video>
         
-        {/* Overlay */}
         <div className="absolute inset-0 bg-black/40" />
         
-        {/* Content */}
         <div className="relative z-10 container mx-auto px-4 text-center">
-          {/* Animated Content */}
           <div className="space-y-8 max-w-4xl mx-auto animate-fade-in">
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium border border-white/20 transition-all duration-500 hover:bg-white/20">
               <Leaf className="w-4 h-4" />
               {t.hero.trustBadge}
             </div>
             
-            {/* Main Heading */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
               {t.hero.title} <span className="text-[#10B981]">{t.hero.titleAccent}</span>
               <br />
               <span className="text-3xl md:text-5xl lg:text-6xl">{t.hero.subtitle}</span>
             </h1>
             
-            {/* Description */}
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
               {t.hero.description}
             </p>
             
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-              <Button 
-                size="lg" 
-                className="bg-white text-[#0F172A] hover:bg-white/90 px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl"
-                onClick={() => setBookingOpen(true)}
-              >
-                {t.hero.cta}
-                <ChevronRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link href="/contact">
+                <Button 
+                  size="lg" 
+                  className="bg-white text-[#0F172A] hover:bg-white/90 px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                >
+                  {t.hero.cta}
+                  <ChevronRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
               <Button 
                 size="lg" 
                 variant="outline" 
@@ -419,7 +279,6 @@ export default function SixStarPage() {
               </Button>
             </div>
             
-            {/* Trust Badges */}
             <div className="flex flex-wrap items-center justify-center gap-8 pt-8">
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
                 <Shield className="w-5 h-5 text-[#10B981]" />
@@ -435,7 +294,6 @@ export default function SixStarPage() {
               </div>
             </div>
             
-            {/* 6 Owners Badge */}
             <div className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-sm rounded-full px-6 py-3 shadow-2xl mt-8">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
                 <Star className="w-5 h-5 text-white fill-white" />
@@ -464,64 +322,73 @@ export default function SixStarPage() {
         </div>
       </section>
 
-      {/* Values Section - The Hexaren Promise */}
-      <section id="about" className="py-20 px-4 bg-[#0F172A]">
-        <div className="container mx-auto">
-          <div className="text-center mb-16 scroll-reveal" data-delay="0">
-            <h2 className="text-4xl font-bold text-white mb-4">{t.values.title}</h2>
+      {/* Why Choose Us Section - Beautiful Cards */}
+      <section id="about" className="py-24 md:py-32 px-4 bg-[#F8FAFC]">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 scroll-reveal" data-delay="0">
+              {t.values.title}
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto scroll-reveal" data-delay="50">
+              What makes Hexaren different from other cleaning services
+            </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="text-center scroll-reveal" data-delay={index * 100}>
-                <div className="w-16 h-16 rounded-full bg-[#10B981]/20 flex items-center justify-center mx-auto mb-4 transition-transform duration-300 hover:scale-110">
-                  <value.icon className="w-8 h-8 text-[#10B981]" />
+              <div 
+                key={index} 
+                className="scroll-reveal card-lift"
+                data-delay={100 + index * 100}
+              >
+                <div className="bg-white rounded-2xl p-8 h-full shadow-lg">
+                  <div className="w-16 h-16 rounded-xl bg-[#10B981]/10 flex items-center justify-center mb-6">
+                    <value.icon className="w-8 h-8 text-[#10B981]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#0F172A] mb-3">{value.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{value.title}</h3>
-                <p className="text-gray-400">{value.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Services Section - Modern Grid Layout */}
-      <section id="services" className="py-24 px-4 bg-[#FAFBFC]">
+      {/* Services Section - Enhanced Grid Layout */}
+      <section id="services" className="py-24 md:py-32 px-4 bg-white">
         <div className="container mx-auto max-w-7xl">
-          {/* Section Header */}
           <div className="text-center mb-16 scroll-reveal" data-delay="0">
+            <span className="inline-block text-[#10B981] font-semibold text-sm uppercase tracking-wider mb-4">
+              Our Services
+            </span>
             <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">{t.services.title}</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t.services.subtitle}</p>
           </div>
           
-          {/* Service Cards - 2 per row */}
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             {services.map((service, index) => (
               <div
                 key={service.id}
-                className="scroll-reveal group"
-                data-delay={index * 100}
+                className="scroll-reveal card-lift group"
+                data-delay={100 + index * 100}
               >
-                <div className="h-full bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-1">
-                  {/* Image */}
+                <div className="h-full bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100">
                   <div className="relative h-64 overflow-hidden">
                     <img 
                       src={service.image} 
                       alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="w-full h-full object-cover image-zoom"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/50 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 via-transparent to-transparent" />
                     
-                    {/* Icon Badge */}
                     <div className="absolute top-4 left-4">
-                      <div className="w-14 h-14 rounded-xl bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-lg transition-transform duration-300 group-hover:scale-110">
+                      <div className="w-14 h-14 rounded-xl bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-lg">
                         <service.icon className="w-7 h-7 text-[#10B981]" />
                       </div>
                     </div>
                   </div>
                   
-                  {/* Content */}
-                  <div className="p-6 lg:p-8 space-y-4">
+                  <div className="p-8 space-y-4">
                     <div>
                       <h3 className="text-2xl lg:text-3xl font-bold text-[#0F172A] mb-3 leading-tight">
                         {service.title}
@@ -531,7 +398,6 @@ export default function SixStarPage() {
                       </p>
                     </div>
                     
-                    {/* Features List */}
                     <div className="space-y-2 pt-2">
                       {service.features.map((feature, i) => (
                         <div key={i} className="flex items-center gap-2">
@@ -543,7 +409,6 @@ export default function SixStarPage() {
                       ))}
                     </div>
                     
-                    {/* Discover Button */}
                     <div className="pt-4">
                       <a
                         href={`/services/${service.slug}`}
@@ -564,22 +429,24 @@ export default function SixStarPage() {
         </div>
       </section>
 
-      {/* Pricing Calculator */}
-      <section id="pricing" className="py-20 px-4 bg-white">
+      {/* Pricing Calculator - Enhanced Design */}
+      <section id="pricing" className="py-24 md:py-32 px-4 bg-[#FAFBFC]">
         <div className="container mx-auto">
           <div className="text-center mb-16 scroll-reveal" data-delay="0">
-            <h2 className="text-4xl font-bold text-[#0F172A] mb-4">{t.pricing.title}</h2>
+            <span className="inline-block text-[#10B981] font-semibold text-sm uppercase tracking-wider mb-4">
+              Transparent Pricing
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">{t.pricing.title}</h2>
             <p className="text-xl text-gray-600">{t.pricing.subtitle}</p>
           </div>
           
           <div className="max-w-2xl mx-auto scroll-reveal" data-delay="100">
-            <Card className="border-0 shadow-xl">
-              <CardContent className="p-8">
-                {/* Square meters slider */}
+            <Card className="border-0 shadow-2xl rounded-3xl overflow-hidden">
+              <CardContent className="p-8 md:p-10">
                 <div className="space-y-4 mb-8">
                   <div className="flex justify-between items-center">
                     <Label className="text-lg font-medium">{t.pricing.sqmLabel}</Label>
-                    <span className="text-2xl font-bold text-[#10B981]">{sqm} m²</span>
+                    <span className="text-3xl font-bold text-[#10B981]">{sqm} m²</span>
                   </div>
                   <Slider
                     value={[sqm]}
@@ -595,19 +462,17 @@ export default function SixStarPage() {
                   </div>
                 </div>
 
-                {/* Price breakdown */}
-                <div className="space-y-3 mb-8 p-4 bg-gray-50 rounded-lg">
+                <div className="space-y-3 mb-8 p-6 bg-gray-50 rounded-2xl">
                   <div className="flex justify-between text-gray-600">
                     <span>{t.pricing.basePrice}</span>
-                    <span>{BASE_PRICE} DKK</span>
+                    <span className="font-medium">{BASE_PRICE} DKK</span>
                   </div>
                   <div className="flex justify-between text-gray-600">
                     <span>{sqm} m² × {PRICE_PER_SQM} DKK {t.pricing.perSqm}</span>
-                    <span>{sqm * PRICE_PER_SQM} DKK</span>
+                    <span className="font-medium">{sqm * PRICE_PER_SQM} DKK</span>
                   </div>
                 </div>
 
-                {/* Add-ons */}
                 <div className="space-y-4 mb-8">
                   <Label className="text-lg font-medium">{t.pricing.addons}</Label>
                   <div className="grid grid-cols-2 gap-4">
@@ -617,22 +482,21 @@ export default function SixStarPage() {
                       { key: 'balcony', label: t.pricing.balcony, price: ADDON_PRICES.balcony },
                       { key: 'carpet', label: t.pricing.carpet, price: ADDON_PRICES.carpet }
                     ].map((addon) => (
-                      <div key={addon.key} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div key={addon.key} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition">
                         <div className="flex items-center gap-3">
                           <Switch
                             checked={addons[addon.key]}
                             onCheckedChange={(checked) => setAddons({...addons, [addon.key]: checked})}
                           />
-                          <span className="text-sm">{addon.label}</span>
+                          <span className="text-sm font-medium">{addon.label}</span>
                         </div>
-                        <span className="text-sm font-medium">+{addon.price} DKK</span>
+                        <span className="text-sm font-bold text-[#10B981]">+{addon.price}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Weekend toggle */}
-                <div className="flex items-center justify-between p-4 bg-[#10B981]/5 rounded-lg mb-8">
+                <div className="flex items-center justify-between p-5 bg-[#10B981]/10 rounded-2xl mb-8">
                   <div className="flex items-center gap-3">
                     <Switch
                       checked={weekend}
@@ -643,24 +507,22 @@ export default function SixStarPage() {
                   <Calendar className="w-5 h-5 text-[#10B981]" />
                 </div>
 
-                {/* Total */}
-                <div className="flex justify-between items-center p-6 bg-[#0F172A] rounded-xl text-white mb-6">
-                  <span className="text-lg">{t.pricing.total}</span>
-                  <span className="text-4xl font-bold">{calculatePrice()} DKK</span>
+                <div className="flex justify-between items-center p-8 bg-gradient-to-br from-[#0F172A] to-[#1E293B] rounded-2xl text-white mb-6">
+                  <span className="text-lg font-medium">{t.pricing.total}</span>
+                  <span className="text-5xl font-bold">{calculatePrice()}</span>
                 </div>
 
                 <p className="text-sm text-gray-500 text-center mb-6">{t.pricing.disclaimer}</p>
 
-                <Button 
-                  size="lg" 
-                  className="w-full bg-[#10B981] hover:bg-[#059669] text-white text-lg py-6"
-                  onClick={() => {
-                    setBookingForm({...bookingForm, sqm});
-                    setBookingOpen(true);
-                  }}
-                >
-                  {t.pricing.bookNow}
-                </Button>
+                <Link href="/contact">
+                  <Button 
+                    size="lg" 
+                    className="w-full bg-[#10B981] hover:bg-[#059669] text-white text-lg py-7 rounded-2xl transition-all duration-300 hover:shadow-lg"
+                  >
+                    {t.pricing.bookNow}
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -668,13 +530,16 @@ export default function SixStarPage() {
       </section>
 
       {/* How It Works */}
-      <section className="py-20 px-4">
+      <section className="py-24 md:py-32 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16 scroll-reveal" data-delay="0">
-            <h2 className="text-4xl font-bold text-[#0F172A] mb-4">{t.howItWorks.title}</h2>
+            <span className="inline-block text-[#10B981] font-semibold text-sm uppercase tracking-wider mb-4">
+              Simple Process
+            </span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">{t.howItWorks.title}</h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-12">
             {[
               { step: '01', ...t.howItWorks.step1, icon: Calendar },
               { step: '02', ...t.howItWorks.step2, icon: Sparkles },
@@ -682,39 +547,62 @@ export default function SixStarPage() {
             ].map((item, index) => (
               <div key={index} className="text-center scroll-reveal" data-delay={index * 100}>
                 <div className="relative inline-flex mb-6">
-                  <div className="w-20 h-20 rounded-full bg-[#10B981]/10 flex items-center justify-center transition-transform duration-300 hover:scale-110">
-                    <item.icon className="w-10 h-10 text-[#10B981]" />
+                  <div className="w-24 h-24 rounded-2xl bg-[#10B981]/10 flex items-center justify-center transition-transform duration-300 hover:scale-110">
+                    <item.icon className="w-12 h-12 text-[#10B981]" />
                   </div>
-                  <span className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-[#0F172A] text-white text-sm font-bold flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-[#0F172A] text-white text-lg font-bold flex items-center justify-center">
                     {item.step}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-[#0F172A] mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
+                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-[#10B981] to-[#059669]">
-        <div className="container mx-auto text-center scroll-reveal" data-delay="0">
-          <h2 className="text-4xl font-bold text-white mb-4">
-            {lang === 'en' ? 'Ready for a Spotless Space?' : 'Klar til et pletfrit rum?'}
+      {/* Final CTA Section - Beautiful */}
+      <section className="relative py-32 md:py-40 px-4 overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="https://images.pexels.com/photos/6197116/pexels-photo-6197116.jpeg?auto=compress&cs=tinysrgb&w=1920"
+            alt="Professional cleaning"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A]/90 to-[#0F172A]/75" />
+        </div>
+        
+        <div className="relative z-10 container mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-delay="0">
+            {lang === 'en' ? 'Ready to Experience Premium Cleaning?' : 'Klar til at Opleve Premium Rengøring?'}
           </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto scroll-reveal" data-delay="100">
             {lang === 'en' 
-              ? 'Book your cleaning today and experience the Hexaren difference. 6 owners personally invested in every job.' 
-              : 'Book din rengøring i dag og oplev Hexaren-forskellen. 6 ejere personligt investeret i hvert job.'}
+              ? 'Join businesses and homes across Copenhagen that trust Hexaren. Get your free quote today.' 
+              : 'Slut dig til virksomheder og hjem i hele København der stoler på Hexaren. Få dit gratis tilbud i dag.'}
           </p>
-          <Button 
-            size="lg" 
-            className="bg-white text-[#10B981] hover:bg-gray-100 px-12 py-6 text-lg font-bold"
-            onClick={() => setBookingOpen(true)}
-          >
-            {t.nav.bookOnline}
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal" data-delay="200">
+            <Link href="/contact">
+              <Button 
+                size="lg" 
+                className="bg-[#10B981] hover:bg-[#059669] text-white px-12 py-7 text-lg font-bold rounded-full transition-all duration-500 hover:scale-105"
+              >
+                {lang === 'en' ? 'Get Your Free Quote' : 'Få Dit Gratis Tilbud'}
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
+            <a href={`tel:+4531862094`}>
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-12 py-7 text-lg font-bold rounded-full transition-all duration-500"
+              >
+                {lang === 'en' ? 'Call Us Now' : 'Ring Til Os Nu'}
+                <Phone className="w-5 h-5 ml-2" />
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -747,9 +635,8 @@ export default function SixStarPage() {
             <div>
               <h4 className="font-bold text-white mb-4">{t.footer.company}</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#about" className="hover:text-[#10B981] transition">{t.footer.about}</a></li>
-                <li><a href="#" className="hover:text-[#10B981] transition">{t.footer.careers}</a></li>
-                <li><a href="#" className="hover:text-[#10B981] transition">{t.footer.blog}</a></li>
+                <li><a href="/about" className="hover:text-[#10B981] transition">{t.footer.about}</a></li>
+                <li><Link href="/contact" className="hover:text-[#10B981] transition">Contact</Link></li>
               </ul>
             </div>
             
@@ -762,7 +649,7 @@ export default function SixStarPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
-                  hello@hexaren.dk
+                  sabinghimire071@gmail.com
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#10B981]" />

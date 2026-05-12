@@ -297,9 +297,9 @@ export default function AboutPage() {
               {lang === 'en' ? 'DA' : 'EN'}
             </button>
             
-            <Link href="/">
+            <Link href="/contact">
               <Button className="bg-[#10B981] hover:bg-[#059669] text-white">
-                {t.nav.bookOnline}
+                {lang === 'en' ? 'Get a Quote' : 'Få et Tilbud'}
               </Button>
             </Link>
           </div>

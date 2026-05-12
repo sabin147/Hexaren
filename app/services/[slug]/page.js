@@ -210,9 +210,9 @@ export default function ServiceDetailPage() {
               {lang === 'en' ? 'DA' : 'EN'}
             </button>
             
-            <Link href="/">
+            <Link href="/contact">
               <Button className="bg-[#10B981] hover:bg-[#059669] text-white">
-                {lang === 'da' ? 'Book Online' : 'Book Online'}
+                {lang === 'da' ? 'Få et Tilbud' : 'Get a Quote'}
               </Button>
             </Link>
           </div>
