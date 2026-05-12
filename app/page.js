@@ -211,57 +211,71 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* Navigation - Transparent Overlay */}
+      {/* Navigation - Transparent Overlay with proper logo handling */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled 
           ? 'bg-white shadow-lg' 
-          : 'bg-transparent'
+          : 'bg-gradient-to-b from-black/30 to-transparent'
       }`}>
-        <div className="container mx-auto px-4 py-5 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105">
+        <div className="container mx-auto px-4 py-4 md:py-5 flex items-center justify-between">
+          <a href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105 relative">
+            {/* Colored logo for scrolled/solid navbar */}
             <img 
               src="/hexaren-logo.png" 
               alt="Hexaren" 
-              className={`h-16 w-auto object-contain transition-all duration-500 ${
-                scrolled ? '' : 'brightness-0 invert'
+              className={`h-12 md:h-14 lg:h-16 w-auto object-contain transition-all duration-500 ${
+                scrolled ? 'opacity-100' : 'opacity-0'
               }`}
             />
+            {/* White logo for transparent navbar - positioned absolutely */}
+            <div className={`absolute inset-0 transition-all duration-500 ${
+              scrolled ? 'opacity-0' : 'opacity-100'
+            }`}>
+              <div className="h-12 md:h-14 lg:h-16 flex items-center">
+                <svg className="h-full w-auto" viewBox="0 0 200 80" fill="white">
+                  <text x="10" y="50" fontFamily="Arial, sans-serif" fontSize="32" fontWeight="bold" fill="white">
+                    HEXAREN
+                  </text>
+                </svg>
+              </div>
+            </div>
           </a>
           
-          <div className="hidden md:flex items-center gap-10">
-            <a href="/" className={`transition-all duration-300 font-medium ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+          <div className="hidden md:flex items-center gap-6 lg:gap-10">
+            <a href="/" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
             }`}>Home</a>
-            <a href="#services" className={`transition-all duration-300 font-medium ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+            <a href="#services" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
             }`}>{t.nav.services}</a>
-            <a href="#pricing" className={`transition-all duration-300 font-medium ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+            <a href="#pricing" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
             }`}>{t.nav.pricing}</a>
-            <a href="/about" className={`transition-all duration-300 font-medium ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+            <a href="/about" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
             }`}>{t.nav.about}</a>
-            <a href="/contact" className={`transition-all duration-300 font-medium ${
-              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'
+            <a href="/contact" className={`transition-all duration-300 font-medium text-sm lg:text-base ${
+              scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981] drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]'
             }`}>{t.nav.contact}</a>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-3 lg:gap-4">
             <button
               onClick={() => setLang(lang === 'en' ? 'da' : 'en')}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 text-sm font-semibold ${
+              className={`flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 rounded-full transition-all duration-300 text-xs md:text-sm font-semibold ${
                 scrolled 
                   ? 'bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200' 
-                  : 'bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md'
+                  : 'bg-white/20 hover:bg-white/30 text-white border border-white/40 backdrop-blur-md shadow-lg'
               }`}
             >
-              <Globe className="w-4 h-4" />
-              {lang === 'en' ? 'DA' : 'EN'}
+              <Globe className="w-3 md:w-4 h-3 md:h-4" />
+              <span className="hidden sm:inline">{lang === 'en' ? 'DA' : 'EN'}</span>
             </button>
             
             <Link href="/contact">
-              <Button className="bg-gradient-to-r from-[#10B981] to-[#059669] hover:from-[#059669] hover:to-[#047857] text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                {lang === 'en' ? 'Get a Quote' : 'Få et Tilbud'}
+              <Button className="bg-gradient-to-r from-[#10B981] to-[#059669] hover:from-[#059669] hover:to-[#047857] text-white px-3 md:px-6 py-2 md:py-3 text-xs md:text-sm rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                <span className="hidden sm:inline">{lang === 'en' ? 'Get a Quote' : 'Få et Tilbud'}</span>
+                <span className="sm:hidden text-xs">Quote</span>
               </Button>
             </Link>
           </div>
