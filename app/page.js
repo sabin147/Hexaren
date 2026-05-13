@@ -472,6 +472,149 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* HEXAREN Promises Section - Premium Design */}
+      <section className="py-24 md:py-32 px-4 bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+        </div>
+        
+        <div className="container mx-auto max-w-7xl relative z-10">
+          {/* Header */}
+          <div className="text-center mb-20 scroll-reveal" data-delay="0">
+            <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
+              Hexaren Facility Services APS
+            </h2>
+            <p className="text-xl md:text-2xl text-[#10B981] font-semibold">
+              Where 6 Promises meet one standard
+            </p>
+          </div>
+
+          {/* 6 Promises Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {/* H - Honesty */}
+            <div className="scroll-reveal group" data-delay="0">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-3xl font-bold text-white">H</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Honesty</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  We believe in transparent communication, reliable agreements, and trustworthy service.
+                </p>
+              </div>
+            </div>
+
+            {/* E - Efficiency */}
+            <div className="scroll-reveal group" data-delay="100">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-3xl font-bold text-white">E</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Efficiency</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  We work with structure, precision, and speed to deliver dependable results.
+                </p>
+              </div>
+            </div>
+
+            {/* X - Xcellence */}
+            <div className="scroll-reveal group" data-delay="200">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-3xl font-bold text-white">X</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Xcellence</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  We go beyond expectations to provide premium-quality cleaning and facility services.
+                </p>
+              </div>
+            </div>
+
+            {/* A - Accountability */}
+            <div className="scroll-reveal group" data-delay="0">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-3xl font-bold text-white">A</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Accountability</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  We take responsibility for every detail and every client experience.
+                </p>
+              </div>
+            </div>
+
+            {/* R - Respect */}
+            <div className="scroll-reveal group" data-delay="100">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-3xl font-bold text-white">R</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Respect</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  We respect our clients, workplaces, employees, and the environments we service.
+                </p>
+              </div>
+            </div>
+
+            {/* E - Eco-conscious */}
+            <div className="scroll-reveal group" data-delay="200">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-3xl font-bold text-white">E</span>
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Eco-conscious</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  We prioritize sustainable and environmentally responsible cleaning practices.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* The ONE Standard - Nordic Excellence */}
+          <div className="scroll-reveal" data-delay="300">
+            <div className="bg-gradient-to-br from-[#10B981]/20 to-[#059669]/10 backdrop-blur-xl rounded-3xl p-10 md:p-16 border-2 border-[#10B981]/50 shadow-2xl shadow-[#10B981]/30 relative overflow-hidden">
+              {/* Glow effect */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#10B981]/20 rounded-full blur-3xl"></div>
+              
+              <div className="relative z-10 text-center max-w-4xl mx-auto">
+                <div className="inline-flex items-center gap-4 mb-8">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-xl">
+                    <span className="text-5xl font-bold text-white">N</span>
+                  </div>
+                  <div className="text-left">
+                    <p className="text-sm text-[#10B981] font-semibold uppercase tracking-wider mb-1">The One Standard</p>
+                    <h3 className="text-4xl font-bold text-white">Nordic Excellence</h3>
+                  </div>
+                </div>
+                
+                <p className="text-xl text-gray-200 mb-8 leading-relaxed">
+                  Our ONE standard represents the level we hold ourselves to every single day.
+                </p>
+                
+                <div className="grid md:grid-cols-3 gap-4 mb-8">
+                  {['Consistent quality', 'Professional presentation', 'Attention to detail', 'Reliable service', 'Scandinavian cleanliness standards', 'Pride in every task'].map((item, index) => (
+                    <div key={index} className="flex items-center gap-2 text-white">
+                      <Check className="w-5 h-5 text-[#10B981] flex-shrink-0" />
+                      <span className="text-sm md:text-base">{item}</span>
+                    </div>
+                  ))}
+                </div>
+                
+                <div className="border-t border-white/20 pt-8">
+                  <p className="text-2xl md:text-3xl font-bold text-white mb-2">
+                    Because at HEXAREN, clean is not enough.
+                  </p>
+                  <p className="text-xl text-[#10B981] font-semibold">
+                    We deliver our promises.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us Section - Beautiful Cards */}
       <section id="about" className="py-24 md:py-32 px-4 bg-[#F8FAFC]">
         <div className="container mx-auto max-w-6xl">
