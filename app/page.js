@@ -210,12 +210,12 @@ export default function HomePage() {
           {/* Logo */}
           <a
             href="/"
-            className="relative z-50 flex items-center overflow-hidden rounded-2xl border border-white/20 bg-[#0F172A]/35 px-2.5 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.18)] backdrop-blur-xl transition-all duration-300 hover:scale-105 hover:border-white/30 hover:bg-[#0F172A]/45 sm:px-3"
+            className="relative z-50 -my-2 flex items-center transition-transform duration-300 hover:scale-105 md:-my-3 lg:-my-4"
           >
             <img 
-              src="/hexaren-logo.png" 
+              src="/hexaren-logo-header.png" 
               alt="Hexaren" 
-              className="h-9 w-auto scale-110 rounded-xl object-contain mix-blend-multiply contrast-125 saturate-125 sm:h-10 md:h-11 lg:h-12"
+              className="h-16 w-auto object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.45)] sm:h-[72px] md:h-20 lg:h-24"
             />
           </a>
           
