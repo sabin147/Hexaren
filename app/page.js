@@ -402,7 +402,13 @@ export default function HomePage() {
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="space-y-8 max-w-4xl mx-auto animate-fade-in">
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight pt-16">
-              {t.hero.title} <span className="text-[#10B981]">{t.hero.titleAccent}</span>
+              <span className="inline-flex items-baseline justify-center drop-shadow-[0_5px_16px_rgba(0,0,0,0.55)]">
+                <span className="text-[#004B93] [text-shadow:0_1px_8px_rgba(255,255,255,0.32)]">He</span>
+                <span className="text-[#65BC46] [text-shadow:0_1px_8px_rgba(255,255,255,0.32)]">x</span>
+                <span className="text-[#004B93] [text-shadow:0_1px_8px_rgba(255,255,255,0.32)]">aren</span>
+              </span>
+              {' Premium '}
+              <span className="text-[#10B981]">{t.hero.titleAccent}</span>
               <br />
               <span className="text-3xl md:text-5xl lg:text-6xl">{t.hero.subtitle}</span>
             </h1>
