@@ -25,10 +25,7 @@ import {
   Clock,
   Globe,
   Users,
-  Award,
   Target,
-  Heart,
-  Zap,
   ArrowRight,
   LayoutGrid
 } from 'lucide-react';
@@ -164,15 +161,6 @@ export default function HomePage() {
       ],
       image: 'https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg'
     }
-  ];
-
-  const values = [
-    { icon: Clock, ...t.values.showup },
-    { icon: Award, ...t.values.quality },
-    { icon: Shield, ...t.values.transparent },
-    { icon: Users, ...t.values.professional },
-    { icon: Zap, ...t.values.flexible },
-    { icon: Heart, ...t.values.care }
   ];
 
   return (
@@ -611,38 +599,6 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section - Beautiful Cards */}
-      <section id="about" className="py-24 md:py-32 px-4 bg-[#F8FAFC]">
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 scroll-reveal" data-delay="0">
-              {t.values.title}
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto scroll-reveal" data-delay="50">
-              What makes Hexaren different from other cleaning services
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {values.map((value, index) => (
-              <div 
-                key={index} 
-                className="scroll-reveal card-lift"
-                data-delay={100 + index * 100}
-              >
-                <div className="bg-white rounded-2xl p-8 h-full shadow-lg">
-                  <div className="w-16 h-16 rounded-xl bg-[#10B981]/10 flex items-center justify-center mb-6">
-                    <value.icon className="w-8 h-8 text-[#10B981]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-[#0F172A] mb-3">{value.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
