@@ -385,8 +385,10 @@ export default function HomePage() {
         
         <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/50" />
         
-        {/* Vertical Service Navigation - Right Side (Hidden only on mobile) */}
-        <div className="hidden lg:block fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40">
+        {/* Vertical Service Navigation - Only visible on hero landing screen */}
+        <div className={`hidden lg:block fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 transition-all duration-500 ${
+          scrolled ? 'opacity-0 pointer-events-none translate-x-8' : 'opacity-100'
+        }`}>
           <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-3 lg:p-4 shadow-2xl max-w-xs">
             <div className="flex flex-col gap-2 lg:gap-3">
               {services.map((service, index) => (
