@@ -2,8 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
@@ -380,28 +378,24 @@ export default function HomePage() {
         <div className={`hidden lg:block fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 transition-all duration-500 ${
           scrolled ? 'opacity-0 pointer-events-none translate-x-8' : 'opacity-100'
         }`}>
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-3 lg:p-4 shadow-2xl max-w-xs">
-            <div className="flex flex-col gap-2 lg:gap-3">
-              {services.map((service, index) => (
-                <a
-                  key={service.id}
-                  href={`/services/${service.slug}`}
-                  className="group flex items-center gap-2 lg:gap-3 px-3 lg:px-4 py-2 lg:py-3 rounded-xl bg-white/5 hover:bg-white/20 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105"
-                  title={service.title}
-                >
-                  <div className="w-6 lg:w-8 h-6 lg:h-8 rounded-lg bg-[#10B981]/20 flex items-center justify-center flex-shrink-0 group-hover:bg-[#10B981] transition-all">
-                    <service.icon className="w-3 lg:w-4 h-3 lg:h-4 text-white" />
-                  </div>
-                  <span className="text-white text-xs lg:text-sm font-medium whitespace-nowrap">{service.title}</span>
-                </a>
-              ))}
-            </div>
+          <div className="flex w-[330px] flex-col gap-4">
+            {services.map((service) => (
+              <a
+                key={service.id}
+                href={`/services/${service.slug}`}
+                className="group flex items-center gap-5 rounded-lg bg-[#24262B]/78 px-6 py-4 shadow-[0_14px_36px_rgba(0,0,0,0.22)] transition-all duration-300 hover:-translate-x-1 hover:bg-[#202226]/90"
+                title={service.title}
+              >
+                <service.icon className="h-6 w-6 flex-shrink-0 text-[#65F0B1]" />
+                <span className="text-base font-semibold text-white">{service.title}</span>
+              </a>
+            ))}
           </div>
         </div>
         
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="space-y-8 max-w-4xl mx-auto animate-fade-in">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight pt-16">
+        <div className="relative z-10 container mx-auto px-4">
+          <div className="max-w-4xl animate-fade-in space-y-8 pt-16 text-left lg:max-w-3xl">
+            <h1 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl lg:text-7xl">
               <span className="inline-flex items-baseline justify-center drop-shadow-[0_5px_16px_rgba(0,0,0,0.55)]">
                 <span className="text-[#004B93] [text-shadow:0_1px_8px_rgba(255,255,255,0.32)]">He</span>
                 <span className="text-[#65BC46] [text-shadow:0_1px_8px_rgba(255,255,255,0.32)]">x</span>
@@ -413,15 +407,15 @@ export default function HomePage() {
               <span className="text-3xl md:text-5xl lg:text-6xl">{t.hero.subtitle}</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
+            <p className="max-w-3xl text-lg leading-relaxed text-white/90 md:text-xl">
               {t.hero.description}
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+            <div className="flex flex-col items-start gap-4 pt-4 sm:flex-row">
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105"
+                className="rounded-lg border-0 bg-[#007A4D] px-10 py-7 text-lg font-semibold text-white transition-all duration-500 hover:scale-105 hover:bg-[#00633F]"
                 onClick={() => window.location.href = '/contact'}
               >
                 {t.hero.cta}
@@ -429,257 +423,162 @@ export default function HomePage() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105"
+                className="rounded-lg border border-white/25 bg-white/14 px-10 py-7 text-lg font-semibold text-white transition-all duration-500 hover:scale-105 hover:bg-white hover:text-[#0F172A]"
                 onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 {t.hero.secondaryCta}
               </Button>
             </div>
             
-            <div className="flex flex-wrap items-center justify-center gap-8 pt-8">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+            <div className="flex flex-wrap items-center gap-10 pt-8">
+              <div className="flex items-center gap-3">
                 <Shield className="w-5 h-5 text-[#10B981]" />
-                <span className="text-sm text-white">Insured</span>
+                <span className="text-base text-white">Insured</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <div className="flex items-center gap-3">
                 <Leaf className="w-5 h-5 text-[#10B981]" />
-                <span className="text-sm text-white">Svanemærket</span>
+                <span className="text-base text-white">Svanemærket</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+              <div className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-[#10B981]" />
-                <span className="text-sm text-white">Same-Day</span>
+                <span className="text-base text-white">Same-Day</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trust Strip */}
-      <section className="py-12 bg-white border-y border-gray-100">
-        <div className="container mx-auto px-4 scroll-reveal" data-delay="0">
-          <p className="text-center text-gray-500 mb-6">{t.trust.title}</p>
-          <div className="flex flex-wrap justify-center gap-8">
-            {t.trust.areas.map((area, index) => (
-              <div key={area} className="flex items-center gap-2 text-[#0F172A] font-medium scroll-reveal" data-delay={index * 50}>
-                <MapPin className="w-4 h-4 text-[#10B981]" />
-                {area}
+      {/* Copenhagen Coverage */}
+      <section className="bg-[#F4F1E8] px-4 py-16 md:py-20">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid gap-10 border-y border-[#0F3D2E]/15 py-10 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+            <div className="scroll-reveal" data-delay="0">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-[#0F3D2E]/60">Copenhagen coverage</p>
+              <h2 className="max-w-3xl text-3xl font-semibold leading-tight text-[#0B1F1A] md:text-5xl">
+                Facility care for Copenhagen spaces that cannot afford to feel ordinary.
+              </h2>
+            </div>
+            <div className="scroll-reveal" data-delay="80">
+              <div className="mb-6 grid grid-cols-3 border border-[#0F3D2E]/15 bg-white/55">
+                {[
+                  ['6', 'owners'],
+                  ['24h', 'reply aim'],
+                  ['100%', 'insured']
+                ].map(([value, label]) => (
+                  <div key={label} className="border-r border-[#0F3D2E]/15 p-4 last:border-r-0">
+                    <p className="text-2xl font-semibold text-[#004B93] md:text-3xl">{value}</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#0F3D2E]/55">{label}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+              <div className="flex flex-wrap gap-2">
+                {t.trust.areas.map((area) => (
+                  <span key={area} className="inline-flex items-center gap-2 border border-[#0F3D2E]/15 bg-white/65 px-4 py-2 text-sm font-medium text-[#0B1F1A]">
+                    <MapPin className="h-3.5 w-3.5 text-[#65BC46]" />
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* HEXAREN Promises Section - Premium Design */}
-      <section className="py-24 md:py-32 px-4 bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#0F172A] relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px'}}></div>
+      {/* Brand Standard */}
+      <section className="bg-[#0B1F1A] px-4 py-24 text-white md:py-32">
+        <div className="container mx-auto max-w-7xl">
+          <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div className="scroll-reveal lg:sticky lg:top-28" data-delay="0">
+              <p className="mb-5 text-xs font-semibold uppercase tracking-[0.3em] text-[#65BC46]">Hexaren Facility Services ApS</p>
+              <h2 className="text-4xl font-semibold leading-[1.05] md:text-6xl">
+                Where six promises meet one standard.
+              </h2>
+              <p className="mt-8 max-w-md text-lg leading-relaxed text-white/70">
+                We design every clean around one idea: quiet reliability. The kind clients notice because nothing feels missed, rushed, or improvised.
+              </p>
+              <div className="mt-10 border-l-2 border-[#65BC46] pl-6">
+                <p className="text-sm uppercase tracking-[0.24em] text-white/45">The one standard</p>
+                <p className="mt-2 text-3xl font-semibold">Nordic Excellence</p>
+              </div>
+            </div>
+
+            <div className="divide-y divide-white/12 border-y border-white/12">
+              {[
+                ['H', 'Honesty', 'Transparent communication, reliable agreements, and clear expectations from the first message.'],
+                ['E', 'Efficiency', 'Structured teams, precise routines, and dependable results without unnecessary disruption.'],
+                ['X', 'Xcellence', 'Premium detail standards that go beyond surface-level clean.'],
+                ['A', 'Accountability', 'Ownership over every shift, every checklist, and every client experience.'],
+                ['R', 'Respect', 'Care for workplaces, homes, people, materials, and shared environments.'],
+                ['E', 'Eco-conscious', 'Responsible methods and supplies chosen with your space and the planet in mind.']
+              ].map(([letter, title, description], index) => (
+                <div key={title} className="scroll-reveal grid gap-5 py-7 sm:grid-cols-[88px_1fr]" data-delay={index * 60}>
+                  <div className="text-5xl font-semibold text-white/20">{letter}</div>
+                  <div className="grid gap-3 md:grid-cols-[0.45fr_1fr]">
+                    <h3 className="text-2xl font-semibold text-white">{title}</h3>
+                    <p className="leading-relaxed text-white/66">{description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-        
-        <div className="container mx-auto max-w-7xl relative z-10">
-          {/* Header */}
-          <div className="text-center mb-20 scroll-reveal" data-delay="0">
-            <h2 className="text-4xl md:text-6xl font-bold text-white mb-4">
-              Hexaren Facility Services APS
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="bg-[#F7F8FA] px-4 py-24 md:py-32">
+        <div className="container mx-auto max-w-7xl">
+          <div className="mb-20 text-center">
+            <p className="scroll-reveal mb-5 text-sm font-semibold uppercase tracking-[0.28em] text-[#007A4D]" data-delay="0">
+              Our services
+            </p>
+            <h2 className="scroll-reveal text-4xl font-bold leading-tight text-[#15191F] md:text-6xl" data-delay="70">
+              Premium Cleaning Solutions
             </h2>
-            <p className="text-xl md:text-2xl text-[#10B981] font-semibold">
-              Where 6 Promises meet one standard
+            <p className="scroll-reveal mt-6 text-xl text-[#15191F]/62" data-delay="120">
+              For Nordhavn, Østerbro & all of Copenhagen
             </p>
           </div>
 
-          {/* 6 Promises Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {/* H - Honesty */}
-            <div className="scroll-reveal group" data-delay="0">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl font-bold text-white">H</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Honesty</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  We believe in transparent communication, reliable agreements, and trustworthy service.
-                </p>
-              </div>
-            </div>
-
-            {/* E - Efficiency */}
-            <div className="scroll-reveal group" data-delay="100">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl font-bold text-white">E</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Efficiency</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  We work with structure, precision, and speed to deliver dependable results.
-                </p>
-              </div>
-            </div>
-
-            {/* X - Xcellence */}
-            <div className="scroll-reveal group" data-delay="200">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl font-bold text-white">X</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Xcellence</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  We go beyond expectations to provide premium-quality cleaning and facility services.
-                </p>
-              </div>
-            </div>
-
-            {/* A - Accountability */}
-            <div className="scroll-reveal group" data-delay="0">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl font-bold text-white">A</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Accountability</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  We take responsibility for every detail and every client experience.
-                </p>
-              </div>
-            </div>
-
-            {/* R - Respect */}
-            <div className="scroll-reveal group" data-delay="100">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl font-bold text-white">R</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Respect</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  We respect our clients, workplaces, employees, and the environments we service.
-                </p>
-              </div>
-            </div>
-
-            {/* E - Eco-conscious */}
-            <div className="scroll-reveal group" data-delay="200">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl p-8 border border-white/20 hover:border-[#10B981]/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/20 h-full">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-3xl font-bold text-white">E</span>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">Eco-conscious</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  We prioritize sustainable and environmentally responsible cleaning practices.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* The ONE Standard - Nordic Excellence */}
-          <div className="scroll-reveal" data-delay="300">
-            <div className="bg-gradient-to-br from-[#10B981]/20 to-[#059669]/10 backdrop-blur-xl rounded-3xl p-10 md:p-16 border-2 border-[#10B981]/50 shadow-2xl shadow-[#10B981]/30 relative overflow-hidden">
-              {/* Glow effect */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-[#10B981]/20 rounded-full blur-3xl"></div>
-              
-              <div className="relative z-10 text-center max-w-4xl mx-auto">
-                <div className="inline-flex items-center gap-4 mb-8">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center shadow-xl">
-                    <span className="text-5xl font-bold text-white">N</span>
-                  </div>
-                  <div className="text-left">
-                    <p className="text-sm text-[#10B981] font-semibold uppercase tracking-wider mb-1">The One Standard</p>
-                    <h3 className="text-4xl font-bold text-white">Nordic Excellence</h3>
-                  </div>
-                </div>
-                
-                <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-                  Our ONE standard represents the level we hold ourselves to every single day.
-                </p>
-                
-                <div className="grid md:grid-cols-3 gap-4 mb-8">
-                  {['Consistent quality', 'Professional presentation', 'Attention to detail', 'Reliable service', 'Scandinavian cleanliness standards', 'Pride in every task'].map((item, index) => (
-                    <div key={index} className="flex items-center gap-2 text-white">
-                      <Check className="w-5 h-5 text-[#10B981] flex-shrink-0" />
-                      <span className="text-sm md:text-base">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="border-t border-white/20 pt-8">
-                  <p className="text-2xl md:text-3xl font-bold text-white mb-2">
-                    Because at HEXAREN, clean is not enough.
-                  </p>
-                  <p className="text-xl text-[#10B981] font-semibold">
-                    We deliver our promises.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section - Enhanced Grid Layout */}
-      <section id="services" className="py-24 md:py-32 px-4 bg-white">
-        <div className="container mx-auto max-w-7xl">
-          <div className="text-center mb-16 scroll-reveal" data-delay="0">
-            <span className="inline-block text-[#10B981] font-semibold text-sm uppercase tracking-wider mb-4">
-              Our Services
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">{t.services.title}</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t.services.subtitle}</p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+          <div className="grid gap-9 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
               <div
                 key={service.id}
-                className="scroll-reveal card-lift group"
-                data-delay={100 + index * 100}
+                className="scroll-reveal group overflow-hidden rounded-2xl bg-white shadow-[0_24px_60px_rgba(15,23,42,0.10)]"
+                data-delay={index * 70}
               >
-                <div className="h-full bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100">
-                  <div className="relative h-64 overflow-hidden">
-                    <img 
-                      src={service.image} 
-                      alt={service.title}
-                      className="w-full h-full object-cover image-zoom"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 via-transparent to-transparent" />
-                    
-                    <div className="absolute top-4 left-4">
-                      <div className="w-14 h-14 rounded-xl bg-white/95 backdrop-blur-sm flex items-center justify-center shadow-lg">
-                        <service.icon className="w-7 h-7 text-[#10B981]" />
+                <div className="relative h-72 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute left-6 top-6 flex h-14 w-14 items-center justify-center rounded-md bg-white text-[#007A4D] shadow-lg">
+                    <service.icon className="h-7 w-7" />
+                  </div>
+                </div>
+
+                <div className="p-8 md:p-10">
+                  <h3 className="text-3xl font-medium text-[#15191F]">{service.title}</h3>
+                  <p className="mt-6 min-h-[88px] text-lg leading-relaxed text-[#15191F]/62">
+                    {service.description}
+                  </p>
+
+                  <div className="mt-8 space-y-3">
+                    {service.features.slice(0, 2).map((feature) => (
+                      <div key={feature} className="flex items-center gap-3 text-[#15191F]">
+                        <Check className="h-4 w-4 text-[#007A4D]" />
+                        <span>{feature}</span>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                  
-                  <div className="p-8 space-y-4">
-                    <div>
-                      <h3 className="text-2xl lg:text-3xl font-bold text-[#0F172A] mb-3 leading-tight">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-600 leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-2 pt-2">
-                      {service.features.map((feature, i) => (
-                        <div key={i} className="flex items-center gap-2">
-                          <div className="w-5 h-5 rounded-full bg-[#10B981]/10 flex items-center justify-center flex-shrink-0">
-                            <Check className="w-3 h-3 text-[#10B981]" />
-                          </div>
-                          <span className="text-sm text-gray-700">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                    
-                    <div className="pt-4">
-                      <a
-                        href={`/services/${service.slug}`}
-                        className="group/btn inline-flex items-center gap-2 text-base font-semibold text-[#10B981] transition-all duration-300 hover:gap-3"
-                      >
-                        <span className="relative">
-                          Discover
-                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#10B981] transition-all duration-300 group-hover/btn:w-full"></span>
-                        </span>
-                        <ChevronRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                      </a>
-                    </div>
-                  </div>
+
+                  <a
+                    href={`/services/${service.slug}`}
+                    className="mt-10 inline-flex items-center gap-3 text-lg font-semibold text-[#007A4D] transition-colors hover:text-[#004B93]"
+                  >
+                    Discover
+                    <ArrowRight className="h-5 w-5" />
+                  </a>
                 </div>
               </div>
             ))}
@@ -687,133 +586,129 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Pricing Calculator - Enhanced Design */}
-      <section id="pricing" className="py-24 md:py-32 px-4 bg-[#FAFBFC]">
-        <div className="container mx-auto">
-          <div className="text-center mb-16 scroll-reveal" data-delay="0">
-            <span className="inline-block text-[#10B981] font-semibold text-sm uppercase tracking-wider mb-4">
-              Transparent Pricing
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">{t.pricing.title}</h2>
-            <p className="text-xl text-gray-600">{t.pricing.subtitle}</p>
+      {/* Pricing Concierge */}
+      <section id="pricing" className="bg-white px-4 py-24 md:py-32">
+        <div className="container mx-auto max-w-7xl">
+          <div className="mb-14 grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+            <div className="scroll-reveal" data-delay="0">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-[#0F3D2E]/55">Service concierge</p>
+              <h2 className="text-4xl font-semibold leading-tight text-[#0B1F1A] md:text-6xl">{t.pricing.title}</h2>
+            </div>
+            <p className="scroll-reveal max-w-2xl text-lg leading-relaxed text-[#0B1F1A]/62" data-delay="80">
+              {t.pricing.subtitle} Adjust the scope and see a clear estimate before you book.
+            </p>
           </div>
-          
-          <div className="max-w-2xl mx-auto scroll-reveal" data-delay="100">
-            <Card className="border-0 shadow-2xl rounded-3xl overflow-hidden">
-              <CardContent className="p-8 md:p-10">
-                <div className="space-y-4 mb-8">
-                  <div className="flex justify-between items-center">
-                    <Label className="text-lg font-medium">{t.pricing.sqmLabel}</Label>
-                    <span className="text-3xl font-bold text-[#10B981]">{sqm} m²</span>
-                  </div>
-                  <Slider
-                    value={[sqm]}
-                    onValueChange={(value) => setSqm(value[0])}
-                    min={20}
-                    max={300}
-                    step={5}
-                    className="py-4"
-                  />
-                  <div className="flex justify-between text-sm text-gray-500">
-                    <span>20 m²</span>
-                    <span>300 m²</span>
+
+          <div className="scroll-reveal grid overflow-hidden border border-[#0F3D2E]/12 bg-[#F4F1E8] lg:grid-cols-[1.05fr_0.95fr]" data-delay="120">
+            <div className="space-y-8 p-6 md:p-10">
+              <div>
+                <div className="mb-4 flex items-end justify-between gap-4">
+                  <Label className="text-sm font-semibold uppercase tracking-[0.18em] text-[#0B1F1A]/55">{t.pricing.sqmLabel}</Label>
+                  <span className="text-4xl font-semibold text-[#004B93]">{sqm} m²</span>
+                </div>
+                <Slider
+                  value={[sqm]}
+                  onValueChange={(value) => setSqm(value[0])}
+                  min={20}
+                  max={300}
+                  step={5}
+                  className="py-4"
+                />
+                <div className="flex justify-between text-xs uppercase tracking-[0.18em] text-[#0B1F1A]/45">
+                  <span>20 m²</span>
+                  <span>300 m²</span>
+                </div>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2">
+                {[
+                  { key: 'window', label: t.pricing.windowCleaning, price: ADDON_PRICES.window },
+                  { key: 'oven', label: t.pricing.ovenCleaning, price: ADDON_PRICES.oven },
+                  { key: 'balcony', label: t.pricing.balcony, price: ADDON_PRICES.balcony },
+                  { key: 'carpet', label: t.pricing.carpet, price: ADDON_PRICES.carpet }
+                ].map((addon) => (
+                  <label key={addon.key} className="flex items-center justify-between gap-4 border border-[#0F3D2E]/12 bg-white/70 p-4">
+                    <span className="flex items-center gap-3">
+                      <Switch
+                        checked={addons[addon.key]}
+                        onCheckedChange={(checked) => setAddons({...addons, [addon.key]: checked})}
+                      />
+                      <span className="text-sm font-medium text-[#0B1F1A]">{addon.label}</span>
+                    </span>
+                    <span className="text-sm font-semibold text-[#0F3D2E]">+{addon.price}</span>
+                  </label>
+                ))}
+              </div>
+
+              <label className="flex items-center justify-between gap-4 border border-[#0F3D2E]/12 bg-white/70 p-5">
+                <span className="flex items-center gap-3">
+                  <Switch checked={weekend} onCheckedChange={setWeekend} />
+                  <span className="font-medium text-[#0B1F1A]">{t.pricing.weekend}</span>
+                </span>
+                <Calendar className="h-5 w-5 text-[#65BC46]" />
+              </label>
+            </div>
+
+            <div className="bg-[#0B1F1A] p-6 text-white md:p-10">
+              <div className="flex h-full flex-col justify-between gap-10">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#65BC46]">Service summary</p>
+                  <div className="mt-8 space-y-4 border-y border-white/12 py-6">
+                    <div className="flex justify-between gap-6 text-white/70">
+                      <span>{t.pricing.basePrice}</span>
+                      <span>{BASE_PRICE} DKK</span>
+                    </div>
+                    <div className="flex justify-between gap-6 text-white/70">
+                      <span>{sqm} m² × {PRICE_PER_SQM} DKK {t.pricing.perSqm}</span>
+                      <span>{sqm * PRICE_PER_SQM} DKK</span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="space-y-3 mb-8 p-6 bg-gray-50 rounded-2xl">
-                  <div className="flex justify-between text-gray-600">
-                    <span>{t.pricing.basePrice}</span>
-                    <span className="font-medium">{BASE_PRICE} DKK</span>
+                <div>
+                  <p className="mb-3 text-sm uppercase tracking-[0.22em] text-white/45">{t.pricing.total}</p>
+                  <div className="flex items-end gap-3">
+                    <span className="text-6xl font-semibold md:text-7xl">{calculatePrice()}</span>
+                    <span className="pb-3 text-lg text-white/55">DKK</span>
                   </div>
-                  <div className="flex justify-between text-gray-600">
-                    <span>{sqm} m² × {PRICE_PER_SQM} DKK {t.pricing.perSqm}</span>
-                    <span className="font-medium">{sqm * PRICE_PER_SQM} DKK</span>
-                  </div>
-                </div>
-
-                <div className="space-y-4 mb-8">
-                  <Label className="text-lg font-medium">{t.pricing.addons}</Label>
-                  <div className="grid grid-cols-2 gap-4">
-                    {[
-                      { key: 'window', label: t.pricing.windowCleaning, price: ADDON_PRICES.window },
-                      { key: 'oven', label: t.pricing.ovenCleaning, price: ADDON_PRICES.oven },
-                      { key: 'balcony', label: t.pricing.balcony, price: ADDON_PRICES.balcony },
-                      { key: 'carpet', label: t.pricing.carpet, price: ADDON_PRICES.carpet }
-                    ].map((addon) => (
-                      <div key={addon.key} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition">
-                        <div className="flex items-center gap-3">
-                          <Switch
-                            checked={addons[addon.key]}
-                            onCheckedChange={(checked) => setAddons({...addons, [addon.key]: checked})}
-                          />
-                          <span className="text-sm font-medium">{addon.label}</span>
-                        </div>
-                        <span className="text-sm font-bold text-[#10B981]">+{addon.price}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between p-5 bg-[#10B981]/10 rounded-2xl mb-8">
-                  <div className="flex items-center gap-3">
-                    <Switch
-                      checked={weekend}
-                      onCheckedChange={setWeekend}
-                    />
-                    <span className="font-medium">{t.pricing.weekend}</span>
-                  </div>
-                  <Calendar className="w-5 h-5 text-[#10B981]" />
-                </div>
-
-                <div className="flex justify-between items-center p-8 bg-gradient-to-br from-[#0F172A] to-[#1E293B] rounded-2xl text-white mb-6">
-                  <span className="text-lg font-medium">{t.pricing.total}</span>
-                  <span className="text-5xl font-bold">{calculatePrice()}</span>
-                </div>
-
-                <p className="text-sm text-gray-500 text-center mb-6">{t.pricing.disclaimer}</p>
-
-                <Link href="/contact">
-                  <Button 
-                    size="lg" 
-                    className="w-full bg-[#10B981] hover:bg-[#059669] text-white text-lg py-7 rounded-2xl transition-all duration-300 hover:shadow-lg"
-                  >
+                  <p className="mt-5 text-sm leading-relaxed text-white/55">{t.pricing.disclaimer}</p>
+                  <Link href="/contact" className="mt-8 inline-flex w-full items-center justify-center gap-2 bg-[#65BC46] px-6 py-4 font-semibold text-[#0B1F1A] transition-colors hover:bg-white">
                     {t.pricing.bookNow}
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="py-24 md:py-32 px-4 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-16 scroll-reveal" data-delay="0">
-            <span className="inline-block text-[#10B981] font-semibold text-sm uppercase tracking-wider mb-4">
-              Simple Process
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">{t.howItWorks.title}</h2>
+      <section className="bg-[#F4F1E8] px-4 py-24 md:py-32">
+        <div className="container mx-auto max-w-7xl">
+          <div className="mb-16 grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div className="scroll-reveal" data-delay="0">
+              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-[#0F3D2E]/55">Process</p>
+              <h2 className="text-4xl font-semibold leading-tight text-[#0B1F1A] md:text-6xl">{t.howItWorks.title}</h2>
+            </div>
+            <p className="scroll-reveal max-w-2xl text-lg leading-relaxed text-[#0B1F1A]/62" data-delay="80">
+              A calm, accountable workflow from first request to finished space.
+            </p>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-12">
+
+          <div className="grid border-y border-[#0F3D2E]/15 md:grid-cols-3">
             {[
               { step: '01', ...t.howItWorks.step1, icon: Calendar },
               { step: '02', ...t.howItWorks.step2, icon: Sparkles },
               { step: '03', ...t.howItWorks.step3, icon: Check }
             ].map((item, index) => (
-              <div key={index} className="text-center scroll-reveal" data-delay={index * 100}>
-                <div className="relative inline-flex mb-6">
-                  <div className="w-24 h-24 rounded-2xl bg-[#10B981]/10 flex items-center justify-center transition-transform duration-300 hover:scale-110">
-                    <item.icon className="w-12 h-12 text-[#10B981]" />
-                  </div>
-                  <span className="absolute -top-2 -right-2 w-10 h-10 rounded-full bg-[#0F172A] text-white text-lg font-bold flex items-center justify-center">
-                    {item.step}
-                  </span>
+              <div key={item.step} className="scroll-reveal border-b border-[#0F3D2E]/15 p-8 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0" data-delay={index * 100}>
+                <div className="mb-12 flex items-center justify-between">
+                  <span className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0F3D2E]/45">{item.step}</span>
+                  <item.icon className="h-7 w-7 text-[#65BC46]" />
                 </div>
-                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                <h3 className="text-2xl font-semibold text-[#0B1F1A]">{item.title}</h3>
+                <p className="mt-4 leading-relaxed text-[#0B1F1A]/62">{item.description}</p>
               </div>
             ))}
           </div>
