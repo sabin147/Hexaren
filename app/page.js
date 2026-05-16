@@ -115,6 +115,7 @@ export default function HomePage() {
       id: 'office',
       slug: 'office-cleaning',
       icon: Building2,
+      category: lang === 'en' ? 'B2B facility' : 'B2B facilitet',
       ...t.services.office,
       image: 'https://images.pexels.com/photos/10567271/pexels-photo-10567271.jpeg'
     },
@@ -122,6 +123,7 @@ export default function HomePage() {
       id: 'moveout',
       slug: 'move-out-cleaning',
       icon: Sparkles,
+      category: lang === 'en' ? 'Residential' : 'Bolig',
       ...t.services.moveout,
       image: 'https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg'
     },
@@ -129,6 +131,7 @@ export default function HomePage() {
       id: 'airbnb',
       slug: 'airbnb-turnover',
       icon: Home,
+      category: lang === 'en' ? 'Hospitality' : 'Hospitality',
       ...t.services.airbnb,
       image: 'https://images.pexels.com/photos/6197116/pexels-photo-6197116.jpeg'
     },
@@ -136,6 +139,7 @@ export default function HomePage() {
       id: 'apartment',
       slug: 'apartment-cleaning',
       icon: Star,
+      category: lang === 'en' ? 'Workplace support' : 'Arbejdsplads support',
       ...t.services.piccoline,
       image: 'https://images.pexels.com/photos/7876725/pexels-photo-7876725.jpeg'
     },
@@ -143,6 +147,7 @@ export default function HomePage() {
       id: 'staircase',
       slug: 'staircase-cleaning',
       icon: LayoutGrid,
+      category: lang === 'en' ? 'Common areas' : 'Fællesarealer',
       ...t.services.staircase,
       image: 'https://images.pexels.com/photos/6195951/pexels-photo-6195951.jpeg'
     },
@@ -150,6 +155,7 @@ export default function HomePage() {
       id: 'temporary',
       slug: 'temporary-staff',
       icon: Users,
+      category: lang === 'en' ? 'Temporary team' : 'Midlertidigt team',
       title: lang === 'en' ? 'Temporary Cleaning Staff' : 'Midlertidig Rengøringspersonale',
       description: lang === 'en' ? 'Professional temporary cleaning workers to support your business during busy periods, staff shortages, or special events.' : 'Professionelle midlertidige rengøringsarbejdere til at støtte din virksomhed i travle perioder, personalemangel eller særlige begivenheder.',
       features: [
@@ -372,7 +378,7 @@ export default function HomePage() {
           />
         </video>
         
-        <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/40 to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/58 to-black/66" />
         
         {/* Vertical Service Navigation - Only visible on hero landing screen */}
         <div className={`hidden lg:block fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 transition-all duration-500 ${
@@ -394,20 +400,23 @@ export default function HomePage() {
         </div>
         
         <div className="relative z-10 container mx-auto px-4">
-          <div className="max-w-4xl animate-fade-in space-y-8 pt-16 text-left lg:max-w-3xl">
-            <h1 className="text-4xl font-bold leading-tight tracking-tight text-white md:text-6xl lg:text-7xl">
-              <span className="inline-flex items-baseline justify-center drop-shadow-[0_5px_16px_rgba(0,0,0,0.55)]">
-                <span className="text-[#004B93] [text-shadow:0_1px_8px_rgba(255,255,255,0.32)]">He</span>
-                <span className="text-[#65BC46] [text-shadow:0_1px_8px_rgba(255,255,255,0.32)]">x</span>
-                <span className="text-[#004B93] [text-shadow:0_1px_8px_rgba(255,255,255,0.32)]">aren</span>
+          <div className="max-w-3xl animate-fade-in space-y-7 pt-16 text-left">
+            <p className="text-xs font-semibold tracking-[0.18em] text-[#65F0B1]/90">
+              Hexaren Facility Services ApS
+            </p>
+            <h1 className="text-4xl font-semibold leading-[1.04] text-white md:text-5xl lg:text-6xl">
+              <span className="block text-white/92">Hexaren</span>
+              <span className="block">Premium {t.hero.titleAccent}</span>
+              <span className="block">
+                {lang === 'en' ? (
+                  <>Services in <span className="text-[#9FD47B]">Copenhagen</span></>
+                ) : (
+                  <>Service i <span className="text-[#9FD47B]">København</span></>
+                )}
               </span>
-              {' Premium '}
-              <span className="text-[#10B981]">{t.hero.titleAccent}</span>
-              <br />
-              <span className="text-3xl md:text-5xl lg:text-6xl">{t.hero.subtitle}</span>
             </h1>
             
-            <p className="max-w-3xl text-lg leading-relaxed text-white/90 md:text-xl">
+            <p className="max-w-2xl text-base leading-8 text-white/78 md:text-lg">
               {t.hero.description}
             </p>
             
@@ -496,9 +505,12 @@ export default function HomePage() {
               <p className="mt-8 max-w-md text-lg leading-relaxed text-white/70">
                 We design every clean around one idea: quiet reliability. The kind clients notice because nothing feels missed, rushed, or improvised.
               </p>
-              <div className="mt-10 border-l-2 border-[#65BC46] pl-6">
-                <p className="text-sm uppercase tracking-[0.24em] text-white/45">The one standard</p>
-                <p className="mt-2 text-3xl font-semibold">Nordic Excellence</p>
+              <div className="mt-10 flex items-center gap-5 border-l-2 border-[#65BC46] pl-6">
+                <div className="text-6xl font-semibold leading-none text-white/18">N</div>
+                <div>
+                  <p className="text-sm uppercase tracking-[0.24em] text-white/45">The one standard</p>
+                  <p className="mt-2 text-3xl font-semibold">Nordic Excellence</p>
+                </div>
               </div>
             </div>
 
@@ -527,60 +539,55 @@ export default function HomePage() {
       {/* Services Section */}
       <section id="services" className="bg-[#F7F8FA] px-4 py-24 md:py-32">
         <div className="container mx-auto max-w-7xl">
-          <div className="mb-20 text-center">
-            <p className="scroll-reveal mb-5 text-sm font-semibold uppercase tracking-[0.28em] text-[#007A4D]" data-delay="0">
-              Our services
-            </p>
-            <h2 className="scroll-reveal text-4xl font-bold leading-tight text-[#15191F] md:text-6xl" data-delay="70">
-              Premium Cleaning Solutions
-            </h2>
-            <p className="scroll-reveal mt-6 text-xl text-[#15191F]/62" data-delay="120">
-              For Nordhavn, Østerbro & all of Copenhagen
+          <div className="mb-14 grid gap-8 md:mb-20 lg:grid-cols-[0.95fr_0.75fr] lg:items-end">
+            <div>
+              <p className="scroll-reveal mb-5 text-xs font-bold uppercase tracking-[0.28em] text-[#007A4D]" data-delay="0">
+                Our expertise
+              </p>
+              <h2 className="scroll-reveal max-w-3xl text-4xl font-semibold leading-[1.05] text-[#111418] md:text-6xl" data-delay="70">
+                Curated Solutions for Discerning Clients.
+              </h2>
+            </div>
+            <p className="scroll-reveal max-w-xl text-lg leading-relaxed text-[#111418]/68 lg:justify-self-end" data-delay="120">
+              Whether it&apos;s a high-traffic office, a boutique rental, or a residential building, our teams are trained to deliver care that exceeds standard cleaning protocols.
             </p>
           </div>
 
-          <div className="grid gap-9 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
-              <div
+              <Link
                 key={service.id}
-                className="scroll-reveal group overflow-hidden rounded-2xl bg-white shadow-[0_24px_60px_rgba(15,23,42,0.10)]"
+                href={`/services/${service.slug}`}
+                className="scroll-reveal group block overflow-hidden rounded-[6px] border border-[#111418]/10 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-[#007A4D]/28 hover:shadow-[0_28px_70px_rgba(15,23,42,0.12)]"
                 data-delay={index * 70}
               >
-                <div className="relative h-72 overflow-hidden">
+                <div className="relative aspect-[1.08] overflow-hidden bg-[#0B1114]">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="h-full w-full object-cover contrast-[1.03] saturate-[0.92] transition-transform duration-700 group-hover:scale-[1.04]"
                   />
-                  <div className="absolute left-6 top-6 flex h-14 w-14 items-center justify-center rounded-md bg-white text-[#007A4D] shadow-lg">
-                    <service.icon className="h-7 w-7" />
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/22 via-transparent to-black/28" />
+                  <div className="absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#05080A] text-[#65F0B1] shadow-[0_14px_34px_rgba(0,0,0,0.28)]">
+                    <service.icon className="h-5 w-5" />
                   </div>
                 </div>
 
-                <div className="p-8 md:p-10">
-                  <h3 className="text-3xl font-medium text-[#15191F]">{service.title}</h3>
-                  <p className="mt-6 min-h-[88px] text-lg leading-relaxed text-[#15191F]/62">
+                <div className="p-7 md:p-8">
+                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#111418]/55">
+                    {service.category}
+                  </p>
+                  <h3 className="text-2xl font-medium leading-tight text-[#111418]">{service.title}</h3>
+                  <p className="mt-5 min-h-[96px] text-base leading-relaxed text-[#111418]/68">
                     {service.description}
                   </p>
 
-                  <div className="mt-8 space-y-3">
-                    {service.features.slice(0, 2).map((feature) => (
-                      <div key={feature} className="flex items-center gap-3 text-[#15191F]">
-                        <Check className="h-4 w-4 text-[#007A4D]" />
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <a
-                    href={`/services/${service.slug}`}
-                    className="mt-10 inline-flex items-center gap-3 text-lg font-semibold text-[#007A4D] transition-colors hover:text-[#004B93]"
-                  >
-                    Discover
-                    <ArrowRight className="h-5 w-5" />
-                  </a>
+                  <span className="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#111418] transition-colors group-hover:text-[#007A4D]">
+                    Discover service
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

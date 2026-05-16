@@ -411,11 +411,11 @@ export default function ContactPage() {
       {/* Navigation - Enhanced */}
       <nav className="fixed top-0 w-full bg-gradient-to-b from-white via-white/98 to-white/95 backdrop-blur-md z-50 border-b border-gray-100 shadow-sm">
         <div className="container mx-auto px-4 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 transition-transform duration-300 hover:scale-105">
+          <Link href="/" className="relative z-50 -my-2 flex items-center transition-transform duration-300 hover:scale-105 md:-my-3 lg:-my-4">
             <img 
-              src="/hexaren-logo.png" 
+              src="/hexaren-logo-header.png" 
               alt="Hexaren" 
-              className="h-16 w-auto object-contain"
+              className="h-16 w-auto object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.45)] sm:h-[72px] md:h-20 lg:h-24"
             />
           </Link>
           
@@ -446,7 +446,7 @@ export default function ContactPage() {
       </nav>
 
       {/* CONTACT + FORM SECTION */}
-      <section className="relative pt-32 pb-24 px-4 overflow-hidden">
+      <section id="contact-form" className="relative pt-32 pb-24 px-4 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0">
           <img 
@@ -766,7 +766,7 @@ export default function ContactPage() {
             {t.cta.subtitle}
           </p>
           <div className="scroll-reveal" data-delay="200">
-            <Link href="/">
+            <Link href="#contact-form">
               <Button 
                 size="lg" 
                 className="bg-[#10B981] hover:bg-[#059669] text-white px-12 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/30"
