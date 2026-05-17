@@ -97,7 +97,7 @@ export async function POST(request, { params }) {
         
         await resend.emails.send({
           from: 'Hexaren Contact Form <onboarding@resend.dev>',
-          to: 'sabinghimire071@gmail.com',
+          to: 'hello@hexaren.dk',
           subject: `New Contact Form Submission from ${body.name}`,
           html: `
             <h2>New Contact Form Submission</h2>

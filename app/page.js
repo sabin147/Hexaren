@@ -29,7 +29,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
-const WHATSAPP_NUMBER = '+4531862094';
+const WHATSAPP_NUMBER = '+4522560070';
 
 export default function HomePage() {
   const [lang, setLang] = useState('en');
@@ -122,11 +122,11 @@ export default function HomePage() {
       image: 'https://images.pexels.com/photos/10567271/pexels-photo-10567271.jpeg'
     },
     {
-      id: 'moveout',
-      slug: 'move-out-cleaning',
+      id: 'apartment',
+      slug: 'apartment-cleaning',
       icon: Sparkles,
       category: lang === 'en' ? 'Residential' : 'Bolig',
-      ...t.services.moveout,
+      ...t.services.apartment,
       image: 'https://images.pexels.com/photos/6195129/pexels-photo-6195129.jpeg'
     },
     {
@@ -138,8 +138,8 @@ export default function HomePage() {
       image: 'https://images.pexels.com/photos/6197116/pexels-photo-6197116.jpeg'
     },
     {
-      id: 'apartment',
-      slug: 'apartment-cleaning',
+      id: 'piccoline',
+      slug: 'piccoline-office-support',
       icon: Star,
       category: lang === 'en' ? 'Workplace support' : 'Arbejdsplads support',
       ...t.services.piccoline,
@@ -152,6 +152,14 @@ export default function HomePage() {
       category: lang === 'en' ? 'Common areas' : 'Fællesarealer',
       ...t.services.staircase,
       image: 'https://images.pexels.com/photos/6195951/pexels-photo-6195951.jpeg'
+    },
+    {
+      id: 'moveout',
+      slug: 'move-out-cleaning',
+      icon: Sparkles,
+      category: lang === 'en' ? 'Moving' : 'Flytning',
+      ...t.services.moveout,
+      image: 'https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg'
     },
     {
       id: 'temporary',
@@ -774,11 +782,11 @@ export default function HomePage() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-12">
             <div>
-              <a href="/" className="flex items-center gap-3 mb-4">
+              <a href="/" className="-my-3 mb-4 inline-flex items-center">
                 <img 
-                  src="/hexaren-logo.png" 
+                  src="/hexaren-logo-header.png" 
                   alt="Hexaren" 
-                  className="h-12 w-auto object-contain"
+                  className="h-20 w-auto object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)] sm:h-24"
                 />
               </a>
               <p className="text-gray-400">{t.footer.tagline}</p>
@@ -788,10 +796,13 @@ export default function HomePage() {
             <div>
               <h4 className="font-bold text-white mb-4">{t.footer.services}</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#services" className="hover:text-[#10B981] transition">{t.services.office.title}</a></li>
-                <li><a href="#services" className="hover:text-[#10B981] transition">{t.services.airbnb.title}</a></li>
-                <li><a href="#services" className="hover:text-[#10B981] transition">{t.services.moveout.title}</a></li>
-                <li><a href="#services" className="hover:text-[#10B981] transition">{t.services.staircase.title}</a></li>
+                <li><Link href="/services/office-cleaning" className="hover:text-[#10B981] transition">{t.services.office.title}</Link></li>
+                <li><Link href="/services/apartment-cleaning" className="hover:text-[#10B981] transition">{t.services.apartment.title}</Link></li>
+                <li><Link href="/services/airbnb-turnover" className="hover:text-[#10B981] transition">{t.services.airbnb.title}</Link></li>
+                <li><Link href="/services/piccoline-office-support" className="hover:text-[#10B981] transition">{t.services.piccoline.title}</Link></li>
+                <li><Link href="/services/staircase-cleaning" className="hover:text-[#10B981] transition">{t.services.staircase.title}</Link></li>
+                <li><Link href="/services/move-out-cleaning" className="hover:text-[#10B981] transition">{t.services.moveout.title}</Link></li>
+                <li><Link href="/services/temporary-staff" className="hover:text-[#10B981] transition">{lang === 'en' ? 'Temporary Cleaning Staff' : 'Midlertidig Rengøringspersonale'}</Link></li>
               </ul>
             </div>
             
@@ -799,7 +810,8 @@ export default function HomePage() {
               <h4 className="font-bold text-white mb-4">{t.footer.company}</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="/about" className="hover:text-[#10B981] transition">{t.footer.about}</a></li>
-                <li><Link href="/contact" className="hover:text-[#10B981] transition">Contact</Link></li>
+                <li><Link href="/contact" className="hover:text-[#10B981] transition">{t.footer.contact}</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-[#10B981] transition">{lang === 'en' ? 'Privacy Policy' : 'Privatlivspolitik'}</Link></li>
               </ul>
             </div>
             
@@ -808,11 +820,11 @@ export default function HomePage() {
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#10B981]" />
-                  +45 31 86 20 94
+                  +45 22560070
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
-                  sabinghimire071@gmail.com
+                  hello@hexaren.dk
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#10B981]" />
@@ -823,7 +835,7 @@ export default function HomePage() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© {new Date().getFullYear()} Hexaren ApS. {t.footer.rights}.</p>
+            <p>© {new Date().getFullYear()} Hexaren Facility Services ApS. {t.footer.rights}.</p>
           </div>
         </div>
       </footer>

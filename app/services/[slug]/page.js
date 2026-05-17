@@ -53,7 +53,7 @@ import {
   Grid3X3
 } from 'lucide-react';
 
-const WHATSAPP_NUMBER = '+4531862094';
+const WHATSAPP_NUMBER = '+4522560070';
 
 // Icon mapping for features
 const iconMap = {
@@ -71,6 +71,7 @@ const iconMap = {
   linen: Bed,
   check: BadgeCheck,
   photo: Camera,
+  calendar: Calendar,
   stair: Columns,
   hallway: DoorOpen,
   entrance: DoorOpen,
@@ -605,15 +606,18 @@ export default function ServiceDetailPage() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-12">
             <div>
-              <Link href="/" className="flex items-center gap-3 mb-4">
+              <Link href="/" className="-my-3 mb-4 inline-flex items-center">
                 <img 
-                  src="/hexaren-logo.png" 
+                  src="/hexaren-logo-header.png" 
                   alt="Hexaren" 
-                  className="h-12 w-auto object-contain brightness-0 invert"
+                  className="h-20 w-auto object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)] sm:h-24"
                 />
               </Link>
               <p className="text-gray-400">
-                {lang === 'da' ? 'Premium rengøring i København' : 'Premium cleaning in Copenhagen'}
+                {lang === 'da' ? 'Hexaren Facility Services ApS - Premium rengøring i København' : 'Hexaren Facility Services ApS - Premium cleaning in Copenhagen'}
+              </p>
+              <p className="text-gray-500 text-sm mt-2">
+                {lang === 'da' ? 'CVR: Registrering klar om cirka en uge' : 'CVR: Registration ready in about one week'}
               </p>
             </div>
             
@@ -623,8 +627,10 @@ export default function ServiceDetailPage() {
                 <li><Link href="/services/office-cleaning" className="hover:text-[#10B981] transition">Office Cleaning</Link></li>
                 <li><Link href="/services/apartment-cleaning" className="hover:text-[#10B981] transition">Apartment Cleaning</Link></li>
                 <li><Link href="/services/airbnb-turnover" className="hover:text-[#10B981] transition">Airbnb & Turnover</Link></li>
+                <li><Link href="/services/piccoline-office-support" className="hover:text-[#10B981] transition">Piccoline / Office Support</Link></li>
                 <li><Link href="/services/staircase-cleaning" className="hover:text-[#10B981] transition">Staircase Cleaning</Link></li>
                 <li><Link href="/services/move-out-cleaning" className="hover:text-[#10B981] transition">Move-out Cleaning</Link></li>
+                <li><Link href="/services/temporary-staff" className="hover:text-[#10B981] transition">Temporary Cleaning Staff</Link></li>
               </ul>
             </div>
             
@@ -633,6 +639,7 @@ export default function ServiceDetailPage() {
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/about" className="hover:text-[#10B981] transition">{lang === 'da' ? 'Om Os' : 'About Us'}</Link></li>
                 <li><Link href="/contact" className="hover:text-[#10B981] transition">{lang === 'da' ? 'Kontakt' : 'Contact'}</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-[#10B981] transition">{lang === 'da' ? 'Privatlivspolitik' : 'Privacy Policy'}</Link></li>
               </ul>
             </div>
             
@@ -641,7 +648,7 @@ export default function ServiceDetailPage() {
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#10B981]" />
-                  +45 31 86 20 94
+                  +45 22560070
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
@@ -656,7 +663,7 @@ export default function ServiceDetailPage() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© {new Date().getFullYear()} Hexaren ApS. {lang === 'da' ? 'Alle rettigheder forbeholdes' : 'All rights reserved'}.</p>
+            <p>© {new Date().getFullYear()} Hexaren Facility Services ApS. {lang === 'da' ? 'Alle rettigheder forbeholdes' : 'All rights reserved'}.</p>
           </div>
         </div>
       </footer>

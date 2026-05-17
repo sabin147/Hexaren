@@ -25,7 +25,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
-const WHATSAPP_NUMBER = '+4531862094';
+const WHATSAPP_NUMBER = '+4522560070';
 
 // Translations for About page
 const aboutTranslations = {
@@ -48,7 +48,7 @@ const aboutTranslations = {
     intro: {
       label: 'Who We Are',
       title: 'A Small Team with Big Standards',
-      paragraph1: 'Founded in Copenhagen, Hexaren ApS was born from a shared frustration with unreliable cleaning services. We knew there had to be a better way—one built on accountability, transparency, and genuine care for the spaces we maintain.',
+      paragraph1: 'Founded in Copenhagen, Hexaren Facility Services ApS was born from a shared frustration with unreliable cleaning services. We knew there had to be a better way—one built on accountability, transparency, and genuine care for the spaces we maintain.',
       paragraph2: 'Today, we are a collective of 6 dedicated owners who personally invest in every job we take on. No middlemen, no excuses. Just premium cleaning delivered with the attention it deserves.',
       paragraph3: 'We serve offices, apartments, Airbnb properties, and residential buildings across Copenhagen. Our approach is simple: show up, deliver excellence, and build lasting relationships with clients who value quality over shortcuts.'
     },
@@ -108,7 +108,7 @@ const aboutTranslations = {
       secondaryButton: 'Contact Us'
     },
     footer: {
-      tagline: 'Hexaren ApS - Premium cleaning in Copenhagen',
+      tagline: 'Hexaren Facility Services ApS - Premium cleaning in Copenhagen',
       services: 'Services',
       company: 'Company',
       contact: 'Contact',
@@ -116,7 +116,7 @@ const aboutTranslations = {
       careers: 'Careers',
       blog: 'Blog',
       rights: 'All rights reserved',
-      cvr: 'CVR: Coming Soon'
+      cvr: 'CVR: Registration ready in about one week'
     },
     whatsapp: 'Chat with us'
   },
@@ -139,7 +139,7 @@ const aboutTranslations = {
     intro: {
       label: 'Hvem Vi Er',
       title: 'Et Lille Team med Store Standarder',
-      paragraph1: 'Grundlagt i København, Hexaren ApS blev født fra en fælles frustration over upålidelige rengøringsservices. Vi vidste, at der måtte være en bedre måde—en bygget på ansvarlighed, gennemsigtighed og ægte omsorg for de rum vi vedligeholder.',
+      paragraph1: 'Grundlagt i København, Hexaren Facility Services ApS blev født fra en fælles frustration over upålidelige rengøringsservices. Vi vidste, at der måtte være en bedre måde—en bygget på ansvarlighed, gennemsigtighed og ægte omsorg for de rum vi vedligeholder.',
       paragraph2: 'I dag er vi et kollektiv af 6 dedikerede ejere, der personligt investerer i hvert job vi påtager os. Ingen mellemled, ingen undskyldninger. Bare premium rengøring leveret med den opmærksomhed den fortjener.',
       paragraph3: 'Vi servicerer kontorer, lejligheder, Airbnb-ejendomme og boligejendomme i hele København. Vores tilgang er simpel: mød op, lever excellence, og byg varige relationer med kunder der værdsætter kvalitet over genveje.'
     },
@@ -199,7 +199,7 @@ const aboutTranslations = {
       secondaryButton: 'Kontakt Os'
     },
     footer: {
-      tagline: 'Hexaren ApS - Premium rengøring i København',
+      tagline: 'Hexaren Facility Services ApS - Premium rengøring i København',
       services: 'Ydelser',
       company: 'Firma',
       contact: 'Kontakt',
@@ -207,7 +207,7 @@ const aboutTranslations = {
       careers: 'Karriere',
       blog: 'Blog',
       rights: 'Alle rettigheder forbeholdes',
-      cvr: 'CVR: Kommer snart'
+      cvr: 'CVR: Registrering klar om cirka en uge'
     },
     whatsapp: 'Chat med os'
   }
@@ -597,11 +597,11 @@ export default function AboutPage() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-12">
             <div>
-              <Link href="/" className="flex items-center gap-3 mb-4">
+              <Link href="/" className="-my-3 mb-4 inline-flex items-center">
                 <img 
-                  src="/hexaren-logo.png" 
+                  src="/hexaren-logo-header.png" 
                   alt="Hexaren" 
-                  className="h-12 w-auto object-contain brightness-0 invert"
+                  className="h-20 w-auto object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)] sm:h-24"
                 />
               </Link>
               <p className="text-gray-400">{t.footer.tagline}</p>
@@ -611,10 +611,13 @@ export default function AboutPage() {
             <div>
               <h4 className="font-bold text-white mb-4">{t.footer.services}</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="/#services" className="hover:text-[#10B981] transition">Office Cleaning</Link></li>
-                <li><Link href="/#services" className="hover:text-[#10B981] transition">Apartment Cleaning</Link></li>
-                <li><Link href="/#services" className="hover:text-[#10B981] transition">Airbnb & Turnover</Link></li>
-                <li><Link href="/#services" className="hover:text-[#10B981] transition">Staircase Cleaning</Link></li>
+                <li><Link href="/services/office-cleaning" className="hover:text-[#10B981] transition">Office Cleaning</Link></li>
+                <li><Link href="/services/apartment-cleaning" className="hover:text-[#10B981] transition">Apartment Cleaning</Link></li>
+                <li><Link href="/services/airbnb-turnover" className="hover:text-[#10B981] transition">Airbnb & Turnover</Link></li>
+                <li><Link href="/services/piccoline-office-support" className="hover:text-[#10B981] transition">Piccoline / Office Support</Link></li>
+                <li><Link href="/services/staircase-cleaning" className="hover:text-[#10B981] transition">Staircase Cleaning</Link></li>
+                <li><Link href="/services/move-out-cleaning" className="hover:text-[#10B981] transition">Move-out Cleaning</Link></li>
+                <li><Link href="/services/temporary-staff" className="hover:text-[#10B981] transition">Temporary Cleaning Staff</Link></li>
               </ul>
             </div>
             
@@ -622,8 +625,8 @@ export default function AboutPage() {
               <h4 className="font-bold text-white mb-4">{t.footer.company}</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/about" className="hover:text-[#10B981] transition">{t.footer.about}</Link></li>
-                <li><a href="#" className="hover:text-[#10B981] transition">{t.footer.careers}</a></li>
-                <li><a href="#" className="hover:text-[#10B981] transition">{t.footer.blog}</a></li>
+                <li><Link href="/contact" className="hover:text-[#10B981] transition">{t.footer.contact}</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-[#10B981] transition">{lang === 'en' ? 'Privacy Policy' : 'Privatlivspolitik'}</Link></li>
               </ul>
             </div>
             
@@ -632,7 +635,7 @@ export default function AboutPage() {
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#10B981]" />
-                  +45 31 86 20 94
+                  +45 22560070
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
@@ -647,7 +650,7 @@ export default function AboutPage() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© {new Date().getFullYear()} Hexaren ApS. {t.footer.rights}.</p>
+            <p>© {new Date().getFullYear()} Hexaren Facility Services ApS. {t.footer.rights}.</p>
           </div>
         </div>
       </footer>

@@ -13,7 +13,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_DK',
     alternateLocale: 'da_DK',
-    siteName: 'Hexaren ApS'
+    siteName: 'Hexaren Facility Services ApS'
   },
 };
 

@@ -36,7 +36,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
-const WHATSAPP_NUMBER = '+4531862094';
+const WHATSAPP_NUMBER = '+4522560070';
 
 // Translations for Contact page
 const contactTranslations = {
@@ -52,8 +52,8 @@ const contactTranslations = {
       title: 'You have questions,',
       titleAccent: 'we have answers',
       description: 'Whether you need a quote, have questions about our services, or want to discuss a custom cleaning solution—we\'re here to help.',
-      email: 'sabinghimire071@gmail.com',
-      phone: '+45 31 86 20 94',
+      email: 'hello@hexaren.dk',
+      phone: '+45 22560070',
       hours: 'Mon-Fri: 8:00 - 18:00',
       response: 'We respond within 2 hours',
       bookMeeting: 'Book a meeting',
@@ -88,6 +88,9 @@ const contactTranslations = {
         apartment: 'Apartment Cleaning',
         airbnb: 'Airbnb & Turnover',
         staircase: 'Staircase Cleaning',
+        piccoline: 'Piccoline / Office Support',
+        moveout: 'Move-out Cleaning',
+        temporary: 'Temporary Cleaning Staff',
         other: 'Other'
       }
     },
@@ -98,7 +101,7 @@ const contactTranslations = {
       items: [
         {
           question: 'How do I book a cleaning service?',
-          answer: 'Booking is easy! You can use our online booking form, send us a message through this contact page, or simply call us at +45 31 86 20 94. We\'ll get back to you within 2 hours to confirm your booking and discuss any specific requirements.'
+          answer: 'Booking is easy! You can use our online booking form, send us a message through this contact page, or simply call us at +45 22560070. We\'ll get back to you within 2 hours to confirm your booking and discuss any specific requirements.'
         },
         {
           question: 'What areas in Copenhagen do you cover?',
@@ -136,7 +139,7 @@ const contactTranslations = {
       button: 'Get Your Free Quote'
     },
     footer: {
-      tagline: 'Hexaren ApS - Premium cleaning in Copenhagen',
+      tagline: 'Hexaren Facility Services ApS - Premium cleaning in Copenhagen',
       services: 'Services',
       company: 'Company',
       contact: 'Contact',
@@ -144,7 +147,7 @@ const contactTranslations = {
       careers: 'Careers',
       blog: 'Blog',
       rights: 'All rights reserved',
-      cvr: 'CVR: Coming Soon'
+      cvr: 'CVR: Registration ready in about one week'
     },
     whatsapp: 'Chat with us'
   },
@@ -160,8 +163,8 @@ const contactTranslations = {
       title: 'Du har spørgsmål,',
       titleAccent: 'vi har svar',
       description: 'Uanset om du har brug for et tilbud, har spørgsmål om vores services, eller ønsker at diskutere en tilpasset rengøringsløsning—vi er her for at hjælpe.',
-      email: 'sabinghimire071@gmail.com',
-      phone: '+45 31 86 20 94',
+      email: 'hello@hexaren.dk',
+      phone: '+45 22560070',
       hours: 'Man-Fre: 8:00 - 18:00',
       response: 'Vi svarer inden for 2 timer',
       bookMeeting: 'Book et møde',
@@ -196,6 +199,9 @@ const contactTranslations = {
         apartment: 'Lejlighedsrengøring',
         airbnb: 'Airbnb & Skifterengøring',
         staircase: 'Trapperengøring',
+        piccoline: 'Piccoline / Kontorsupport',
+        moveout: 'Flytterengøring',
+        temporary: 'Midlertidig Rengøringspersonale',
         other: 'Andet'
       }
     },
@@ -212,7 +218,7 @@ const contactTranslations = {
       items: [
         {
           question: 'Hvordan booker jeg en rengøringsservice?',
-          answer: 'Det er nemt at booke! Du kan bruge vores online bookingformular, sende os en besked via denne kontaktside, eller bare ringe til os på +45 31 86 20 94. Vi vender tilbage inden for 2 timer for at bekræfte din booking og diskutere eventuelle specifikke krav.'
+          answer: 'Det er nemt at booke! Du kan bruge vores online bookingformular, sende os en besked via denne kontaktside, eller bare ringe til os på +45 22560070. Vi vender tilbage inden for 2 timer for at bekræfte din booking og diskutere eventuelle specifikke krav.'
         },
         {
           question: 'Hvilke områder i København dækker I?',
@@ -250,7 +256,7 @@ const contactTranslations = {
       button: 'Få Dit Gratis Tilbud'
     },
     footer: {
-      tagline: 'Hexaren ApS - Premium rengøring i København',
+      tagline: 'Hexaren Facility Services ApS - Premium rengøring i København',
       services: 'Ydelser',
       company: 'Firma',
       contact: 'Kontakt',
@@ -258,7 +264,7 @@ const contactTranslations = {
       careers: 'Karriere',
       blog: 'Blog',
       rights: 'Alle rettigheder forbeholdes',
-      cvr: 'CVR: Kommer snart'
+      cvr: 'CVR: Registrering klar om cirka en uge'
     },
     whatsapp: 'Chat med os'
   }
@@ -363,7 +369,10 @@ export default function ContactPage() {
     { key: 'office', icon: Building2 },
     { key: 'apartment', icon: Home },
     { key: 'airbnb', icon: Sparkles },
+    { key: 'piccoline', icon: Briefcase },
     { key: 'staircase', icon: Building2 },
+    { key: 'moveout', icon: Sparkles },
+    { key: 'temporary', icon: Briefcase },
     { key: 'other', icon: MessageCircle }
   ];
 
@@ -673,7 +682,7 @@ export default function ContactPage() {
         <div className="container mx-auto max-w-4xl">
           <div className="grid md:grid-cols-2 gap-6">
             <a 
-              href="mailto:sabinghimire071@gmail.com?subject=Job Application - Cleaning Specialist"
+              href="mailto:hello@hexaren.dk?subject=Job Application - Cleaning Specialist"
               className="flex items-start gap-4 p-6 rounded-2xl border-2 border-gray-100 hover:border-[#10B981] hover:shadow-lg transition-all duration-300 group scroll-reveal"
               data-delay="0"
             >
@@ -689,7 +698,7 @@ export default function ContactPage() {
             </a>
 
             <a 
-              href="mailto:sabinghimire071@gmail.com?subject=Partnership Inquiry"
+              href="mailto:hello@hexaren.dk?subject=Partnership Inquiry"
               className="flex items-start gap-4 p-6 rounded-2xl border-2 border-gray-100 hover:border-[#10B981] hover:shadow-lg transition-all duration-300 group scroll-reveal"
               data-delay="100"
             >
@@ -784,11 +793,11 @@ export default function ContactPage() {
         <div className="container mx-auto">
           <div className="grid md:grid-cols-4 gap-12">
             <div>
-              <Link href="/" className="flex items-center gap-3 mb-4">
+              <Link href="/" className="-my-3 mb-4 inline-flex items-center">
                 <img 
-                  src="/hexaren-logo.png" 
+                  src="/hexaren-logo-header.png" 
                   alt="Hexaren" 
-                  className="h-12 w-auto object-contain"
+                  className="h-20 w-auto object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)] sm:h-24"
                 />
               </Link>
               <p className="text-gray-400">{t.footer.tagline}</p>
@@ -798,10 +807,13 @@ export default function ContactPage() {
             <div>
               <h4 className="font-bold text-white mb-4">{t.footer.services}</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><Link href="/#services" className="hover:text-[#10B981] transition">Office Cleaning</Link></li>
-                <li><Link href="/#services" className="hover:text-[#10B981] transition">Apartment Cleaning</Link></li>
-                <li><Link href="/#services" className="hover:text-[#10B981] transition">Airbnb & Turnover</Link></li>
-                <li><Link href="/#services" className="hover:text-[#10B981] transition">Staircase Cleaning</Link></li>
+                <li><Link href="/services/office-cleaning" className="hover:text-[#10B981] transition">Office Cleaning</Link></li>
+                <li><Link href="/services/apartment-cleaning" className="hover:text-[#10B981] transition">Apartment Cleaning</Link></li>
+                <li><Link href="/services/airbnb-turnover" className="hover:text-[#10B981] transition">Airbnb & Turnover</Link></li>
+                <li><Link href="/services/piccoline-office-support" className="hover:text-[#10B981] transition">Piccoline / Office Support</Link></li>
+                <li><Link href="/services/staircase-cleaning" className="hover:text-[#10B981] transition">Staircase Cleaning</Link></li>
+                <li><Link href="/services/move-out-cleaning" className="hover:text-[#10B981] transition">Move-out Cleaning</Link></li>
+                <li><Link href="/services/temporary-staff" className="hover:text-[#10B981] transition">Temporary Cleaning Staff</Link></li>
               </ul>
             </div>
             
@@ -809,8 +821,8 @@ export default function ContactPage() {
               <h4 className="font-bold text-white mb-4">{t.footer.company}</h4>
               <ul className="space-y-2 text-gray-400">
                 <li><Link href="/about" className="hover:text-[#10B981] transition">{t.footer.about}</Link></li>
-                <li><a href="#" className="hover:text-[#10B981] transition">{t.footer.careers}</a></li>
-                <li><a href="#" className="hover:text-[#10B981] transition">{t.footer.blog}</a></li>
+                <li><Link href="/contact" className="hover:text-[#10B981] transition">{t.footer.contact}</Link></li>
+                <li><Link href="/privacy-policy" className="hover:text-[#10B981] transition">{lang === 'en' ? 'Privacy Policy' : 'Privatlivspolitik'}</Link></li>
               </ul>
             </div>
             
@@ -819,11 +831,11 @@ export default function ContactPage() {
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#10B981]" />
-                  +45 31 86 20 94
+                  +45 22560070
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
-                  sabinghimire071@gmail.com
+                  hello@hexaren.dk
                 </li>
                 <li className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-[#10B981]" />
@@ -834,7 +846,7 @@ export default function ContactPage() {
           </div>
           
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-            <p>© {new Date().getFullYear()} Hexaren ApS. {t.footer.rights}.</p>
+            <p>© {new Date().getFullYear()} Hexaren Facility Services ApS. {t.footer.rights}.</p>
           </div>
         </div>
       </footer>
