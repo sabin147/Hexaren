@@ -72,10 +72,12 @@ export default function HomePage() {
 
   // Global Intersection Observer for smooth scroll animations
   useEffect(() => {
+    const revealSelector = '.scroll-reveal';
+
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
     if (prefersReducedMotion) {
-      document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children').forEach(el => {
+      document.querySelectorAll(revealSelector).forEach(el => {
         el.classList.add('animate-in');
       });
       return;
@@ -104,7 +106,7 @@ export default function HomePage() {
       }
     );
 
-    const revealElements = document.querySelectorAll('.scroll-reveal, .scroll-reveal-fade, .scroll-reveal-scale, .scroll-reveal-left, .scroll-reveal-right, .parallax-reveal, .stagger-children');
+    const revealElements = document.querySelectorAll(revealSelector);
     revealElements.forEach((element) => observer.observe(element));
 
     return () => observer.disconnect();
@@ -173,23 +175,21 @@ export default function HomePage() {
       <style jsx global>{`
         .scroll-reveal {
           opacity: 0;
-          transform: translateY(25px);
-          transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), 
-                      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+          transform: translateY(24px);
+          transition: opacity 0.7s ease-out, transform 0.7s ease-out;
         }
         .scroll-reveal.animate-in {
           opacity: 1;
           transform: translateY(0);
         }
         .image-zoom {
-          transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: transform 0.7s ease-out;
         }
         .image-zoom:hover {
-          transform: scale(1.05);
+          transform: scale(1.04);
         }
         .card-lift {
-          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: transform 0.7s ease-out, box-shadow 0.7s ease-out;
         }
         .card-lift:hover {
           transform: translateY(-8px);
@@ -368,7 +368,7 @@ export default function HomePage() {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover"
         >
           <source src="/hero-video.mp4" type="video/mp4" />
           <img 
@@ -505,25 +505,28 @@ export default function HomePage() {
               <p className="mt-8 max-w-md text-lg leading-relaxed text-white/70">
                 We design every clean around one idea: quiet reliability. The kind clients notice because nothing feels missed, rushed, or improvised.
               </p>
-              <div className="mt-10 flex items-center gap-5 border-l-2 border-[#65BC46] pl-6">
-                <div className="text-6xl font-semibold leading-none text-white/18">N</div>
-                <div>
-                  <p className="text-sm uppercase tracking-[0.24em] text-white/45">The one standard</p>
-                  <p className="mt-2 text-3xl font-semibold">Nordic Excellence</p>
-                </div>
-              </div>
+              <img
+                src="/hexaren-logo-header.png"
+                alt="Hexaren"
+                className="mt-12 h-44 w-auto object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.28)] sm:h-56"
+              />
             </div>
 
-            <div className="divide-y divide-white/12 border-y border-white/12">
+            <div className="border-y border-white/12">
               {[
                 ['H', 'Honesty', 'Transparent communication, reliable agreements, and clear expectations from the first message.'],
                 ['E', 'Efficiency', 'Structured teams, precise routines, and dependable results without unnecessary disruption.'],
                 ['X', 'Xcellence', 'Premium detail standards that go beyond surface-level clean.'],
                 ['A', 'Accountability', 'Ownership over every shift, every checklist, and every client experience.'],
                 ['R', 'Respect', 'Care for workplaces, homes, people, materials, and shared environments.'],
-                ['E', 'Eco-conscious', 'Responsible methods and supplies chosen with your space and the planet in mind.']
+                ['E', 'Eco-conscious', 'Responsible methods and supplies chosen with your space and the planet in mind.'],
+                ['N', 'Nordic Standard', 'The standard that binds every Hexaren promise together.']
               ].map(([letter, title, description], index) => (
-                <div key={title} className="scroll-reveal grid gap-5 py-7 sm:grid-cols-[88px_1fr]" data-delay={index * 60}>
+                <div
+                  key={title}
+                  className="scroll-reveal grid gap-5 border-t border-white/12 py-7 first:border-t-0 sm:grid-cols-[88px_1fr]"
+                  data-delay={index * 60}
+                >
                   <div className="text-5xl font-semibold text-white/20">{letter}</div>
                   <div className="grid gap-3 md:grid-cols-[0.45fr_1fr]">
                     <h3 className="text-2xl font-semibold text-white">{title}</h3>
@@ -565,7 +568,7 @@ export default function HomePage() {
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="h-full w-full object-cover contrast-[1.03] saturate-[0.92] transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="image-zoom h-full w-full object-cover contrast-[1.03] saturate-[0.92]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-black/22 via-transparent to-black/28" />
                   <div className="absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#05080A] text-[#65F0B1] shadow-[0_14px_34px_rgba(0,0,0,0.28)]">
