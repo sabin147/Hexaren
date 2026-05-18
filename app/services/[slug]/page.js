@@ -617,7 +617,7 @@ export default function ServiceDetailPage() {
                 {lang === 'da' ? 'Hexaren Facility Services ApS - Premium rengøring i København' : 'Hexaren Facility Services ApS - Premium cleaning in Copenhagen'}
               </p>
               <p className="text-gray-500 text-sm mt-2">
-                {lang === 'da' ? 'CVR: Registrering klar om cirka en uge' : 'CVR: Registration ready in about one week'}
+                CVR: 46492102
               </p>
             </div>
             
@@ -648,7 +648,7 @@ export default function ServiceDetailPage() {
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#10B981]" />
-                  +45 22560070
+                  +45 22 56 00 70
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />

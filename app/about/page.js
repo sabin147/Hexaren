@@ -115,7 +115,7 @@ const aboutTranslations = {
       careers: 'Careers',
       blog: 'Blog',
       rights: 'All rights reserved',
-      cvr: 'CVR: Registration ready in about one week'
+      cvr: 'CVR: 46492102'
     },
     whatsapp: 'Chat with us'
   },
@@ -205,7 +205,7 @@ const aboutTranslations = {
       careers: 'Karriere',
       blog: 'Blog',
       rights: 'Alle rettigheder forbeholdes',
-      cvr: 'CVR: Registrering klar om cirka en uge'
+      cvr: 'CVR: 46492102'
     },
     whatsapp: 'Chat med os'
   }
@@ -632,7 +632,7 @@ export default function AboutPage() {
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#10B981]" />
-                  +45 22560070
+                  +45 22 56 00 70
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />

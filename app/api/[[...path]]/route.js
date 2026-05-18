@@ -22,6 +22,18 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
 }
 
+const contactEmailTo = process.env.CONTACT_EMAIL_TO || 'sabinghimire071@gmail.com';
+const contactEmailFrom = process.env.CONTACT_EMAIL_FROM || 'Hexaren Contact Form <onboarding@resend.dev>';
+
+function escapeHtml(value = '') {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 // CORS headers
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -63,6 +75,9 @@ export async function POST(request, { params }) {
     if (path === 'contact') {
       const body = await request.json();
       const supabase = getSupabase();
+      let savedContact = null;
+      let emailSent = false;
+      let emailErrorMessage = '';
       
       const contact = {
         id: uuidv4(),
@@ -83,6 +98,10 @@ export async function POST(request, { params }) {
           .insert([contact])
           .select()
         : { data: null, error: { message: 'Supabase environment variables are not configured' } };
+
+      if (!error) {
+        savedContact = data?.[0] || contact;
+      }
       
       // Send email notification via Resend
       try {
@@ -96,50 +115,59 @@ export async function POST(request, { params }) {
           : 'Not specified';
         
         await resend.emails.send({
-          from: 'Hexaren Contact Form <onboarding@resend.dev>',
-          to: 'hello@hexaren.dk',
+          from: contactEmailFrom,
+          to: contactEmailTo,
+          replyTo: body.email,
           subject: `New Contact Form Submission from ${body.name}`,
           html: `
             <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${body.name}</p>
-            <p><strong>Email:</strong> ${body.email}</p>
-            <p><strong>Phone:</strong> ${body.phone}</p>
-            ${body.company ? `<p><strong>Company:</strong> ${body.company}</p>` : ''}
-            <p><strong>Services Interested In:</strong> ${servicesText}</p>
+            <p><strong>Name:</strong> ${escapeHtml(body.name)}</p>
+            <p><strong>Email:</strong> ${escapeHtml(body.email)}</p>
+            <p><strong>Phone:</strong> ${escapeHtml(body.phone)}</p>
+            ${body.company ? `<p><strong>Company:</strong> ${escapeHtml(body.company)}</p>` : ''}
+            <p><strong>Services Interested In:</strong> ${escapeHtml(servicesText)}</p>
             <p><strong>Message:</strong></p>
-            <p>${body.message}</p>
+            <p>${escapeHtml(body.message)}</p>
             <hr />
             <p><small>Submitted at: ${new Date().toLocaleString()}</small></p>
           `
         });
+        emailSent = true;
       } catch (emailError) {
+        emailErrorMessage = emailError?.message || 'Email notification failed';
         console.error('Email notification error:', emailError);
-        // Don't fail the request if email fails
+      }
+
+      if (!emailSent && error) {
+        console.error('Contact submission was not delivered or saved:', {
+          emailError: emailErrorMessage,
+          supabaseError: error,
+          contact
+        });
+
+        return NextResponse.json({
+          success: false,
+          error: 'We could not send your message right now. Please call +45 22 56 00 70 or email hello@hexaren.dk directly.'
+        }, { status: 502, headers: corsHeaders });
       }
       
       if (error) {
         console.error('Supabase error:', error);
-        // If table doesn't exist, return success anyway
-        if (error.code === '42P01' || error.code === 'PGRST204') {
-          return NextResponse.json({ 
-            success: true, 
-            message: 'Message received',
-            contact: contact 
-          }, { headers: corsHeaders });
-        }
-        // Still return success for MVP - log the message
-        console.log('Contact form submission:', contact);
+      }
+
+      if (!emailSent) {
+        console.error('Contact submission saved, but email notification failed:', emailErrorMessage);
         return NextResponse.json({ 
           success: true, 
-          message: 'Message received',
-          contact: contact 
+          message: 'Message saved, but email notification failed',
+          contact: savedContact || contact 
         }, { headers: corsHeaders });
       }
       
       return NextResponse.json({ 
         success: true, 
         message: 'Message sent successfully',
-        contact: data?.[0] || contact 
+        contact: savedContact || contact 
       }, { headers: corsHeaders });
     }
     

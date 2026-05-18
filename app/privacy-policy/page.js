@@ -19,18 +19,18 @@ const sections = [
     title: '1. Data Controller',
     body: [
       'The data controller responsible for your personal data is Hexaren Facility Services ApS.',
-      'CVR: Registration ready in about one week.',
-      'Address: Copenhagen, Denmark. The registered business address will be added once finalized.',
+      'CVR: 46492102.',
+      'Registered address: C/O LegalDesk.dk ApS, Njalsgade 21F, 2., 2300 København S.',
       'Email: hello@hexaren.dk',
-      'Phone: +45 22560070'
+      'Phone: +45 22 56 00 70'
     ],
     daTitle: '1. Dataansvarlig',
     daBody: [
       'Den dataansvarlige for dine personoplysninger er Hexaren Facility Services ApS.',
-      'CVR: Registrering klar om cirka en uge.',
-      'Adresse: København, Danmark. Den registrerede virksomhedsadresse tilføjes, når den er endeligt fastlagt.',
+      'CVR: 46492102.',
+      'Registreret adresse: C/O LegalDesk.dk ApS, Njalsgade 21F, 2., 2300 København S.',
       'Email: hello@hexaren.dk',
-      'Telefon: +45 22560070'
+      'Telefon: +45 22 56 00 70'
     ]
   },
   {
@@ -158,11 +158,11 @@ const sections = [
   {
     title: '11. Contact Us',
     body: [
-      'If you have questions about this Privacy Policy or want to exercise your data protection rights, contact us at hello@hexaren.dk or +45 22560070.'
+      'If you have questions about this Privacy Policy or want to exercise your data protection rights, contact us at hello@hexaren.dk or +45 22 56 00 70.'
     ],
     daTitle: '11. Kontakt Os',
     daBody: [
-      'Hvis du har spørgsmål om denne privatlivspolitik eller vil gøre brug af dine databeskyttelsesrettigheder, kan du kontakte os på hello@hexaren.dk eller +45 22560070.'
+      'Hvis du har spørgsmål om denne privatlivspolitik eller vil gøre brug af dine databeskyttelsesrettigheder, kan du kontakte os på hello@hexaren.dk eller +45 22 56 00 70.'
     ]
   }
 ];
@@ -234,10 +234,10 @@ export default function PrivacyPolicyPage() {
               </h2>
               <div className="mt-5 space-y-4 text-sm text-gray-600">
                 <p className="font-semibold text-[#0F172A]">Hexaren Facility Services ApS</p>
-                <p>{isDa ? 'CVR: Registrering klar om cirka en uge' : 'CVR: Registration ready in about one week'}</p>
+                <p>CVR: 46492102</p>
                 <p className="flex items-start gap-2">
                   <MapPin className="mt-0.5 h-4 w-4 text-[#10B981]" />
-                  Copenhagen, Denmark
+                  <span>C/O LegalDesk.dk ApS, Njalsgade 21F, 2., 2300 København S</span>
                 </p>
                 <p className="flex items-center gap-2">
                   <Mail className="h-4 w-4 text-[#10B981]" />
@@ -245,7 +245,7 @@ export default function PrivacyPolicyPage() {
                 </p>
                 <p className="flex items-center gap-2">
                   <Phone className="h-4 w-4 text-[#10B981]" />
-                  +45 22560070
+                  +45 22 56 00 70
                 </p>
               </div>
               <Link href="/contact" className="mt-8 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-[#0F172A] transition-colors hover:text-[#10B981]">

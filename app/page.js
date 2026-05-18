@@ -830,7 +830,7 @@ export default function HomePage() {
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#10B981]" />
-                  +45 22560070
+                  +45 22 56 00 70
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />

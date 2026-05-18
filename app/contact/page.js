@@ -53,7 +53,7 @@ const contactTranslations = {
       titleAccent: 'we have answers',
       description: 'Whether you need a quote, have questions about our services, or want to discuss a custom cleaning solution—we\'re here to help.',
       email: 'hello@hexaren.dk',
-      phone: '+45 22560070',
+      phone: '+45 22 56 00 70',
       hours: 'Mon-Fri: 8:00 - 18:00',
       response: 'We respond within 2 hours',
       bookMeeting: 'Book a meeting',
@@ -101,7 +101,7 @@ const contactTranslations = {
       items: [
         {
           question: 'How do I book a cleaning service?',
-          answer: 'Booking is easy! You can use our online booking form, send us a message through this contact page, or simply call us at +45 22560070. We\'ll get back to you within 2 hours to confirm your booking and discuss any specific requirements.'
+          answer: 'Booking is easy! You can use our online booking form, send us a message through this contact page, or simply call us at +45 22 56 00 70. We\'ll get back to you within 2 hours to confirm your booking and discuss any specific requirements.'
         },
         {
           question: 'What areas in Copenhagen do you cover?',
@@ -147,7 +147,7 @@ const contactTranslations = {
       careers: 'Careers',
       blog: 'Blog',
       rights: 'All rights reserved',
-      cvr: 'CVR: Registration ready in about one week'
+      cvr: 'CVR: 46492102'
     },
     whatsapp: 'Chat with us'
   },
@@ -164,7 +164,7 @@ const contactTranslations = {
       titleAccent: 'vi har svar',
       description: 'Uanset om du har brug for et tilbud, har spørgsmål om vores services, eller ønsker at diskutere en tilpasset rengøringsløsning—vi er her for at hjælpe.',
       email: 'hello@hexaren.dk',
-      phone: '+45 22560070',
+      phone: '+45 22 56 00 70',
       hours: 'Man-Fre: 8:00 - 18:00',
       response: 'Vi svarer inden for 2 timer',
       bookMeeting: 'Book et møde',
@@ -218,7 +218,7 @@ const contactTranslations = {
       items: [
         {
           question: 'Hvordan booker jeg en rengøringsservice?',
-          answer: 'Det er nemt at booke! Du kan bruge vores online bookingformular, sende os en besked via denne kontaktside, eller bare ringe til os på +45 22560070. Vi vender tilbage inden for 2 timer for at bekræfte din booking og diskutere eventuelle specifikke krav.'
+          answer: 'Det er nemt at booke! Du kan bruge vores online bookingformular, sende os en besked via denne kontaktside, eller bare ringe til os på +45 22 56 00 70. Vi vender tilbage inden for 2 timer for at bekræfte din booking og diskutere eventuelle specifikke krav.'
         },
         {
           question: 'Hvilke områder i København dækker I?',
@@ -264,7 +264,7 @@ const contactTranslations = {
       careers: 'Karriere',
       blog: 'Blog',
       rights: 'Alle rettigheder forbeholdes',
-      cvr: 'CVR: Registrering klar om cirka en uge'
+      cvr: 'CVR: 46492102'
     },
     whatsapp: 'Chat med os'
   }
@@ -827,7 +827,7 @@ export default function ContactPage() {
               <ul className="space-y-3 text-gray-400">
                 <li className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-[#10B981]" />
-                  +45 22560070
+                  +45 22 56 00 70
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-[#10B981]" />
