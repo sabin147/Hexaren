@@ -512,11 +512,14 @@ export default function HomePage() {
               <p className="mt-8 max-w-md text-lg leading-relaxed text-white/70">
                 We design every clean around one idea: quiet reliability. The kind clients notice because nothing feels missed, rushed, or improvised.
               </p>
-              <img
-                src="/hexaren-logo-header.png"
-                alt="Hexaren"
-                className="mt-12 h-44 w-auto object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.28)] sm:h-56"
-              />
+              <div className="mt-12 max-w-md border-l-2 border-[#65BC46] bg-white/[0.04] px-6 py-7">
+                <p className="mb-3 text-sm font-semibold uppercase tracking-[0.24em] text-[#65BC46]">
+                  Our Working Rhythm
+                </p>
+                <p className="text-2xl font-semibold leading-snug text-white">
+                  Clear scope. Prepared team. Consistent routine. Honest follow-up.
+                </p>
+              </div>
             </div>
 
             <div className="border-y border-white/12">
@@ -715,19 +718,27 @@ export default function HomePage() {
 
           <div className="grid border-y border-[#0F3D2E]/15 md:grid-cols-3">
             {[
-              { step: '01', ...t.howItWorks.step1, icon: Calendar },
+              { step: '01', ...t.howItWorks.step1, icon: Calendar, href: '/contact' },
               { step: '02', ...t.howItWorks.step2, icon: Sparkles },
               { step: '03', ...t.howItWorks.step3, icon: Check }
-            ].map((item, index) => (
-              <div key={item.step} className="scroll-reveal border-b border-[#0F3D2E]/15 p-8 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0" data-delay={index * 100}>
-                <div className="mb-12 flex items-center justify-between">
-                  <span className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0F3D2E]/45">{item.step}</span>
-                  <item.icon className="h-7 w-7 text-[#65BC46]" />
-                </div>
-                <h3 className="text-2xl font-semibold text-[#0B1F1A]">{item.title}</h3>
-                <p className="mt-4 leading-relaxed text-[#0B1F1A]/62">{item.description}</p>
-              </div>
-            ))}
+            ].map((item, index) => {
+              const CardElement = item.href ? Link : 'div';
+              return (
+                <CardElement
+                  key={item.step}
+                  href={item.href}
+                  className="scroll-reveal block border-b border-[#0F3D2E]/15 p-8 transition-colors duration-300 last:border-b-0 hover:bg-white/35 md:border-b-0 md:border-r md:last:border-r-0"
+                  data-delay={index * 100}
+                >
+                  <div className="mb-12 flex items-center justify-between">
+                    <span className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0F3D2E]/45">{item.step}</span>
+                    <item.icon className="h-7 w-7 text-[#65BC46]" />
+                  </div>
+                  <h3 className="text-2xl font-semibold text-[#0B1F1A]">{item.title}</h3>
+                  <p className="mt-4 leading-relaxed text-[#0B1F1A]/62">{item.description}</p>
+                </CardElement>
+              );
+            })}
           </div>
         </div>
       </section>
