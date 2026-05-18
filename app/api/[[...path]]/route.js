@@ -22,7 +22,7 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY);
 }
 
-const contactEmailTo = process.env.CONTACT_EMAIL_TO || 'sabinghimire071@gmail.com';
+const contactEmailTo = process.env.CONTACT_EMAIL_TO || 'hello@hexaren.dk';
 const contactEmailFrom = process.env.CONTACT_EMAIL_FROM || 'Hexaren Contact Form <onboarding@resend.dev>';
 
 function escapeHtml(value = '') {
