@@ -414,7 +414,7 @@ export default function HomePage() {
             </p>
             <h1 className="text-4xl font-semibold leading-[1.04] text-white md:text-5xl lg:text-6xl">
               <span className="block text-white/92">Hexaren</span>
-              <span className="block">Premium {t.hero.titleAccent}</span>
+              <span className="block">{lang === 'en' ? 'Professional' : 'Professionel'} {t.hero.titleAccent}</span>
               <span className="block">
                 {lang === 'en' ? (
                   <>Services in <span className="text-[#9FD47B]">Copenhagen</span></>
@@ -524,7 +524,7 @@ export default function HomePage() {
               {[
                 ['H', 'Honesty', 'Transparent communication, reliable agreements, and clear expectations from the first message.'],
                 ['E', 'Efficiency', 'Structured teams, precise routines, and dependable results without unnecessary disruption.'],
-                ['X', 'Xcellence', 'Premium detail standards that go beyond surface-level clean.'],
+                ['X', 'Xcellence', 'Professional detail standards that go beyond surface-level clean.'],
                 ['A', 'Accountability', 'Ownership over every shift, every checklist, and every client experience.'],
                 ['R', 'Respect', 'Care for workplaces, homes, people, materials, and shared environments.'],
                 ['E', 'Eco-conscious', 'Responsible methods and supplies chosen with your space and the planet in mind.'],
@@ -746,7 +746,7 @@ export default function HomePage() {
         
         <div className="relative z-10 container mx-auto max-w-4xl text-center">
           <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-delay="0">
-            {lang === 'en' ? 'Ready to Experience Premium Cleaning?' : 'Klar til at Opleve Premium Rengøring?'}
+            {lang === 'en' ? 'Ready to Experience Professional Cleaning?' : 'Klar til at Opleve Professionel Rengøring?'}
           </h2>
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto scroll-reveal" data-delay="100">
             {lang === 'en' 
