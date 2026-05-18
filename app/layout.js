@@ -15,6 +15,16 @@ export const metadata = {
     alternateLocale: 'da_DK',
     siteName: 'Hexaren Facility Services ApS'
   },
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' }
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }
+    ]
+  },
 };
 
 export default function RootLayout({ children }) {

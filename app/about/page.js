@@ -49,8 +49,9 @@ const aboutTranslations = {
       label: 'Who We Are',
       title: 'A Small Team with Big Standards',
       paragraph1: 'Founded in Copenhagen, Hexaren Facility Services ApS was born from a shared frustration with unreliable cleaning services. We knew there had to be a better way—one built on accountability, transparency, and genuine care for the spaces we maintain.',
-      paragraph2: 'Today, Hexaren is led by three founders who work directly in the business and stay close to every client relationship. No middlemen, no excuses. Just premium cleaning delivered with the attention it deserves.',
-      paragraph3: 'We serve offices, apartments, Airbnb properties, and residential buildings across Copenhagen. Our approach is simple: show up, deliver excellence, and build lasting relationships with clients who value quality over shortcuts.'
+      paragraph2: 'Today, Hexaren is led by three founders who work directly in the business and stay close to every client relationship. No middlemen, no excuses. Just professional cleaning delivered with the attention it deserves.',
+      paragraph3: 'We serve offices, apartments, Airbnb properties, and residential buildings across Copenhagen. Our approach is simple: show up, deliver excellence, and build lasting relationships with clients who value quality over shortcuts.',
+      experience: 'Our founders each bring 5+ years of hands-on cleaning experience, shaping Hexaren from real work in the field.'
     },
     mission: {
       title: 'What Drives Us',
@@ -77,6 +78,7 @@ const aboutTranslations = {
       label: 'The People Behind Hexaren',
       title: 'Meet Our Founders',
       subtitle: 'Three founders working hands-on and leading the team themselves',
+      experience: 'Each founder brings 5+ years of hands-on cleaning experience.',
       members: [
         { name: 'Sumi Basnet', role: 'Co-Founder & Team Lead' },
         { name: 'Ravi Paudel', role: 'Co-Founder & Operations Lead' },
@@ -137,8 +139,9 @@ const aboutTranslations = {
       label: 'Hvem Vi Er',
       title: 'Et Lille Team med Store Standarder',
       paragraph1: 'Grundlagt i København, Hexaren Facility Services ApS blev født fra en fælles frustration over upålidelige rengøringsservices. Vi vidste, at der måtte være en bedre måde—en bygget på ansvarlighed, gennemsigtighed og ægte omsorg for de rum vi vedligeholder.',
-      paragraph2: 'I dag ledes Hexaren af tre stiftere, der arbejder direkte i virksomheden og holder sig tæt på hver kunderelation. Ingen mellemled, ingen undskyldninger. Bare premium rengøring leveret med den opmærksomhed den fortjener.',
-      paragraph3: 'Vi servicerer kontorer, lejligheder, Airbnb-ejendomme og boligejendomme i hele København. Vores tilgang er simpel: mød op, lever excellence, og byg varige relationer med kunder der værdsætter kvalitet over genveje.'
+      paragraph2: 'I dag ledes Hexaren af tre stiftere, der arbejder direkte i virksomheden og holder sig tæt på hver kunderelation. Ingen mellemled, ingen undskyldninger. Bare professionel rengøring leveret med den opmærksomhed den fortjener.',
+      paragraph3: 'Vi servicerer kontorer, lejligheder, Airbnb-ejendomme og boligejendomme i hele København. Vores tilgang er simpel: mød op, lever excellence, og byg varige relationer med kunder der værdsætter kvalitet over genveje.',
+      experience: 'Vores stiftere har hver 5+ års praktisk rengøringserfaring, som former Hexaren fra arbejdet i felten.'
     },
     mission: {
       title: 'Hvad Der Driver Os',
@@ -165,6 +168,7 @@ const aboutTranslations = {
       label: 'Folkene Bag Hexaren',
       title: 'Mød Vores Stiftere',
       subtitle: 'Tre stiftere, der arbejder hands-on og selv leder teamet',
+      experience: 'Hver stifter har 5+ års praktisk rengøringserfaring.',
       members: [
         { name: 'Sumi Basnet', role: 'Medstifter & Teamleder' },
         { name: 'Ravi Paudel', role: 'Medstifter & Driftsleder' },
@@ -373,6 +377,14 @@ export default function AboutPage() {
             <p className="scroll-reveal" data-delay="300">{t.intro.paragraph2}</p>
             <p className="scroll-reveal" data-delay="400">{t.intro.paragraph3}</p>
           </div>
+
+          <div className="mt-10 scroll-reveal" data-delay="500">
+            <div className="border-l-4 border-[#10B981] bg-[#10B981]/8 px-6 py-5">
+              <p className="text-lg font-semibold leading-relaxed text-[#047857]">
+                {t.intro.experience}
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -448,6 +460,13 @@ export default function AboutPage() {
                 </div>
               </div>
             ))}
+          </div>
+          
+          <div className="mt-10 text-center scroll-reveal" data-delay="520">
+            <p className="inline-flex items-center justify-center rounded-full border border-[#10B981]/20 bg-[#10B981]/8 px-5 py-3 text-sm font-semibold text-[#047857]">
+              <CheckCircle className="mr-2 h-4 w-4" />
+              {t.team.experience}
+            </p>
           </div>
         </div>
       </section>

@@ -1,0 +1,23 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" fill="#001127"/>
+  <path d="M256 49L435.3 152.5V359.5L256 463L76.7 359.5V152.5L256 49Z" stroke="url(#hexaren-gradient)" stroke-width="17" stroke-linejoin="round"/>
+  <path d="M278 222L316 157H342L291 246L346 337H320L278 268L237 337H211L266 246L215 157H242L278 222Z" fill="#65BC46"/>
+  <path d="M92 263H121V215H174V263H203V157H174V204H121V157H92V263Z" fill="white"/>
+  <path d="M352 263H381V215H434V263H463V157H434V204H381V157H352V263Z" fill="white" opacity="0"/>
+  <text x="256" y="288" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="700" fill="white">He aren</text>
+  <path d="M293 168L266 216L239 263L211 311" stroke="#65BC46" stroke-width="24" stroke-linecap="square"/>
+  <path d="M303 142L314 166L338 177L314 188L303 212L292 188L268 177L292 166L303 142Z" fill="#65BC46"/>
+  <path d="M138 335H203" stroke="#1466D8" stroke-width="7"/>
+  <text x="256" y="348" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700">
+    <tspan fill="#1466D8">At your </tspan><tspan fill="#65BC46">service</tspan>
+  </text>
+  <path d="M310 335H375" stroke="#65BC46" stroke-width="7"/>
+  <defs>
+    <linearGradient id="hexaren-gradient" x1="76.7" y1="256" x2="435.3" y2="256" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1466D8"/>
+      <stop offset="0.5" stop-color="#1466D8"/>
+      <stop offset="0.5" stop-color="#65BC46"/>
+      <stop offset="1" stop-color="#65BC46"/>
+    </linearGradient>
+  </defs>
+</svg>
