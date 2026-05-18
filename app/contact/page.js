@@ -5,6 +5,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import {
+  FadeIn,
+  MagneticHover,
+  Parallax,
+  RevealText,
+  ScaleOnScroll,
+  ScrollProgress,
+  SmoothScroll,
+} from '@/components/motion/Motion';
 import { 
   Accordion,
   AccordionContent,
@@ -377,7 +386,9 @@ export default function ContactPage() {
   ];
 
   return (
+    <SmoothScroll>
     <div className="min-h-screen bg-[#F8FAFC]">
+      <ScrollProgress color="#65BC46" />
       {/* Custom styles */}
       <style jsx global>{`
         .scroll-reveal {
@@ -457,33 +468,33 @@ export default function ContactPage() {
       {/* CONTACT + FORM SECTION */}
       <section id="contact-form" className="relative pt-32 pb-24 px-4 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0">
-          <img 
+        <ScaleOnScroll from={1} to={1.12} className="absolute inset-0">
+          <img
             src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Contact background"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A]/90 via-[#0F172A]/80 to-[#0F172A]/90" />
-        </div>
+        </ScaleOnScroll>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A]/90 via-[#0F172A]/80 to-[#0F172A]/90" />
 
         <div className="relative z-10 container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             
             {/* LEFT - Contact Info */}
             <div className="space-y-8">
-              <div className="scroll-reveal" data-delay="0">
+              <div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-                  {t.hero.title}
+                  <RevealText text={t.hero.title} />
                   <br />
-                  <span className="text-[#10B981]">{t.hero.titleAccent}</span>
+                  <RevealText text={t.hero.titleAccent} wordClassName="text-[#10B981]" delay={0.16} />
                 </h1>
-                <p className="text-lg text-white/80 max-w-lg leading-relaxed">
+                <FadeIn as="p" delay={0.28} className="text-lg text-white/80 max-w-lg leading-relaxed">
                   {t.hero.description}
-                </p>
+                </FadeIn>
               </div>
 
               {/* Contact Details */}
-              <div className="space-y-6 scroll-reveal" data-delay="100">
+              <FadeIn delay={0.16} className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5 text-[#10B981]" />
@@ -507,28 +518,32 @@ export default function ContactPage() {
                     <p className="text-white/60 text-sm">{t.hero.hours}</p>
                   </div>
                 </div>
-              </div>
+              </FadeIn>
 
               {/* Book Meeting / Schedule Call Buttons */}
-              <div className="space-y-4 scroll-reveal" data-delay="200">
-                <a 
-                  href="#contact-form"
-                  className="flex items-center gap-3 px-6 py-4 rounded-xl bg-[#10B981] hover:bg-[#059669] text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-[#10B981]/30"
-                >
-                  <Calendar className="w-5 h-5" />
-                  {t.hero.bookMeeting}
-                </a>
-                <a 
-                  href="#contact-form"
-                  className="flex items-center gap-3 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium transition-all duration-300 border-2 border-white/20 hover:border-white/40"
-                >
-                  <PhoneCall className="w-5 h-5" />
-                  {t.hero.scheduleCall}
-                </a>
-              </div>
+              <FadeIn delay={0.24} className="space-y-4">
+                <MagneticHover strength={0.2}>
+                  <a
+                    href="#contact-form"
+                    className="flex items-center gap-3 px-6 py-4 rounded-xl bg-[#10B981] hover:bg-[#059669] text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-[#10B981]/30"
+                  >
+                    <Calendar className="w-5 h-5" />
+                    {t.hero.bookMeeting}
+                  </a>
+                </MagneticHover>
+                <MagneticHover strength={0.2}>
+                  <a
+                    href="#contact-form"
+                    className="flex items-center gap-3 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium transition-all duration-300 border-2 border-white/20 hover:border-white/40"
+                  >
+                    <PhoneCall className="w-5 h-5" />
+                    {t.hero.scheduleCall}
+                  </a>
+                </MagneticHover>
+              </FadeIn>
 
               {/* Social Links */}
-              <div className="flex items-center gap-4 scroll-reveal" data-delay="250">
+              <FadeIn delay={0.3} className="flex items-center gap-4">
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#10B981] flex items-center justify-center transition-all duration-300">
                   <Instagram className="w-5 h-5 text-white" />
                 </a>
@@ -538,11 +553,11 @@ export default function ContactPage() {
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#10B981] flex items-center justify-center transition-all duration-300">
                   <Linkedin className="w-5 h-5 text-white" />
                 </a>
-              </div>
+              </FadeIn>
             </div>
 
             {/* RIGHT - Contact Form Card */}
-            <div className="scroll-reveal" data-delay="150">
+            <FadeIn delay={0.18} y={48}>
               <div className="bg-white rounded-3xl p-8 md:p-10 shadow-2xl">
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-[#0F172A] mb-2">{t.form.title}</h2>
@@ -668,7 +683,7 @@ export default function ContactPage() {
                   </Button>
                 </form>
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -677,10 +692,13 @@ export default function ContactPage() {
       <section className="py-12 px-4 bg-white border-y border-gray-100">
         <div className="container mx-auto max-w-4xl">
           <div className="grid md:grid-cols-2 gap-6">
-            <a 
+            <FadeIn
+              delay={0}
+              y={28}
+            >
+            <a
               href="mailto:hello@hexaren.dk?subject=Job Application - Cleaning Specialist"
-              className="flex items-start gap-4 p-6 rounded-2xl border-2 border-gray-100 hover:border-[#10B981] hover:shadow-lg transition-all duration-300 group scroll-reveal"
-              data-delay="0"
+              className="flex items-start gap-4 p-6 rounded-2xl border-2 border-gray-100 hover:border-[#10B981] hover:shadow-lg transition-all duration-300 group"
             >
               <div className="w-12 h-12 rounded-full bg-[#10B981]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#10B981] transition-all">
                 <Users className="w-6 h-6 text-[#10B981] group-hover:text-white transition-all" />
@@ -692,11 +710,15 @@ export default function ContactPage() {
                 </p>
               </div>
             </a>
+            </FadeIn>
 
-            <a 
+            <FadeIn
+              delay={0.08}
+              y={28}
+            >
+            <a
               href="mailto:hello@hexaren.dk?subject=Partnership Inquiry"
-              className="flex items-start gap-4 p-6 rounded-2xl border-2 border-gray-100 hover:border-[#10B981] hover:shadow-lg transition-all duration-300 group scroll-reveal"
-              data-delay="100"
+              className="flex items-start gap-4 p-6 rounded-2xl border-2 border-gray-100 hover:border-[#10B981] hover:shadow-lg transition-all duration-300 group"
             >
               <div className="w-12 h-12 rounded-full bg-[#10B981]/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[#10B981] transition-all">
                 <Briefcase className="w-6 h-6 text-[#10B981] group-hover:text-white transition-all" />
@@ -708,6 +730,7 @@ export default function ContactPage() {
                 </p>
               </div>
             </a>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -717,19 +740,19 @@ export default function ContactPage() {
         <div className="container mx-auto max-w-4xl">
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="inline-block text-[#10B981] font-semibold text-sm uppercase tracking-wider mb-4 scroll-reveal" data-delay="0">
+            <FadeIn as="span" y={18} className="inline-block text-[#10B981] font-semibold text-sm uppercase tracking-wider mb-4">
               {t.faq.label}
-            </span>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] mb-4 scroll-reveal" data-delay="50">
-              {t.faq.title}
+            </FadeIn>
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] mb-4">
+              <RevealText text={t.faq.title} />
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto scroll-reveal" data-delay="100">
+            <FadeIn as="p" delay={0.12} className="text-lg text-gray-600 max-w-2xl mx-auto">
               {t.faq.subtitle}
-            </p>
+            </FadeIn>
           </div>
 
           {/* Accordion */}
-          <div className="scroll-reveal" data-delay="150">
+          <FadeIn delay={0.16}>
             <Accordion type="single" collapsible className="space-y-4">
               {t.faq.items.map((item, index) => (
                 <AccordionItem 
@@ -746,41 +769,42 @@ export default function ContactPage() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* CTA / IMAGE SECTION */}
       <section className="relative py-32 px-4 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0">
-          <img 
+        <Parallax offset={55} className="absolute inset-0 -top-16 -bottom-16">
+          <img
             src="https://images.pexels.com/photos/6195951/pexels-photo-6195951.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Professional cleaning"
-            className="w-full h-full object-cover"
-            style={{ transform: 'scale(1.1)' }}
+            className="w-full h-full object-cover scale-110"
           />
-          <div className="absolute inset-0 bg-[#0F172A]/80" />
-        </div>
+        </Parallax>
+        <div className="absolute inset-0 bg-[#0F172A]/80" />
 
         <div className="relative z-10 container mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 scroll-reveal" data-delay="0">
-            {t.cta.title}
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <RevealText text={t.cta.title} />
           </h2>
-          <p className="text-lg md:text-xl text-white/80 mb-10 scroll-reveal" data-delay="100">
+          <FadeIn as="p" delay={0.12} className="text-lg md:text-xl text-white/80 mb-10">
             {t.cta.subtitle}
-          </p>
-          <div className="scroll-reveal" data-delay="200">
-            <Link href="#contact-form">
-              <Button 
-                size="lg" 
-                className="bg-[#10B981] hover:bg-[#059669] text-white px-12 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/30"
-              >
-                {t.cta.button}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-          </div>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <MagneticHover strength={0.22}>
+              <Link href="#contact-form">
+                <Button
+                  size="lg"
+                  className="bg-[#10B981] hover:bg-[#059669] text-white px-12 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-[#10B981]/30"
+                >
+                  {t.cta.button}
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </MagneticHover>
+          </FadeIn>
         </div>
       </section>
 
@@ -858,5 +882,6 @@ export default function ContactPage() {
         <span className="font-medium hidden md:inline">{t.whatsapp}</span>
       </a>
     </div>
+    </SmoothScroll>
   );
 }

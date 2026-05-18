@@ -4,7 +4,16 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import {
+  FadeIn,
+  MagneticHover,
+  Parallax,
+  RevealText,
+  ScaleOnScroll,
+  ScrollProgress,
+  SmoothScroll,
+  TiltCard,
+} from '@/components/motion/Motion';
 import {
   Accordion,
   AccordionContent,
@@ -148,7 +157,9 @@ export default function ServiceDetailPage() {
   const t = (en, da) => lang === 'da' && da ? da : en;
 
   return (
+    <SmoothScroll>
     <div className="min-h-screen bg-[#F8FAFC]">
+      <ScrollProgress color="#65BC46" />
       {/* Animation styles */}
       <style jsx global>{`
         .scroll-reveal {
@@ -223,52 +234,56 @@ export default function ServiceDetailPage() {
 
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0">
-          <img 
+        <ScaleOnScroll from={1} to={1.14} className="absolute inset-0">
+          <img
             src={service.heroImage}
             alt={t(service.title, service.titleDa)}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/85 via-[#0F172A]/70 to-[#0F172A]/50" />
-        </div>
+        </ScaleOnScroll>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0F172A]/85 via-[#0F172A]/70 to-[#0F172A]/50" />
         
         <div className="relative z-10 container mx-auto px-4">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium border border-white/20 mb-6 animate-fade-in">
+            <FadeIn y={18} className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium border border-white/20 mb-6">
               <Sparkles className="w-4 h-4 text-[#10B981]" />
               {service.category}
-            </div>
+            </FadeIn>
             
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              {t(service.title, service.titleDa)}
+              <RevealText text={t(service.title, service.titleDa)} />
             </h1>
             
-            <p className="text-xl md:text-2xl text-[#10B981] font-medium mb-4">
+            <FadeIn as="p" delay={0.18} className="text-xl md:text-2xl text-[#10B981] font-medium mb-4">
               {t(service.tagline, service.taglineDa)}
-            </p>
+            </FadeIn>
             
-            <p className="text-lg text-white/80 max-w-2xl mb-8 leading-relaxed">
+            <FadeIn as="p" delay={0.26} className="text-lg text-white/80 max-w-2xl mb-8 leading-relaxed">
               {t(service.description, service.descriptionDa)}
-            </p>
+            </FadeIn>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/contact">
-                <Button 
-                  size="lg" 
-                  className="bg-[#10B981] hover:bg-[#059669] text-white px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105"
+              <MagneticHover strength={0.22}>
+                <Link href="/contact">
+                  <Button
+                    size="lg"
+                    className="bg-[#10B981] hover:bg-[#059669] text-white px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105"
+                  >
+                    {lang === 'da' ? 'Få Gratis Tilbud' : 'Get Free Quote'}
+                    <ChevronRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+              </MagneticHover>
+              <MagneticHover strength={0.22}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-8 py-6 text-lg rounded-full transition-all duration-500"
+                  onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  {lang === 'da' ? 'Få Gratis Tilbud' : 'Get Free Quote'}
-                  <ChevronRight className="w-5 h-5 ml-2" />
+                  {lang === 'da' ? 'Se Detaljer' : 'View Details'}
                 </Button>
-              </Link>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-8 py-6 text-lg rounded-full transition-all duration-500"
-                onClick={() => document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                {lang === 'da' ? 'Se Detaljer' : 'View Details'}
-              </Button>
+              </MagneticHover>
             </div>
           </div>
         </div>
@@ -285,26 +300,26 @@ export default function ServiceDetailPage() {
       <section className="py-24 px-4 bg-white">
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="scroll-reveal" data-delay="0">
+            <FadeIn y={42}>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <img 
+                <img
                   src={service.overview.image}
                   alt={t(service.overview.title, service.overview.titleDa)}
                   className="w-full h-[450px] object-cover image-zoom"
                 />
               </div>
-            </div>
+            </FadeIn>
             
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] scroll-reveal" data-delay="100">
-                {t(service.overview.title, service.overview.titleDa)}
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A]">
+                <RevealText text={t(service.overview.title, service.overview.titleDa)} />
               </h2>
               
               <div className="space-y-4">
                 {(lang === 'da' ? service.overview.paragraphsDa : service.overview.paragraphs).map((para, i) => (
-                  <p key={i} className="text-gray-600 leading-relaxed scroll-reveal" data-delay={150 + i * 50}>
+                  <FadeIn as="p" key={i} delay={i * 0.06} className="text-gray-600 leading-relaxed">
                     {para}
-                  </p>
+                  </FadeIn>
                 ))}
               </div>
             </div>
@@ -317,41 +332,43 @@ export default function ServiceDetailPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 order-2 lg:order-1">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] scroll-reveal" data-delay="0">
-                {t(service.benefits.title, service.benefits.titleDa)}
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A]">
+                <RevealText text={t(service.benefits.title, service.benefits.titleDa)} />
               </h2>
               
-              <p className="text-lg text-[#10B981] font-medium scroll-reveal" data-delay="50">
+              <FadeIn as="p" delay={0.08} className="text-lg text-[#10B981] font-medium">
                 {t(service.benefits.subtitle, service.benefits.subtitleDa)}
-              </p>
+              </FadeIn>
               
               <div className="space-y-4">
                 {(lang === 'da' ? service.benefits.paragraphsDa : service.benefits.paragraphs).map((para, i) => (
-                  <p key={i} className="text-gray-600 leading-relaxed scroll-reveal" data-delay={100 + i * 50}>
+                  <FadeIn as="p" key={i} delay={0.12 + i * 0.06} className="text-gray-600 leading-relaxed">
                     {para}
-                  </p>
+                  </FadeIn>
                 ))}
               </div>
               
-              <div className="pt-4 scroll-reveal" data-delay="200">
-                <Link href="/contact">
-                  <Button className="bg-[#0F172A] hover:bg-[#1E293B] text-white px-8 py-6 rounded-full">
-                    {lang === 'da' ? 'Kontakt Os' : 'Contact Us'}
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </Link>
-              </div>
+              <FadeIn delay={0.22} className="pt-4">
+                <MagneticHover strength={0.2}>
+                  <Link href="/contact">
+                    <Button className="bg-[#0F172A] hover:bg-[#1E293B] text-white px-8 py-6 rounded-full">
+                      {lang === 'da' ? 'Kontakt Os' : 'Contact Us'}
+                      <ArrowRight className="w-5 h-5 ml-2" />
+                    </Button>
+                  </Link>
+                </MagneticHover>
+              </FadeIn>
             </div>
             
-            <div className="order-1 lg:order-2 scroll-reveal" data-delay="100">
+            <FadeIn delay={0.08} y={42} className="order-1 lg:order-2">
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <img 
+                <img
                   src={service.benefits.image}
                   alt={t(service.benefits.title, service.benefits.titleDa)}
                   className="w-full h-[450px] object-cover image-zoom"
                 />
               </div>
-            </div>
+            </FadeIn>
           </div>
         </div>
       </section>
@@ -372,23 +389,23 @@ export default function ServiceDetailPage() {
             {service.features.map((feature, index) => {
               const IconComponent = iconMap[feature.icon] || Sparkles;
               return (
-                <div 
+                <FadeIn
                   key={index}
-                  className="scroll-reveal card-lift"
-                  data-delay={100 + index * 50}
+                  delay={index * 0.05}
+                  y={34}
                 >
-                  <div className="bg-[#FAFBFC] rounded-2xl p-6 h-full">
-                    <div className="w-12 h-12 rounded-xl bg-[#10B981]/10 flex items-center justify-center mb-4">
-                      <IconComponent className="w-6 h-6 text-[#10B981]" />
-                    </div>
-                    <h3 className="text-lg font-bold text-[#0F172A] mb-2">
-                      {t(feature.title, feature.titleDa)}
-                    </h3>
-                    <p className="text-gray-600 text-sm">
-                      {t(feature.description, feature.descriptionDa)}
-                    </p>
-                  </div>
-                </div>
+                  <TiltCard max={4} className="bg-[#FAFBFC] rounded-2xl p-6 h-full">
+                      <div className="w-12 h-12 rounded-xl bg-[#10B981]/10 flex items-center justify-center mb-4">
+                        <IconComponent className="w-6 h-6 text-[#10B981]" />
+                      </div>
+                      <h3 className="text-lg font-bold text-[#0F172A] mb-2">
+                        {t(feature.title, feature.titleDa)}
+                      </h3>
+                      <p className="text-gray-600 text-sm">
+                        {t(feature.description, feature.descriptionDa)}
+                      </p>
+                  </TiltCard>
+                </FadeIn>
               );
             })}
           </div>
@@ -406,12 +423,12 @@ export default function ServiceDetailPage() {
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {service.whyUs.map((item, index) => (
-              <div 
+              <FadeIn
                 key={index}
-                className="scroll-reveal"
-                data-delay={100 + index * 75}
+                delay={index * 0.07}
+                y={32}
               >
-                <div className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow h-full">
+                <TiltCard max={4} className="bg-white rounded-2xl p-6 text-center shadow-sm hover:shadow-md transition-shadow h-full">
                   <div className="w-14 h-14 rounded-full bg-[#10B981]/10 flex items-center justify-center mx-auto mb-4">
                     <Check className="w-7 h-7 text-[#10B981]" />
                   </div>
@@ -421,8 +438,8 @@ export default function ServiceDetailPage() {
                   <p className="text-gray-600 text-sm">
                     {t(item.description, item.descriptionDa)}
                   </p>
-                </div>
-              </div>
+                </TiltCard>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -432,35 +449,36 @@ export default function ServiceDetailPage() {
       <section className="py-24 px-4 bg-[#0F172A]">
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="scroll-reveal" data-delay="0">
+            <FadeIn y={42}>
               <div className="relative rounded-2xl overflow-hidden">
-                <img 
+                <img
                   src={service.quality.image}
                   alt={t(service.quality.title, service.quality.titleDa)}
                   className="w-full h-[400px] object-cover image-zoom"
                 />
               </div>
-            </div>
+            </FadeIn>
             
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-white scroll-reveal" data-delay="50">
-                {t(service.quality.title, service.quality.titleDa)}
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
+                <RevealText text={t(service.quality.title, service.quality.titleDa)} />
               </h2>
               
-              <p className="text-white/80 leading-relaxed scroll-reveal" data-delay="100">
+              <FadeIn as="p" delay={0.1} className="text-white/80 leading-relaxed">
                 {t(service.quality.description, service.quality.descriptionDa)}
-              </p>
+              </FadeIn>
               
               <div className="grid grid-cols-2 gap-4 pt-4">
                 {service.quality.stats.map((stat, index) => (
-                  <div 
+                  <FadeIn
                     key={index}
                     className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 scroll-reveal"
-                    data-delay={150 + index * 50}
+                    delay={0.14 + index * 0.05}
+                    y={24}
                   >
                     <div className="text-2xl font-bold text-[#10B981]">{stat.value}</div>
                     <div className="text-white/60 text-sm">{t(stat.label, stat.labelDa)}</div>
-                  </div>
+                  </FadeIn>
                 ))}
               </div>
             </div>
@@ -471,31 +489,33 @@ export default function ServiceDetailPage() {
       {/* 7. PRICING SECTION */}
       <section className="py-24 px-4 bg-white">
         <div className="container mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4 scroll-reveal" data-delay="0">
-            {t(service.pricing.title, service.pricing.titleDa)}
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4">
+            <RevealText text={t(service.pricing.title, service.pricing.titleDa)} />
           </h2>
           
-          <p className="text-lg text-gray-600 mb-8 scroll-reveal" data-delay="50">
+          <FadeIn as="p" delay={0.1} className="text-lg text-gray-600 mb-8">
             {t(service.pricing.description, service.pricing.descriptionDa)}
-          </p>
+          </FadeIn>
           
-          <div className="inline-block bg-[#10B981]/10 rounded-full px-6 py-3 mb-8 scroll-reveal" data-delay="100">
+          <FadeIn delay={0.16} className="inline-block bg-[#10B981]/10 rounded-full px-6 py-3 mb-8">
             <span className="text-2xl font-bold text-[#10B981]">
               {t(service.pricing.startingFrom, service.pricing.startingFromDa)}
             </span>
-          </div>
+          </FadeIn>
           
-          <div className="scroll-reveal" data-delay="150">
-            <Link href="/contact">
-              <Button 
-                size="lg"
-                className="bg-[#10B981] hover:bg-[#059669] text-white px-10 py-6 text-lg rounded-full"
-              >
-                {t(service.pricing.ctaText, service.pricing.ctaTextDa)}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-          </div>
+          <FadeIn delay={0.22}>
+            <MagneticHover strength={0.2}>
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="bg-[#10B981] hover:bg-[#059669] text-white px-10 py-6 text-lg rounded-full"
+                >
+                  {t(service.pricing.ctaText, service.pricing.ctaTextDa)}
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </MagneticHover>
+          </FadeIn>
         </div>
       </section>
 
@@ -514,13 +534,15 @@ export default function ServiceDetailPage() {
           
           <div className="flex flex-wrap justify-center gap-4 scroll-reveal" data-delay="100">
             {service.coverage.areas.map((area, index) => (
-              <div 
+              <FadeIn
                 key={index}
+                delay={index * 0.04}
+                y={18}
                 className="inline-flex items-center gap-2 px-5 py-3 bg-white rounded-full shadow-sm text-[#0F172A] font-medium"
               >
                 <MapPin className="w-4 h-4 text-[#10B981]" />
                 {area}
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -535,7 +557,7 @@ export default function ServiceDetailPage() {
             </h2>
           </div>
           
-          <div className="scroll-reveal" data-delay="100">
+          <FadeIn delay={0.1}>
             <Accordion type="single" collapsible className="space-y-4">
               {service.faq.map((item, index) => (
                 <AccordionItem 
@@ -552,52 +574,56 @@ export default function ServiceDetailPage() {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
       {/* 10. FINAL CTA SECTION */}
       <section className="relative py-32 px-4 overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
+        <Parallax offset={55} className="absolute inset-0 -top-16 -bottom-16">
+          <img
             src={service.heroImage}
             alt="CTA background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-110"
           />
-          <div className="absolute inset-0 bg-[#0F172A]/85" />
-        </div>
+        </Parallax>
+        <div className="absolute inset-0 bg-[#0F172A]/85" />
         
         <div className="relative z-10 container mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 scroll-reveal" data-delay="0">
-            {t(service.cta.title, service.cta.titleDa)}
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <RevealText text={t(service.cta.title, service.cta.titleDa)} />
           </h2>
           
-          <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto scroll-reveal" data-delay="50">
+          <FadeIn as="p" delay={0.12} className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
             {t(service.cta.subtitle, service.cta.subtitleDa)}
-          </p>
+          </FadeIn>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal" data-delay="100">
-            <Link href="/contact">
-              <Button 
-                size="lg"
-                className="bg-[#10B981] hover:bg-[#059669] text-white px-10 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105"
-              >
-                {lang === 'da' ? 'Kontakt Os' : 'Contact Us'}
-                <Mail className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
+          <FadeIn delay={0.2} className="flex flex-col sm:flex-row gap-4 justify-center">
+            <MagneticHover strength={0.22}>
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="bg-[#10B981] hover:bg-[#059669] text-white px-10 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105"
+                >
+                  {lang === 'da' ? 'Kontakt Os' : 'Contact Us'}
+                  <Mail className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </MagneticHover>
             
-            <a href={`tel:${WHATSAPP_NUMBER.replace(/[^0-9+]/g, '')}`}>
-              <Button 
-                size="lg"
-                variant="outline"
-                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-10 py-6 text-lg rounded-full transition-all duration-500"
-              >
-                {lang === 'da' ? 'Ring Til Os' : 'Call Us'}
-                <Phone className="w-5 h-5 ml-2" />
-              </Button>
-            </a>
-          </div>
+            <MagneticHover strength={0.22}>
+              <a href={`tel:${WHATSAPP_NUMBER.replace(/[^0-9+]/g, '')}`}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-10 py-6 text-lg rounded-full transition-all duration-500"
+                >
+                  {lang === 'da' ? 'Ring Til Os' : 'Call Us'}
+                  <Phone className="w-5 h-5 ml-2" />
+                </Button>
+              </a>
+            </MagneticHover>
+          </FadeIn>
         </div>
       </section>
 
@@ -679,5 +705,6 @@ export default function ServiceDetailPage() {
         <span className="font-medium hidden md:inline">{lang === 'da' ? 'Chat med os' : 'Chat with us'}</span>
       </a>
     </div>
+    </SmoothScroll>
   );
 }

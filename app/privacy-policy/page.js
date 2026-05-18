@@ -4,6 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import {
+  FadeIn,
+  RevealText,
+  ScrollProgress,
+  SmoothScroll,
+} from '@/components/motion/Motion';
+import {
   ArrowRight,
   Globe,
   Mail,
@@ -172,7 +178,9 @@ export default function PrivacyPolicyPage() {
   const isDa = lang === 'da';
 
   return (
+    <SmoothScroll>
     <div className="min-h-screen bg-[#F8FAFC]">
+      <ScrollProgress color="#65BC46" />
       <nav className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur-md">
         <div className="container mx-auto flex items-center justify-between px-4 py-4">
           <Link href="/" className="relative z-50 -my-2 flex items-center transition-transform duration-300 hover:scale-105 md:-my-3 lg:-my-4">
@@ -208,27 +216,27 @@ export default function PrivacyPolicyPage() {
       <main>
         <section className="bg-[#0F172A] px-4 py-20 text-white md:py-28">
           <div className="container mx-auto max-w-5xl">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/80">
+            <FadeIn y={18} className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-medium text-white/80">
               <Shield className="h-4 w-4 text-[#10B981]" />
               {isDa ? 'Privatliv og databeskyttelse' : 'Privacy and data protection'}
-            </div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#10B981]">
+            </FadeIn>
+            <FadeIn as="p" delay={0.08} y={18} className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-[#10B981]">
               {isDa ? 'Senest opdateret 17/05/2026' : 'Last updated 17/05/2026'}
-            </p>
+            </FadeIn>
             <h1 className="max-w-4xl text-4xl font-bold leading-tight md:text-6xl">
-              {isDa ? 'Privatlivspolitik' : 'Privacy Policy'}
+              <RevealText text={isDa ? 'Privatlivspolitik' : 'Privacy Policy'} />
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/75">
+            <FadeIn as="p" delay={0.18} className="mt-6 max-w-3xl text-lg leading-relaxed text-white/75">
               {isDa
                 ? 'Denne privatlivspolitik forklarer, hvordan Hexaren Facility Services ApS indsamler, bruger, opbevarer og beskytter personoplysninger, når du besøger vores website, kontakter os eller bruger vores ydelser.'
                 : 'This Privacy Policy explains how Hexaren Facility Services ApS collects, uses, stores, and protects personal data when you visit our website, contact us, or use our services.'}
-            </p>
+            </FadeIn>
           </div>
         </section>
 
         <section className="px-4 py-16 md:py-24">
           <div className="container mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-            <aside className="h-fit border border-[#0F172A]/10 bg-white p-6 shadow-sm lg:sticky lg:top-28">
+            <FadeIn as="aside" y={34} className="h-fit border border-[#0F172A]/10 bg-white p-6 shadow-sm lg:sticky lg:top-28">
               <h2 className="text-lg font-bold text-[#0F172A]">
                 {isDa ? 'Kontakt' : 'Contact'}
               </h2>
@@ -252,11 +260,11 @@ export default function PrivacyPolicyPage() {
                 {isDa ? 'Kontakt os' : 'Contact us'}
                 <ArrowRight className="h-4 w-4" />
               </Link>
-            </aside>
+            </FadeIn>
 
             <div className="space-y-6">
-              {sections.map((section) => (
-                <section key={section.title} className="border border-[#0F172A]/10 bg-white p-6 shadow-sm md:p-8">
+              {sections.map((section, index) => (
+                <FadeIn as="section" key={section.title} delay={index * 0.03} y={28} className="border border-[#0F172A]/10 bg-white p-6 shadow-sm md:p-8">
                   <h2 className="text-2xl font-bold text-[#0F172A]">
                     {isDa ? section.daTitle : section.title}
                   </h2>
@@ -265,7 +273,7 @@ export default function PrivacyPolicyPage() {
                       <p key={paragraph}>{paragraph}</p>
                     ))}
                   </div>
-                </section>
+                </FadeIn>
               ))}
             </div>
           </div>
@@ -305,5 +313,6 @@ export default function PrivacyPolicyPage() {
         <span className="hidden font-medium md:inline">{isDa ? 'Chat med os' : 'Chat with us'}</span>
       </a>
     </div>
+    </SmoothScroll>
   );
 }

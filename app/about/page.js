@@ -1,8 +1,17 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import {
+  FadeIn,
+  MagneticHover,
+  Parallax,
+  RevealText,
+  ScaleOnScroll,
+  ScrollProgress,
+  SmoothScroll,
+  TiltCard,
+} from '@/components/motion/Motion';
 import { 
   Star, 
   MessageCircle, 
@@ -256,7 +265,9 @@ export default function AboutPage() {
   }, []);
 
   return (
+    <SmoothScroll>
     <div className="min-h-screen bg-[#F8FAFC]">
+      <ScrollProgress color="#65BC46" />
 
       {/* Navigation - Enhanced */}
       <nav className="fixed top-0 w-full bg-gradient-to-b from-white via-white/98 to-white/95 backdrop-blur-md z-50 border-b border-gray-100 shadow-sm">
@@ -298,55 +309,59 @@ export default function AboutPage() {
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20">
         {/* Background Image */}
-        <div className="absolute inset-0">
-          <img 
+        <ScaleOnScroll from={1} to={1.14} className="absolute inset-0">
+          <img
             src="https://images.pexels.com/photos/8117466/pexels-photo-8117466.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Team collaboration"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/70 via-[#0F172A]/50 to-[#0F172A]/80" />
-        </div>
+        </ScaleOnScroll>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/70 via-[#0F172A]/50 to-[#0F172A]/80" />
         
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium border border-white/20 animate-fade-in">
+            <FadeIn y={18} className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 backdrop-blur-md rounded-full text-white text-sm font-medium border border-white/20">
               <Sparkles className="w-4 h-4 text-[#10B981]" />
               {t.hero.badge}
-            </div>
+            </FadeIn>
             
             {/* Heading */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight tracking-tight">
-              {t.hero.title}
+              <RevealText text={t.hero.title} />
               <br />
-              <span className="text-[#10B981]">{t.hero.titleAccent}</span>
+              <RevealText text={t.hero.titleAccent} wordClassName="text-[#10B981]" delay={0.16} />
             </h1>
             
             {/* Description */}
-            <p className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed">
+            <FadeIn as="p" delay={0.28} className="text-lg md:text-xl text-white/85 max-w-2xl mx-auto leading-relaxed">
               {t.hero.description}
-            </p>
+            </FadeIn>
             
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-              <Link href="/">
-                <Button 
-                  size="lg" 
-                  className="bg-white text-[#0F172A] hover:bg-white/90 px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+              <MagneticHover strength={0.22}>
+                <Link href="/">
+                  <Button
+                    size="lg"
+                    className="bg-white text-[#0F172A] hover:bg-white/90 px-8 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105 hover:shadow-2xl"
+                  >
+                    {t.hero.cta}
+                    <ChevronRight className="w-5 h-5 ml-2" />
+                  </Button>
+                </Link>
+              </MagneticHover>
+              <MagneticHover strength={0.22}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-8 py-6 text-lg rounded-full transition-all duration-500"
+                  onClick={() => document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  {t.hero.cta}
-                  <ChevronRight className="w-5 h-5 ml-2" />
+                  {t.hero.secondaryCta}
                 </Button>
-              </Link>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-8 py-6 text-lg rounded-full transition-all duration-500"
-                onClick={() => document.getElementById('team')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                {t.hero.secondaryCta}
-              </Button>
+              </MagneticHover>
             </div>
           </div>
         </div>
@@ -362,29 +377,29 @@ export default function AboutPage() {
       {/* COMPANY INTRO SECTION */}
       <section className="py-24 md:py-32 px-4 bg-white">
         <div className="container mx-auto max-w-3xl">
-          <div className="scroll-reveal" data-delay="0">
+          <FadeIn y={18}>
             <span className="inline-block text-[#10B981] font-semibold text-sm uppercase tracking-wider mb-4">
               {t.intro.label}
             </span>
-          </div>
+          </FadeIn>
           
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] mb-8 leading-tight scroll-reveal" data-delay="100">
-            {t.intro.title}
+          <h2 className="text-3xl md:text-5xl font-bold text-[#0F172A] mb-8 leading-tight">
+            <RevealText text={t.intro.title} />
           </h2>
           
           <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-            <p className="scroll-reveal" data-delay="200">{t.intro.paragraph1}</p>
-            <p className="scroll-reveal" data-delay="300">{t.intro.paragraph2}</p>
-            <p className="scroll-reveal" data-delay="400">{t.intro.paragraph3}</p>
+            <FadeIn as="p" delay={0.08}>{t.intro.paragraph1}</FadeIn>
+            <FadeIn as="p" delay={0.16}>{t.intro.paragraph2}</FadeIn>
+            <FadeIn as="p" delay={0.24}>{t.intro.paragraph3}</FadeIn>
           </div>
 
-          <div className="mt-10 scroll-reveal" data-delay="500">
+          <FadeIn delay={0.28} className="mt-10">
             <div className="border-l-4 border-[#10B981] bg-[#10B981]/8 px-6 py-5">
               <p className="text-lg font-semibold leading-relaxed text-[#047857]">
                 {t.intro.experience}
               </p>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -402,26 +417,29 @@ export default function AboutPage() {
           
           <div className="grid md:grid-cols-3 gap-8">
             {t.mission.cards.map((card, index) => (
-              <div 
+              <FadeIn
                 key={index}
-                className="scroll-reveal card-lift"
-                data-delay={150 + index * 100}
+                delay={index * 0.08}
+                y={42}
+                className="h-full"
               >
-                <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full">
-                  <div className="relative h-48 overflow-hidden">
-                    <img 
-                      src={card.image}
-                      alt={card.title}
-                      className="w-full h-full object-cover image-zoom"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/30 to-transparent" />
+                <TiltCard max={4} className="h-full">
+                  <div className="bg-white rounded-2xl overflow-hidden shadow-lg h-full">
+                    <div className="relative h-48 overflow-hidden">
+                      <img
+                        src={card.image}
+                        alt={card.title}
+                        className="w-full h-full object-cover image-zoom"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/30 to-transparent" />
+                    </div>
+                    <div className="p-6 md:p-8">
+                      <h3 className="text-xl font-bold text-[#0F172A] mb-3">{card.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{card.description}</p>
+                    </div>
                   </div>
-                  <div className="p-6 md:p-8">
-                    <h3 className="text-xl font-bold text-[#0F172A] mb-3">{card.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{card.description}</p>
-                  </div>
-                </div>
-              </div>
+                </TiltCard>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -444,12 +462,12 @@ export default function AboutPage() {
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {t.team.members.map((member, index) => (
-              <div 
+              <FadeIn
                 key={index}
-                className="scroll-reveal card-lift"
-                data-delay={250 + index * 80}
+                delay={index * 0.08}
+                y={36}
               >
-                <div className="bg-[#FAFBFC] rounded-2xl p-6 text-center group">
+                <TiltCard max={4} className="bg-[#FAFBFC] rounded-2xl p-6 text-center group">
                   <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
                     <div className="w-full h-full bg-gradient-to-br from-gray-100 via-white to-emerald-50 flex items-center justify-center">
                       <Users className="w-12 h-12 text-[#10B981]/45" />
@@ -457,8 +475,8 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold text-[#0F172A] mb-1">{member.name}</h3>
                   <p className="text-[#10B981] font-medium">{member.role}</p>
-                </div>
-              </div>
+                </TiltCard>
+              </FadeIn>
             ))}
           </div>
           
@@ -480,10 +498,10 @@ export default function AboutPage() {
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {t.stats.items.map((stat, index) => (
-              <div 
+              <FadeIn
                 key={index}
-                className="scroll-reveal"
-                data-delay={100 + index * 100}
+                delay={index * 0.08}
+                y={34}
               >
                 <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-colors duration-500">
                   <div className="text-4xl md:text-5xl font-bold text-[#10B981] mb-2">
@@ -492,7 +510,7 @@ export default function AboutPage() {
                   <div className="text-white font-medium mb-1">{stat.label}</div>
                   <div className="text-white/50 text-sm">{stat.sublabel}</div>
                 </div>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -503,7 +521,7 @@ export default function AboutPage() {
         <div className="container mx-auto max-w-6xl">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image */}
-            <div className="scroll-reveal" data-delay="0">
+            <FadeIn y={40}>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#F8FAFC] via-white to-emerald-50 border border-gray-100">
                 <div className="w-full h-[500px] flex flex-col items-center justify-center px-8 text-center">
                   <div className="w-32 h-32 rounded-full bg-white shadow-lg ring-4 ring-emerald-50 flex items-center justify-center mb-6">
@@ -514,18 +532,18 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </FadeIn>
             
             {/* Quote & Story */}
             <div className="space-y-8">
-              <div className="scroll-reveal" data-delay="100">
+              <FadeIn delay={0.08}>
                 <Quote className="w-12 h-12 text-[#10B981]/30 mb-4" />
                 <blockquote className="text-xl md:text-2xl text-[#0F172A] leading-relaxed font-medium italic">
                   {t.founder.quote}
                 </blockquote>
-              </div>
+              </FadeIn>
               
-              <div className="scroll-reveal" data-delay="200">
+              <FadeIn delay={0.16}>
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-[#10B981] to-[#059669] flex items-center justify-center">
                     <Star className="w-6 h-6 text-white fill-white" />
@@ -535,13 +553,13 @@ export default function AboutPage() {
                     <div className="text-gray-500">{t.founder.title}</div>
                   </div>
                 </div>
-              </div>
+              </FadeIn>
               
-              <div className="scroll-reveal pt-4" data-delay="300">
+              <FadeIn delay={0.24} className="pt-4">
                 <p className="text-gray-600 leading-relaxed border-l-4 border-[#10B981] pl-6">
                   {t.founder.story}
                 </p>
-              </div>
+              </FadeIn>
             </div>
           </div>
         </div>
@@ -550,42 +568,46 @@ export default function AboutPage() {
       {/* FINAL CTA SECTION */}
       <section className="relative py-24 md:py-32 px-4 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0">
-          <img 
+        <Parallax offset={55} className="absolute inset-0 -top-16 -bottom-16">
+          <img
             src="https://images.pexels.com/photos/6195951/pexels-photo-6195951.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Cleaning service"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-110"
           />
-          <div className="absolute inset-0 bg-[#0F172A]/85" />
-        </div>
+        </Parallax>
+        <div className="absolute inset-0 bg-[#0F172A]/85" />
         
         <div className="relative z-10 container mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 scroll-reveal" data-delay="0">
-            {t.cta.title}
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <RevealText text={t.cta.title} />
           </h2>
-          <p className="text-lg md:text-xl text-white/80 mb-10 scroll-reveal" data-delay="100">
+          <FadeIn as="p" delay={0.12} className="text-lg md:text-xl text-white/80 mb-10">
             {t.cta.subtitle}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal" data-delay="200">
-            <Link href="/">
-              <Button 
-                size="lg" 
-                className="bg-[#10B981] hover:bg-[#059669] text-white px-10 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105"
-              >
-                {t.cta.button}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/#contact">
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-10 py-6 text-lg rounded-full transition-all duration-500"
-              >
-                {t.cta.secondaryButton}
-              </Button>
-            </Link>
-          </div>
+          </FadeIn>
+          <FadeIn delay={0.2} className="flex flex-col sm:flex-row gap-4 justify-center">
+            <MagneticHover strength={0.22}>
+              <Link href="/">
+                <Button
+                  size="lg"
+                  className="bg-[#10B981] hover:bg-[#059669] text-white px-10 py-6 text-lg rounded-full transition-all duration-500 hover:scale-105"
+                >
+                  {t.cta.button}
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </MagneticHover>
+            <MagneticHover strength={0.22}>
+              <Link href="/#contact">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-10 py-6 text-lg rounded-full transition-all duration-500"
+                >
+                  {t.cta.secondaryButton}
+                </Button>
+              </Link>
+            </MagneticHover>
+          </FadeIn>
         </div>
       </section>
 
@@ -663,5 +685,6 @@ export default function AboutPage() {
         <span className="font-medium hidden md:inline">{t.whatsapp}</span>
       </a>
     </div>
+    </SmoothScroll>
   );
 }

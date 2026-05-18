@@ -1,20 +1,32 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Switch } from '@/components/ui/switch';
 import { translations } from '@/lib/translations';
-import { 
-  Building2, 
-  Home, 
-  Sparkles, 
-  Check, 
-  Star, 
-  MessageCircle, 
-  Phone, 
-  Mail, 
+import {
+  CountUp,
+  FadeIn,
+  MagneticHover,
+  Parallax,
+  RevealText,
+  ScaleOnScroll,
+  ScrollProgress,
+  SmoothScroll,
+  TiltCard,
+} from '@/components/motion/Motion';
+import {
+  Building2,
+  Home,
+  Sparkles,
+  Check,
+  Star,
+  MessageCircle,
+  Phone,
+  Mail,
   MapPin,
   ChevronRight,
   Calendar,
@@ -51,7 +63,7 @@ export default function HomePage() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -75,7 +87,7 @@ export default function HomePage() {
     const revealSelector = '.scroll-reveal';
 
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
+
     if (prefersReducedMotion) {
       document.querySelectorAll(revealSelector).forEach(el => {
         el.classList.add('animate-in');
@@ -89,13 +101,13 @@ export default function HomePage() {
           if (entry.isIntersecting) {
             const element = entry.target;
             const delay = parseInt(element.getAttribute('data-delay') || '0');
-            
+
             requestAnimationFrame(() => {
               setTimeout(() => {
                 element.classList.add('animate-in');
               }, delay);
             });
-            
+
             observer.unobserve(element);
           }
         });
@@ -178,7 +190,9 @@ export default function HomePage() {
   ];
 
   return (
+    <SmoothScroll>
     <div className="min-h-screen bg-[#F8FAFC]">
+      <ScrollProgress color="#65BC46" />
       {/* Animation Styles */}
       <style jsx global>{`
         .scroll-reveal {
@@ -214,8 +228,8 @@ export default function HomePage() {
 
       {/* Navigation - Fully Responsive with Mobile Menu */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-white shadow-lg' 
+        scrolled
+          ? 'bg-white shadow-lg'
           : 'bg-gradient-to-b from-black/30 to-transparent'
       }`}>
         <div className="container mx-auto px-4 py-3 md:py-4 flex items-center justify-between">
@@ -224,13 +238,13 @@ export default function HomePage() {
             href="/"
             className="relative z-50 -my-2 flex items-center transition-transform duration-300 hover:scale-105 md:-my-3 lg:-my-4"
           >
-            <img 
-              src="/hexaren-logo-header.png" 
-              alt="Hexaren" 
+            <img
+              src="/hexaren-logo-header.png"
+              alt="Hexaren"
               className="h-16 w-auto object-contain drop-shadow-[0_6px_18px_rgba(0,0,0,0.45)] sm:h-[72px] md:h-20 lg:h-24"
             />
           </a>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             <a href="/" className={`transition-all duration-300 font-medium ${
@@ -256,15 +270,15 @@ export default function HomePage() {
             <button
               onClick={() => setLang(lang === 'en' ? 'da' : 'en')}
               className={`hidden sm:flex items-center gap-2 px-3 md:px-4 py-2 rounded-full transition-all duration-300 text-sm font-semibold ${
-                scrolled 
-                  ? 'bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200' 
+                scrolled
+                  ? 'bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200'
                   : 'bg-white/90 hover:bg-white text-gray-700 border border-white shadow-lg'
               }`}
             >
               <Globe className="w-4 h-4" />
               {lang === 'en' ? 'DA' : 'EN'}
             </button>
-            
+
             {/* CTA Button */}
             <Link href="/contact" className="hidden sm:block">
               <Button className="bg-gradient-to-r from-[#10B981] to-[#059669] hover:from-[#059669] hover:to-[#047857] text-white px-4 md:px-6 py-2 md:py-3 text-sm rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
@@ -292,42 +306,42 @@ export default function HomePage() {
           mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         } ${scrolled ? 'bg-white' : 'bg-gray-900/95 backdrop-blur-lg'}`}>
           <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            <a 
-              href="/" 
+            <a
+              href="/"
               onClick={() => setMobileMenuOpen(false)}
               className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
             >
               Home
             </a>
-            <a 
-              href="#services" 
+            <a
+              href="#services"
               onClick={() => setMobileMenuOpen(false)}
               className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
             >
               {t.nav.services}
             </a>
-            <a 
-              href="#pricing" 
+            <a
+              href="#pricing"
               onClick={() => setMobileMenuOpen(false)}
               className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
             >
               {t.nav.pricing}
             </a>
-            <a 
-              href="/about" 
+            <a
+              href="/about"
               onClick={() => setMobileMenuOpen(false)}
               className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
             >
               {t.nav.about}
             </a>
-            <a 
-              href="/contact" 
+            <a
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               className={`text-lg font-medium py-2 transition-colors ${scrolled ? 'text-gray-700 hover:text-[#10B981]' : 'text-white hover:text-[#10B981]'}`}
             >
               {t.nav.contact}
             </a>
-            
+
             {/* Service Pages in Mobile Menu */}
             <div className={`mt-4 pt-4 border-t ${scrolled ? 'border-gray-200' : 'border-white/20'}`}>
               <p className={`text-sm font-semibold mb-3 ${scrolled ? 'text-gray-500' : 'text-white/60'}`}>
@@ -347,7 +361,7 @@ export default function HomePage() {
                 </a>
               ))}
             </div>
-            
+
             {/* Mobile Language Toggle */}
             <button
               onClick={() => setLang(lang === 'en' ? 'da' : 'en')}
@@ -371,23 +385,25 @@ export default function HomePage() {
 
       {/* Hero Section - Fullscreen Video with Navbar Overlay */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/hero-video.mp4" type="video/mp4" />
-          <img 
-            src="https://images.pexels.com/photos/6195951/pexels-photo-6195951.jpeg" 
-            alt="Professional cleaning service"
-            className="w-full h-full object-cover"
-          />
-        </video>
-        
+        <ScaleOnScroll from={1} to={1.18} className="absolute inset-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+            <img
+              src="https://images.pexels.com/photos/6195951/pexels-photo-6195951.jpeg"
+              alt="Professional cleaning service"
+              className="w-full h-full object-cover"
+            />
+          </video>
+        </ScaleOnScroll>
+
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/58 to-black/66" />
-        
+
         {/* Vertical Service Navigation - Only visible on hero landing screen */}
         <div className={`hidden lg:block fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-40 transition-all duration-500 ${
           scrolled ? 'opacity-0 pointer-events-none translate-x-8' : 'opacity-100'
@@ -406,46 +422,63 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-        
+
         <div className="relative z-10 container mx-auto px-4">
           <div className="max-w-3xl animate-fade-in space-y-7 pt-16 text-left">
-            <p className="text-xs font-semibold tracking-[0.18em] text-[#65F0B1]/90">
+            <FadeIn as="p" delay={0.15} y={18} className="text-xs font-semibold tracking-[0.18em] text-[#65F0B1]/90">
               Hexaren Facility Services ApS
-            </p>
+            </FadeIn>
             <h1 className="text-4xl font-semibold leading-[1.04] text-white md:text-5xl lg:text-6xl">
-              <span className="block">{lang === 'en' ? 'Professional' : 'Professionel'} {t.hero.titleAccent}</span>
+              <RevealText
+                as="span"
+                className="block"
+                delay={0.3}
+                text={`${lang === 'en' ? 'Professional' : 'Professionel'} ${t.hero.titleAccent}`}
+              />
               <span className="block">
                 {lang === 'en' ? (
-                  <>Services in <span className="text-[#9FD47B]">Copenhagen</span></>
+                  <>
+                    <RevealText as="span" delay={0.45} text="Services in" />
+                    {' '}
+                    <RevealText as="span" delay={0.55} text="Copenhagen" wordClassName="text-[#9FD47B]" />
+                  </>
                 ) : (
-                  <>Service i <span className="text-[#9FD47B]">København</span></>
+                  <>
+                    <RevealText as="span" delay={0.45} text="Service i" />
+                    {' '}
+                    <RevealText as="span" delay={0.55} text="København" wordClassName="text-[#9FD47B]" />
+                  </>
                 )}
               </span>
             </h1>
-            
-            <p className="max-w-2xl text-base font-medium leading-8 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] md:text-lg">
+
+            <FadeIn as="p" delay={0.7} className="max-w-2xl text-base font-medium leading-8 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] md:text-lg">
               {t.hero.description}
-            </p>
-            
+            </FadeIn>
+
             <div className="flex flex-col items-start gap-4 pt-4 sm:flex-row">
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="rounded-lg border-0 bg-[#007A4D] px-10 py-7 text-lg font-semibold text-white transition-all duration-500 hover:scale-105 hover:bg-[#00633F]"
-                onClick={() => window.location.href = '/contact'}
-              >
-                {t.hero.cta}
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="rounded-lg border border-white/25 bg-white/14 px-10 py-7 text-lg font-semibold text-white transition-all duration-500 hover:scale-105 hover:bg-white hover:text-[#0F172A]"
-                onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                {t.hero.secondaryCta}
-              </Button>
+              <MagneticHover strength={0.25}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-lg border-0 bg-[#007A4D] px-10 py-7 text-lg font-semibold text-white transition-all duration-500 hover:scale-105 hover:bg-[#00633F]"
+                  onClick={() => window.location.href = '/contact'}
+                >
+                  {t.hero.cta}
+                </Button>
+              </MagneticHover>
+              <MagneticHover strength={0.25}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="rounded-lg border border-white/25 bg-white/14 px-10 py-7 text-lg font-semibold text-white transition-all duration-500 hover:scale-105 hover:bg-white hover:text-[#0F172A]"
+                  onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  {t.hero.secondaryCta}
+                </Button>
+              </MagneticHover>
             </div>
-            
+
             <div className="flex flex-wrap items-center gap-10 pt-8">
               <div className="flex items-center gap-3">
                 <Shield className="w-5 h-5 text-[#10B981]" />
@@ -462,6 +495,16 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+        <div className="pointer-events-none absolute bottom-8 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.26em] text-white/70 md:flex">
+          <span>Scroll</span>
+          <span className="relative h-12 w-px overflow-hidden bg-white/20">
+            <motion.span
+              className="absolute left-0 top-0 h-6 w-px origin-top bg-[#65BC46]"
+              animate={{ scaleY: [0, 1, 0], y: [0, 16, 36] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: [0.16, 1, 0.3, 1] }}
+            />
+          </span>
+        </div>
       </section>
 
       {/* Copenhagen Coverage */}
@@ -477,22 +520,31 @@ export default function HomePage() {
             <div className="scroll-reveal" data-delay="80">
               <div className="mb-6 grid grid-cols-3 border border-[#0F3D2E]/15 bg-white/55">
                 {[
-                  ['6', 'owners'],
-                  ['24h', 'reply aim'],
-                  ['100%', 'insured']
-                ].map(([value, label]) => (
+                  [25, '+', 'areas'],
+                  [24, 'h', 'reply aim'],
+                  [100, '%', 'insured']
+                ].map(([value, suffix, label]) => (
                   <div key={label} className="border-r border-[#0F3D2E]/15 p-4 last:border-r-0">
-                    <p className="text-2xl font-semibold text-[#004B93] md:text-3xl">{value}</p>
+                    <p className="text-2xl font-semibold text-[#004B93] md:text-3xl">
+                      <CountUp to={value} suffix={suffix} />
+                    </p>
                     <p className="mt-1 text-xs uppercase tracking-[0.18em] text-[#0F3D2E]/55">{label}</p>
                   </div>
                 ))}
               </div>
               <div className="flex flex-wrap gap-2">
-                {t.trust.areas.map((area) => (
-                  <span key={area} className="inline-flex items-center gap-2 border border-[#0F3D2E]/15 bg-white/65 px-4 py-2 text-sm font-medium text-[#0B1F1A]">
+                {t.trust.areas.map((area, index) => (
+                  <FadeIn
+                    key={area}
+                    as="span"
+                    delay={index * 0.04}
+                    duration={0.55}
+                    y={14}
+                    className="inline-flex items-center gap-2 border border-[#0F3D2E]/15 bg-white/65 px-4 py-2 text-sm font-medium text-[#0B1F1A]"
+                  >
                     <MapPin className="h-3.5 w-3.5 text-[#65BC46]" />
                     {area}
-                  </span>
+                  </FadeIn>
                 ))}
               </div>
             </div>
@@ -532,17 +584,20 @@ export default function HomePage() {
                 ['E', 'Eco-conscious', 'Responsible methods and supplies chosen with your space and the planet in mind.'],
                 ['N', 'Nordic Standard', 'The standard that binds every Hexaren promise together.']
               ].map(([letter, title, description], index) => (
-                <div
+                <motion.div
                   key={title}
-                  className="scroll-reveal grid gap-5 border-t border-white/12 py-7 first:border-t-0 sm:grid-cols-[88px_1fr]"
-                  data-delay={index * 60}
+                  initial={{ opacity: 0, y: 40, filter: 'blur(6px)' }}
+                  whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  viewport={{ once: true, amount: 0.35 }}
+                  transition={{ duration: 0.85, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="grid gap-5 border-t border-white/12 py-7 first:border-t-0 sm:grid-cols-[88px_1fr]"
                 >
                   <div className="text-5xl font-semibold text-white/20">{letter}</div>
                   <div className="grid gap-3 md:grid-cols-[0.45fr_1fr]">
                     <h3 className="text-2xl font-semibold text-white">{title}</h3>
                     <p className="leading-relaxed text-white/66">{description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -568,39 +623,47 @@ export default function HomePage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {services.map((service, index) => (
-              <Link
+              <motion.div
                 key={service.id}
-                href={`/services/${service.slug}`}
-                className="scroll-reveal group block overflow-hidden rounded-[6px] border border-[#111418]/10 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-[#007A4D]/28 hover:shadow-[0_28px_70px_rgba(15,23,42,0.12)]"
-                data-delay={index * 70}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
               >
-                <div className="relative aspect-[1.08] overflow-hidden bg-[#0B1114]">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="image-zoom h-full w-full object-cover contrast-[1.03] saturate-[0.92]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/22 via-transparent to-black/28" />
-                  <div className="absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#05080A] text-[#65F0B1] shadow-[0_14px_34px_rgba(0,0,0,0.28)]">
-                    <service.icon className="h-5 w-5" />
-                  </div>
-                </div>
+                <TiltCard max={5} className="h-full">
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="group block h-full overflow-hidden rounded-[6px] border border-[#111418]/10 bg-white transition-all duration-500 hover:-translate-y-1 hover:border-[#007A4D]/28 hover:shadow-[0_28px_70px_rgba(15,23,42,0.12)]"
+                  >
+                    <div className="relative aspect-[1.08] overflow-hidden bg-[#0B1114]">
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        className="image-zoom h-full w-full object-cover contrast-[1.03] saturate-[0.92]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/22 via-transparent to-black/28" />
+                      <div className="absolute left-5 top-5 flex h-12 w-12 items-center justify-center rounded-[4px] border border-white/10 bg-[#05080A] text-[#65F0B1] shadow-[0_14px_34px_rgba(0,0,0,0.28)]">
+                        <service.icon className="h-5 w-5" />
+                      </div>
+                    </div>
 
-                <div className="p-7 md:p-8">
-                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#111418]/55">
-                    {service.category}
-                  </p>
-                  <h3 className="text-2xl font-medium leading-tight text-[#111418]">{service.title}</h3>
-                  <p className="mt-5 min-h-[96px] text-base leading-relaxed text-[#111418]/68">
-                    {service.description}
-                  </p>
+                    <div className="p-7 md:p-8">
+                      <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#111418]/55">
+                        {service.category}
+                      </p>
+                      <h3 className="text-2xl font-medium leading-tight text-[#111418]">{service.title}</h3>
+                      <p className="mt-5 min-h-[96px] text-base leading-relaxed text-[#111418]/68">
+                        {service.description}
+                      </p>
 
-                  <span className="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#111418] transition-colors group-hover:text-[#007A4D]">
-                    Discover service
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </Link>
+                      <span className="mt-8 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-[#111418] transition-colors group-hover:text-[#007A4D]">
+                        Discover service
+                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                </TiltCard>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -619,7 +682,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="scroll-reveal grid overflow-hidden border border-[#0F3D2E]/12 bg-[#F4F1E8] lg:grid-cols-[1.05fr_0.95fr]" data-delay="120">
+          <FadeIn delay={0.2} y={50} className="grid overflow-hidden border border-[#0F3D2E]/12 bg-[#F4F1E8] lg:grid-cols-[1.05fr_0.95fr]">
             <div className="space-y-8 p-6 md:p-10">
               <div>
                 <div className="mb-4 flex items-end justify-between gap-4">
@@ -699,7 +762,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -724,19 +787,26 @@ export default function HomePage() {
             ].map((item, index) => {
               const CardElement = item.href ? Link : 'div';
               return (
-                <CardElement
+                <motion.div
                   key={item.step}
-                  href={item.href}
-                  className="scroll-reveal block border-b border-[#0F3D2E]/15 p-8 transition-colors duration-300 last:border-b-0 hover:bg-white/35 md:border-b-0 md:border-r md:last:border-r-0"
-                  data-delay={index * 100}
+                  initial={{ opacity: 0, y: 38, filter: 'blur(6px)' }}
+                  whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                  viewport={{ once: true, amount: 0.28 }}
+                  transition={{ duration: 0.85, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  className="border-b border-[#0F3D2E]/15 transition-colors duration-300 last:border-b-0 hover:bg-white/35 md:border-b-0 md:border-r md:last:border-r-0"
                 >
-                  <div className="mb-12 flex items-center justify-between">
-                    <span className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0F3D2E]/45">{item.step}</span>
-                    <item.icon className="h-7 w-7 text-[#65BC46]" />
-                  </div>
-                  <h3 className="text-2xl font-semibold text-[#0B1F1A]">{item.title}</h3>
-                  <p className="mt-4 leading-relaxed text-[#0B1F1A]/62">{item.description}</p>
-                </CardElement>
+                  <CardElement
+                    href={item.href}
+                    className="block h-full p-8"
+                  >
+                    <div className="mb-12 flex items-center justify-between">
+                      <span className="text-sm font-semibold uppercase tracking-[0.24em] text-[#0F3D2E]/45">{item.step}</span>
+                      <item.icon className="h-7 w-7 text-[#65BC46]" />
+                    </div>
+                    <h3 className="text-2xl font-semibold text-[#0B1F1A]">{item.title}</h3>
+                    <p className="mt-4 leading-relaxed text-[#0B1F1A]/62">{item.description}</p>
+                  </CardElement>
+                </motion.div>
               );
             })}
           </div>
@@ -745,45 +815,49 @@ export default function HomePage() {
 
       {/* Final CTA Section - Beautiful */}
       <section className="relative py-32 md:py-40 px-4 overflow-hidden">
-        <div className="absolute inset-0">
-          <img 
+        <Parallax offset={60} className="absolute inset-0 -top-20 -bottom-20">
+          <img
             src="https://images.pexels.com/photos/6197116/pexels-photo-6197116.jpeg?auto=compress&cs=tinysrgb&w=1920"
             alt="Professional cleaning"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A]/90 to-[#0F172A]/75" />
-        </div>
-        
+        </Parallax>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0F172A]/90 to-[#0F172A]/75" />
+
         <div className="relative z-10 container mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 scroll-reveal" data-delay="0">
-            {lang === 'en' ? 'Ready to Experience Professional Cleaning?' : 'Klar til at Opleve Professionel Rengøring?'}
+          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            <RevealText text={lang === 'en' ? 'Ready to Experience Professional Cleaning?' : 'Klar til at Opleve Professionel Rengøring?'} />
           </h2>
-          <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto scroll-reveal" data-delay="100">
-            {lang === 'en' 
-              ? 'Join businesses and homes across Copenhagen that trust Hexaren. Get your free quote today.' 
+          <FadeIn as="p" delay={0.15} className="text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto">
+            {lang === 'en'
+              ? 'Join businesses and homes across Copenhagen that trust Hexaren. Get your free quote today.'
               : 'Slut dig til virksomheder og hjem i hele København der stoler på Hexaren. Få dit gratis tilbud i dag.'}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center scroll-reveal" data-delay="200">
-            <Link href="/contact">
-              <Button 
-                size="lg" 
-                className="bg-[#10B981] hover:bg-[#059669] text-white px-12 py-7 text-lg font-bold rounded-full transition-all duration-500 hover:scale-105"
-              >
-                {lang === 'en' ? 'Get Your Free Quote' : 'Få Dit Gratis Tilbud'}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button 
-                size="lg"
-                variant="outline"
-                className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-12 py-7 text-lg font-bold rounded-full transition-all duration-500"
-              >
-                {lang === 'en' ? 'Contact Us' : 'Kontakt Os'}
-                <Phone className="w-5 h-5 ml-2" />
-              </Button>
-            </Link>
-          </div>
+          </FadeIn>
+          <FadeIn delay={0.25} className="flex flex-col sm:flex-row gap-4 justify-center">
+            <MagneticHover strength={0.25}>
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  className="bg-[#10B981] hover:bg-[#059669] text-white px-12 py-7 text-lg font-bold rounded-full transition-all duration-500 hover:scale-105"
+                >
+                  {lang === 'en' ? 'Get Your Free Quote' : 'Få Dit Gratis Tilbud'}
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </MagneticHover>
+            <MagneticHover strength={0.25}>
+              <Link href="/contact">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-[#0F172A] px-12 py-7 text-lg font-bold rounded-full transition-all duration-500"
+                >
+                  {lang === 'en' ? 'Contact Us' : 'Kontakt Os'}
+                  <Phone className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
+            </MagneticHover>
+          </FadeIn>
         </div>
       </section>
 
@@ -793,16 +867,16 @@ export default function HomePage() {
           <div className="grid md:grid-cols-4 gap-12">
             <div>
               <a href="/" className="-my-3 mb-4 inline-flex items-center">
-                <img 
-                  src="/hexaren-logo-header.png" 
-                  alt="Hexaren" 
+                <img
+                  src="/hexaren-logo-header.png"
+                  alt="Hexaren"
                   className="h-20 w-auto object-contain drop-shadow-[0_10px_24px_rgba(0,0,0,0.45)] sm:h-24"
                 />
               </a>
               <p className="text-gray-400">{t.footer.tagline}</p>
               <p className="text-gray-500 text-sm mt-2">{t.footer.cvr}</p>
             </div>
-            
+
             <div>
               <h4 className="font-bold text-white mb-4">{t.footer.services}</h4>
               <ul className="space-y-2 text-gray-400">
@@ -815,7 +889,7 @@ export default function HomePage() {
                 <li><Link href="/services/temporary-staff" className="hover:text-[#10B981] transition">{lang === 'en' ? 'Temporary Cleaning Staff' : 'Midlertidig Rengøringspersonale'}</Link></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-bold text-white mb-4">{t.footer.company}</h4>
               <ul className="space-y-2 text-gray-400">
@@ -824,7 +898,7 @@ export default function HomePage() {
                 <li><Link href="/privacy-policy" className="hover:text-[#10B981] transition">{lang === 'en' ? 'Privacy Policy' : 'Privatlivspolitik'}</Link></li>
               </ul>
             </div>
-            
+
             <div>
               <h4 className="font-bold text-white mb-4">{t.footer.contact}</h4>
               <ul className="space-y-3 text-gray-400">
@@ -843,7 +917,7 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
-          
+
           <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
             <p>© {new Date().getFullYear()} Hexaren Facility Services ApS. {t.footer.rights}.</p>
           </div>
@@ -861,5 +935,6 @@ export default function HomePage() {
         <span className="font-medium hidden md:inline">{t.whatsapp}</span>
       </a>
     </div>
+    </SmoothScroll>
   );
 }
