@@ -413,8 +413,7 @@ export default function HomePage() {
               Hexaren Facility Services ApS
             </p>
             <h1 className="text-4xl font-semibold leading-[1.04] text-white md:text-5xl lg:text-6xl">
-              <span className="block text-white/92">Hexaren</span>
-              <span className="block">{lang === 'en' ? 'Professional' : 'Professionel'} {t.hero.titleAccent}</span>
+              <span className="block">{lang === 'en' ? 'Founder-Led Professional' : 'Stifterledet Professionel'} {t.hero.titleAccent}</span>
               <span className="block">
                 {lang === 'en' ? (
                   <>Services in <span className="text-[#9FD47B]">Copenhagen</span></>
