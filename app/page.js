@@ -143,7 +143,7 @@ export default function HomePage() {
       icon: Star,
       category: lang === 'en' ? 'Workplace support' : 'Arbejdsplads support',
       ...t.services.piccoline,
-      image: 'https://images.pexels.com/photos/7876725/pexels-photo-7876725.jpeg'
+      image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg'
     },
     {
       id: 'staircase',
