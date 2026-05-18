@@ -49,7 +49,7 @@ const aboutTranslations = {
       label: 'Who We Are',
       title: 'A Small Team with Big Standards',
       paragraph1: 'Founded in Copenhagen, Hexaren Facility Services ApS was born from a shared frustration with unreliable cleaning services. We knew there had to be a better way—one built on accountability, transparency, and genuine care for the spaces we maintain.',
-      paragraph2: 'Today, we are a collective of 6 dedicated owners who personally invest in every job we take on. No middlemen, no excuses. Just premium cleaning delivered with the attention it deserves.',
+      paragraph2: 'Today, Hexaren is led by three founders who work directly in the business and stay close to every client relationship. No middlemen, no excuses. Just premium cleaning delivered with the attention it deserves.',
       paragraph3: 'We serve offices, apartments, Airbnb properties, and residential buildings across Copenhagen. Our approach is simple: show up, deliver excellence, and build lasting relationships with clients who value quality over shortcuts.'
     },
     mission: {
@@ -75,31 +75,28 @@ const aboutTranslations = {
     },
     team: {
       label: 'The People Behind Hexaren',
-      title: 'Meet Our Team',
-      subtitle: '6 owners, each personally invested in delivering excellence',
+      title: 'Meet Our Founders',
+      subtitle: 'Three founders working hands-on and leading the team themselves',
       members: [
-        { name: 'Sabin Sharma', role: 'Co-Founder & Operations', email: 'sabin@hexaren.dk' },
-        { name: 'Mikkel Jensen', role: 'Co-Founder & Sales', email: 'mikkel@hexaren.dk' },
-        { name: 'Priya Patel', role: 'Co-Founder & Client Relations', email: 'priya@hexaren.dk' },
-        { name: 'Anders Nielsen', role: 'Co-Founder & Quality Assurance', email: 'anders@hexaren.dk' },
-        { name: 'Sofia Andersen', role: 'Co-Founder & Scheduling', email: 'sofia@hexaren.dk' },
-        { name: 'Raj Kumar', role: 'Co-Founder & Finance', email: 'raj@hexaren.dk' }
+        { name: 'Sumi Basnet', role: 'Co-Founder & Team Lead' },
+        { name: 'Ravi Paudel', role: 'Co-Founder & Operations Lead' },
+        { name: 'Ruska Shrestha', role: 'Co-Founder & Client Care Lead' }
       ]
     },
     stats: {
-      title: 'Our Impact in Numbers',
+      title: 'Built for Long-Term Trust',
       items: [
-        { number: '150+', label: 'Projects Completed', sublabel: 'and counting' },
-        { number: '98%', label: 'Client Satisfaction', sublabel: 'based on feedback' },
-        { number: '<2h', label: 'Response Time', sublabel: 'average reply' },
-        { number: '6', label: 'Dedicated Owners', sublabel: 'personally invested' }
+        { number: '01', label: 'Owner-Led Service', sublabel: 'founders stay close to the work' },
+        { number: '02', label: 'Clear Communication', sublabel: 'simple updates and direct contact' },
+        { number: '03', label: 'Consistent Standards', sublabel: 'checklists shaped around each space' },
+        { number: '04', label: 'Careful Growth', sublabel: 'quality first as the company grows' }
       ]
     },
     founder: {
-      quote: '"We didn\'t start Hexaren to build a cleaning company. We started it to prove that reliability and premium quality can coexist—that a small team with the right values can outperform anyone. Every time we show up, we\'re not just cleaning a space. We\'re keeping a promise."',
-      name: 'Sabin Sharma',
-      title: 'Co-Founder, Hexaren Rengøring',
-      story: 'After years of experiencing inconsistent service from larger cleaning companies, our founding team came together with a radical idea: what if every person who cleaned had ownership stake in the outcome? That question became Hexaren.'
+      quote: '"We are building Hexaren from the ground up with one clear promise: reliable cleaning, honest communication, and founders who take responsibility for the details."',
+      name: 'Sumi Basnet, Ravi Paudel & Ruska Shrestha',
+      title: 'Founders, Hexaren Rengøring',
+      story: 'As a new company, we are focused on doing the fundamentals exceptionally well: arriving prepared, listening carefully, cleaning with consistency, and building trust one client at a time.'
     },
     cta: {
       title: 'Ready to Experience the Difference?',
@@ -140,7 +137,7 @@ const aboutTranslations = {
       label: 'Hvem Vi Er',
       title: 'Et Lille Team med Store Standarder',
       paragraph1: 'Grundlagt i København, Hexaren Facility Services ApS blev født fra en fælles frustration over upålidelige rengøringsservices. Vi vidste, at der måtte være en bedre måde—en bygget på ansvarlighed, gennemsigtighed og ægte omsorg for de rum vi vedligeholder.',
-      paragraph2: 'I dag er vi et kollektiv af 6 dedikerede ejere, der personligt investerer i hvert job vi påtager os. Ingen mellemled, ingen undskyldninger. Bare premium rengøring leveret med den opmærksomhed den fortjener.',
+      paragraph2: 'I dag ledes Hexaren af tre stiftere, der arbejder direkte i virksomheden og holder sig tæt på hver kunderelation. Ingen mellemled, ingen undskyldninger. Bare premium rengøring leveret med den opmærksomhed den fortjener.',
       paragraph3: 'Vi servicerer kontorer, lejligheder, Airbnb-ejendomme og boligejendomme i hele København. Vores tilgang er simpel: mød op, lever excellence, og byg varige relationer med kunder der værdsætter kvalitet over genveje.'
     },
     mission: {
@@ -166,31 +163,28 @@ const aboutTranslations = {
     },
     team: {
       label: 'Folkene Bag Hexaren',
-      title: 'Mød Vores Team',
-      subtitle: '6 ejere, hver personligt investeret i at levere excellence',
+      title: 'Mød Vores Stiftere',
+      subtitle: 'Tre stiftere, der arbejder hands-on og selv leder teamet',
       members: [
-        { name: 'Sabin Sharma', role: 'Medstifter & Drift', email: 'sabin@hexaren.dk' },
-        { name: 'Mikkel Jensen', role: 'Medstifter & Salg', email: 'mikkel@hexaren.dk' },
-        { name: 'Priya Patel', role: 'Medstifter & Kunderelationer', email: 'priya@hexaren.dk' },
-        { name: 'Anders Nielsen', role: 'Medstifter & Kvalitetssikring', email: 'anders@hexaren.dk' },
-        { name: 'Sofia Andersen', role: 'Medstifter & Planlægning', email: 'sofia@hexaren.dk' },
-        { name: 'Raj Kumar', role: 'Medstifter & Økonomi', email: 'raj@hexaren.dk' }
+        { name: 'Sumi Basnet', role: 'Medstifter & Teamleder' },
+        { name: 'Ravi Paudel', role: 'Medstifter & Driftsleder' },
+        { name: 'Ruska Shrestha', role: 'Medstifter & Kundefokus' }
       ]
     },
     stats: {
-      title: 'Vores Indvirkning i Tal',
+      title: 'Bygget til Langvarig Tillid',
       items: [
-        { number: '150+', label: 'Projekter Fuldført', sublabel: 'og tæller' },
-        { number: '98%', label: 'Kundetilfredshed', sublabel: 'baseret på feedback' },
-        { number: '<2t', label: 'Svartid', sublabel: 'gennemsnitlig respons' },
-        { number: '6', label: 'Dedikerede Ejere', sublabel: 'personligt investeret' }
+        { number: '01', label: 'Ejerledet Service', sublabel: 'stifterne er tæt på arbejdet' },
+        { number: '02', label: 'Klar Kommunikation', sublabel: 'enkle opdateringer og direkte kontakt' },
+        { number: '03', label: 'Faste Standarder', sublabel: 'tjeklister tilpasset hvert rum' },
+        { number: '04', label: 'Ansvarlig Vækst', sublabel: 'kvalitet først mens virksomheden vokser' }
       ]
     },
     founder: {
-      quote: '"Vi startede ikke Hexaren for at bygge et rengøringsfirma. Vi startede det for at bevise, at pålidelighed og premium kvalitet kan sameksistere—at et lille team med de rigtige værdier kan overgå alle. Hver gang vi møder op, rengør vi ikke bare et rum. Vi holder et løfte."',
-      name: 'Sabin Sharma',
-      title: 'Medstifter, Hexaren Rengøring',
-      story: 'Efter år med inkonsistent service fra større rengøringsfirmaer, kom vores stifterteam sammen med en radikal idé: hvad nu hvis hver person der gjorde rent havde ejerandel i resultatet? Det spørgsmål blev til Hexaren.'
+      quote: '"Vi bygger Hexaren fra bunden med ét klart løfte: pålidelig rengøring, ærlig kommunikation og stiftere, der tager ansvar for detaljerne."',
+      name: 'Sumi Basnet, Ravi Paudel & Ruska Shrestha',
+      title: 'Stiftere, Hexaren Rengøring',
+      story: 'Som ny virksomhed fokuserer vi på at gøre det grundlæggende ekstra godt: møde forberedt op, lytte grundigt, gøre rent med faste standarder og opbygge tillid én kunde ad gangen.'
     },
     cta: {
       title: 'Klar til at Opleve Forskellen?',
@@ -212,16 +206,6 @@ const aboutTranslations = {
     whatsapp: 'Chat med os'
   }
 };
-
-// Team member placeholder images (professional headshots)
-const teamImages = [
-  'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400'
-];
 
 export default function AboutPage() {
   const [lang, setLang] = useState('en');
@@ -455,20 +439,12 @@ export default function AboutPage() {
               >
                 <div className="bg-[#FAFBFC] rounded-2xl p-6 text-center group">
                   <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden ring-4 ring-white shadow-lg">
-                    <img 
-                      src={teamImages[index]}
-                      alt={member.name}
-                      className="w-full h-full object-cover image-zoom"
-                    />
+                    <div className="w-full h-full bg-gradient-to-br from-gray-100 via-white to-emerald-50 flex items-center justify-center">
+                      <Users className="w-12 h-12 text-[#10B981]/45" />
+                    </div>
                   </div>
                   <h3 className="text-xl font-bold text-[#0F172A] mb-1">{member.name}</h3>
-                  <p className="text-[#10B981] font-medium mb-3">{member.role}</p>
-                  <a 
-                    href={`mailto:${member.email}`}
-                    className="text-sm text-gray-500 hover:text-[#10B981] transition-colors"
-                  >
-                    {member.email}
-                  </a>
+                  <p className="text-[#10B981] font-medium">{member.role}</p>
                 </div>
               </div>
             ))}
@@ -509,13 +485,20 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image */}
             <div className="scroll-reveal" data-delay="0">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=800"
-                  alt={t.founder.name}
-                  className="w-full h-[500px] object-cover image-zoom"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/40 to-transparent" />
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#F8FAFC] via-white to-emerald-50 border border-gray-100">
+                <div className="w-full h-[500px] flex flex-col items-center justify-center px-8 text-center">
+                  <div className="w-32 h-32 rounded-full bg-white shadow-lg ring-4 ring-emerald-50 flex items-center justify-center mb-6">
+                    <Users className="w-14 h-14 text-[#10B981]/50" />
+                  </div>
+                  <div className="text-sm font-semibold uppercase tracking-wider text-[#10B981] mb-2">
+                    {lang === 'en' ? 'Founder photo space' : 'Plads til stifterfoto'}
+                  </div>
+                  <p className="text-gray-500 max-w-sm">
+                    {lang === 'en' 
+                      ? 'A professional team photo can be added here when it is ready.'
+                      : 'Et professionelt teamfoto kan tilføjes her, når det er klar.'}
+                  </p>
+                </div>
               </div>
             </div>
             
