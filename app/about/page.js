@@ -80,9 +80,9 @@ const aboutTranslations = {
       subtitle: 'Three founders working hands-on and leading the team themselves',
       experience: 'Each founder brings 5+ years of hands-on cleaning experience.',
       members: [
-        { name: 'Sumi Basnet', role: 'Co-Founder & Team Lead' },
-        { name: 'Ravi Paudel', role: 'Co-Founder & Operations Lead' },
-        { name: 'Ruska Shrestha', role: 'Co-Founder & Client Care Lead' }
+        { name: 'Sumi Basnet', role: 'Co-Founder' },
+        { name: 'Ravi Paudel', role: 'Co-Founder' },
+        { name: 'Ruska Shrestha', role: 'Co-Founder' }
       ]
     },
     stats: {
@@ -170,9 +170,9 @@ const aboutTranslations = {
       subtitle: 'Tre stiftere, der arbejder hands-on og selv leder teamet',
       experience: 'Hver stifter har 5+ års praktisk rengøringserfaring.',
       members: [
-        { name: 'Sumi Basnet', role: 'Medstifter & Teamleder' },
-        { name: 'Ravi Paudel', role: 'Medstifter & Driftsleder' },
-        { name: 'Ruska Shrestha', role: 'Medstifter & Kundefokus' }
+        { name: 'Sumi Basnet', role: 'Medstifter' },
+        { name: 'Ravi Paudel', role: 'Medstifter' },
+        { name: 'Ruska Shrestha', role: 'Medstifter' }
       ]
     },
     stats: {
