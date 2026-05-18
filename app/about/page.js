@@ -512,11 +512,6 @@ export default function AboutPage() {
                   <div className="text-sm font-semibold uppercase tracking-wider text-[#10B981] mb-2">
                     {lang === 'en' ? 'Founder photo space' : 'Plads til stifterfoto'}
                   </div>
-                  <p className="text-gray-500 max-w-sm">
-                    {lang === 'en' 
-                      ? 'A professional team photo can be added here when it is ready.'
-                      : 'Et professionelt teamfoto kan tilføjes her, når det er klar.'}
-                  </p>
                 </div>
               </div>
             </div>
