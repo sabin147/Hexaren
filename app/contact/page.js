@@ -512,18 +512,14 @@ export default function ContactPage() {
               {/* Book Meeting / Schedule Call Buttons */}
               <div className="space-y-4 scroll-reveal" data-delay="200">
                 <a 
-                  href="https://cal.com/sabinghimire147"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#contact-form"
                   className="flex items-center gap-3 px-6 py-4 rounded-xl bg-[#10B981] hover:bg-[#059669] text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-[#10B981]/30"
                 >
                   <Calendar className="w-5 h-5" />
                   {t.hero.bookMeeting}
                 </a>
                 <a 
-                  href="https://cal.com/sabinghimire147"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#contact-form"
                   className="flex items-center gap-3 px-6 py-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium transition-all duration-300 border-2 border-white/20 hover:border-white/40"
                 >
                   <PhoneCall className="w-5 h-5" />
